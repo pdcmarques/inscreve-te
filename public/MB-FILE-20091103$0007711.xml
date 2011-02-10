@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>03-11-2009 13:06</DATA_HORA>
+    <TERMINAL>0035030302-Faro</TERMINAL>
+    <REFERENCIA>771201163</REFERENCIA>
+    <VALOR>40</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>39.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

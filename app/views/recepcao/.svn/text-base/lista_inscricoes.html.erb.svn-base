@@ -1,0 +1,16 @@
+<h3>Lista de <span>Recepção</span> </h3>
+<br />
+<br />
+<table class="user_detail_table">
+  <tr class="header">
+      <th align="center">N</th>
+      <th align="left">Nome</th>
+      <th align="center">Idade</th>
+      <th align="center">Igreja</th>
+      <!--th align="center">Total</th>
+      <th align="center">Pago</th>
+      <th align="center">Divida</th-->
+      <th></th>
+  </tr>
+  <%= render(:partial=>"inscricao_listitem", :collection=>@inscricoes) %>
+</table>

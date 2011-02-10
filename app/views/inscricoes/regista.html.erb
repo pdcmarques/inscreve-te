@@ -1,0 +1,146 @@
+<h1>Nova <span>Inscrição</span></h1>
+<span id="slogan2">78ª Assembleia Geral da CBP</span>
+<br/>
+<div id="container">
+  <% if flash[:notice] != nil %>
+    <p style="color:red">
+      <%=flash[:notice]%>
+    <p>
+  <% end %>
+  
+  <%= error_messages_for :inscricao %>
+  <br /><br /><br />
+  <% form_for :inscricao, :html=>{:class=>"niceform"}, :method=>"post", :url => {:controller=>"inscricoes", :action=>"regista"} do |f| -%>
+  <fieldset>
+      <legend>Dados Pessoais</legend>
+      <dl>
+        <dt><label for="nome">Nome Completo:</label></dt>
+        <dd><%= f.text_field :nome, :maxlength=>"120", :size=>"59"%></dd>
+      </dl>
+      <dl>
+        <dt><label for="nome_cracha">Nome Abreviado:</label></dt>
+        <dd><%= f.text_field :nome_cracha, :maxlength=>"20", :size=>"25"%>&nbsp;(Máximo 20 letras)</dd>
+      </dl>
+      <dl>
+        <dt><label for="idade">Idade:</label></dt>
+        <dd><%= f.text_field :idade, :maxlength=>"2", :size=>"2"%>&nbsp;Anos</dd>
+      </dl>
+      <dl>
+        <dt><label for="morada">Morada:</label></dt>
+        <dd><%= f.text_field :morada, :maxlength=>"200", :size=>"59"%></dd>
+      </dl>
+      <dl>
+        <dt><label for="codigo_postal">Código Postal:</label></dt>
+        <dd><%= f.text_field :codigo_postal, :maxlength=>"8", :size=>"8"%>
+      </dl>
+      <dl>
+        <dt><label for="localidade">Localidade:</label></dt>
+        <dd><%= f.text_field :localidade, :maxlength=>"200", :size=>"59"%></dd>
+      </dl>
+      <dl>
+        <dt><label for="telefone">Telefone:</label></dt>
+        <dd><%= f.text_field :telefone, :maxlength=>"9", :size=>"9"%></dd>
+      </dl>
+      <dl>
+        <dt><label for="email">E-mail:</label></dt>
+        <dd><%= f.text_field :email, :maxlength=>"200", :size=>"59"%></dd>
+      </dl>
+  </fieldset>
+  <fieldset>
+      <legend>Igreja e Tipo de Inscrição</legend>
+      <dl>
+        <dt><label for="color">Igreja:</label></dt>
+          <dd>
+            <select size="1" id="inscricao_igreja_id" name="inscricao[igreja_id]" style="width:300px">
+              <%= options_from_collection_for_select(Igreja.find(:all, :order =>:nome), :id, :nome) %>
+            </select>
+          </dd>
+        </dl>
+      <dl>
+        <dt><label for="color">Estatuto:</label></dt>
+          <dd>
+            <select size="1" id="inscricao_estatuto_id" name="inscricao[estatuto_id]"  style="width:300px">
+              <%= options_for_select(Inscricao::ESTATUTO_OPCOES) %>
+            </select>
+          </dd>
+        </dl>
+  </fieldset>
+  <fieldset>
+      <legend>Refeições</legend>
+      <dl>
+        <dt><label for="color">Almoço de 2/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao1_id" name="inscricao[refeicao1_id]" style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO1_OPCOES) %>
+            </select>
+          </dd>
+        </dl>
+      <dl>
+        <dt><label for="color">Jantar de 2/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao2_id" name="inscricao[refeicao2_id]"  style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO2_OPCOES) %>
+            </select>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="color">Almoço de 3/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao3_id" name="inscricao[refeicao3_id]" style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO3_OPCOES) %>
+            </select>
+          </dd>
+        </dl>
+      <dl>
+        <dt><label for="color">Jantar de 3/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao4_id" name="inscricao[refeicao4_id]"  style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO4_OPCOES) %>
+            </select>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="color">Almoço de 4/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao5_id" name="inscricao[refeicao5_id]"  style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO5_OPCOES) %>
+            </select>
+          </dd>
+        </dl>
+  </fieldset>
+  <fieldset>
+      <legend>Alojamento</legend>
+      <dl>
+        <dt><label for="inscricao_noite1">Noite de 2 para 3/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_noite1_id" name="inscricao[noite1_id]" style="width:400px">
+              <%= options_for_select(Inscricao::ALOJAMENTO_OPCOES) %>
+            </select>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="inscricao_noite2">Noite de 3 para 4/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_noite2_id" name="inscricao[noite2_id]" style="width:400px">
+              <%= options_for_select(Inscricao::ALOJAMENTO_OPCOES) %>
+            </select>
+          </dd>
+        </dl>
+        <dl>
+            <dt><label for="n_camas_extra">Nº de Camas Extra:</label></dt>
+            <dd><%= f.text_field :n_camas_extra, :maxlength=>"2", :size=>"2"%>&nbsp;Apenas no caso de reservar um quarto na Casa BRANCA/GIRASSOL</dd>
+        </dl>
+  </fieldset>
+  <fieldset>
+        <legend>Observações</legend>
+        <dl>
+          <dt><label for="observacoes">Observações</label></dt>
+          <dd><%= f.text_area :observacoes, :rows=>5, :cols=>58%><br/>No caso de ter escolhido alojamento na casa Branca/Girassol, por favor indique, neste campo, o nome das pessoas que vão ficar alojadas consigo no mesmo quarto (até ao máximo de 3).</dd>
+        </dl>
+  </fieldset>
+  <fieldset class="action">
+    <%= submit_tag 'Enviar Inscrição' %>
+  </fieldset>
+  <% end %>
+  
+  

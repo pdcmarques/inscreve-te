@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>25-07-2009 10:03</DATA_HORA>
+    <TERMINAL>0010054602-PENICHE</TERMINAL>
+    <REFERENCIA>853108897</REFERENCIA>
+    <VALOR>95</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>94.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

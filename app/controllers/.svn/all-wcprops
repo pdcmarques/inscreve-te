@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/project/!svn/ver/766/trunk/app/controllers
+END
+sessions_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/745/trunk/app/controllers/sessions_controller.rb
+END
+eventos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/431/trunk/app/controllers/eventos_controller.rb
+END
+home_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/670/trunk/app/controllers/home_controller.rb
+END
+inscricoes_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/847/trunk/app/controllers/inscricoes_controller.rb
+END
+igreja_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/389/trunk/app/controllers/igreja_controller.rb
+END
+users_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/736/trunk/app/controllers/users_controller.rb
+END
+error_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/732/trunk/app/controllers/error_controller.rb
+END
+descontos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/521/trunk/app/controllers/descontos_controller.rb
+END
+application.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/845/trunk/app/controllers/application.rb
+END
+recibos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/765/trunk/app/controllers/recibos_controller.rb
+END
+consumos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/534/trunk/app/controllers/consumos_controller.rb
+END
+pagamentos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/810/trunk/app/controllers/pagamentos_controller.rb
+END
+admin_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/838/trunk/app/controllers/admin_controller.rb
+END
+listavalores_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/665/trunk/app/controllers/listavalores_controller.rb
+END
+refeicoes_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/509/trunk/app/controllers/refeicoes_controller.rb
+END
+imprimir_recibo_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/131/trunk/app/controllers/imprimir_recibo_controller.rb
+END
+recepcao_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/471/trunk/app/controllers/recepcao_controller.rb
+END
+produtos_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/524/trunk/app/controllers/produtos_controller.rb
+END

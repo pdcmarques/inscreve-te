@@ -1,0 +1,1493 @@
+Ext.onReady(function(){
+    var urlPrefix = '<%= @event.urlPrefix %>';
+
+    var userRecord = Ext.data.Record.create([
+	{name: 'login'},
+	{name: 'email'},
+	{name: 'profile'},
+	{name: 'inscricoes_count'},
+	{name: 'inscricoes_activas'},
+	{name: 'recibos_count'},
+	{name: 'divida_total', type:'float'}
+     ]);
+     var userReader = new Ext.data.XmlReader({
+	record: "user"           // The repeated element which contains row information
+     }, userRecord);
+     
+     var consumoRecord = Ext.data.Record.create([
+	{name: 'produto'},
+	{name: 'preco', mapping:'preco', type:'float' }
+     ]);
+     
+     var consumoReader = new Ext.data.XmlReader({
+	record: "consumo",           // The repeated element which contains row information
+	totalRecords: "totalCount"
+     }, consumoRecord);
+     
+     var consumosStore = new Ext.data.Store({
+	reader: consumoReader
+     });
+
+    var eventoRecord = Ext.data.Record.create([
+	{name: 'codigo'},
+	{name: 'nome'},
+	{name: 'nome_curto'},
+	{name: 'descricao'},
+	{name: 'email'},
+	{name: 'data_inicio'},
+	{name: 'data_data_fim'}    
+     ]);
+     
+    var eventoReader = new Ext.data.XmlReader({
+	record: "evento"           // The repeated element which contains row information
+     }, eventoRecord);
+     
+    var eventosStore = new Ext.data.Store({
+	url : urlPrefix+'/<%=@entidade.sigla%>/eventos/list',
+	remote: true,
+	reader: eventoReader
+     });
+
+
+    function preco(val){
+	if(val != null)
+	  return "<span style=\"text-align:right\">"+formatCurrency(val)+"</span>";
+	else
+	  return "<span align=\"right\">"+formatCurrency(0)+"</span>";
+    }
+    
+    Ext.QuickTips.init();
+
+    // turn on validation errors beside the field globally
+    Ext.form.Field.prototype.msgTarget = 'side';
+    
+    var xg = Ext.grid;
+    var summary = new Ext.ux.grid.GridSummary();
+    var userInSession = "";
+    var loginForm;
+    var loginWindow;
+    var registerWindow;
+    var registerForm;
+    var newPasswordWindow;
+    var newPasswordForm;
+    var tip;
+    var win;
+    var longDescriptionPanel;
+    var consumosPanel;
+    var userPanel;
+    var dummyPanel = new Ext.Panel();
+    var combos = [];
+    var fs;
+    var submit;
+
+    
+    function renderForm(){
+	fs = new Ext.FormPanel({
+	    frame: true,
+	    region: 'center',
+	    title:'<%= translate("i18n:nova_inscricao") %>',
+	    labelAlign: 'right',
+	    labelWidth: 120,
+	    width:"100%",
+	    margins: '10 10 10 10',
+	    waitMsgTarget: true,
+	    contentType:"application/x-www-form-urlencoded",
+    
+    
+	    // reusable eror reader class defined at the end of this file
+	    errorReader: new Ext.form.XmlErrorReader(),
+    
+	    items: [
+	      <% numero_grupo = @event.grupo_camposs.length %>
+	      <% grupos_campos = EventosGruposCampos.find_all_by_evento_id(@event.id, :order=>"`eventos_grupos_campos`.order") %>
+	      <% grupos_campos.each do |evento_grupo| %>
+		<% grupo = evento_grupo.grupo_campos %>
+		<% numero_grupo = numero_grupo-1 %>
+		new Ext.form.FieldSet({
+		    title: '<%= grupo.label %>',
+		    collapsible: true,
+		    autoHeight: true,
+		    defaultType: 'textfield',
+		    items: [
+		      <% numero = grupo.campos.length %>
+		      <% campos = Campo.find_all_by_grupo_campos_id(grupo.id, :order=>"`campos`.order") %>
+		      <% campos.each do |campo| %>
+			<% numero = numero-1 %>
+			
+			  <% if (campo.tipo.upcase == "LOV") %>
+				new Ext.Panel({ layout: 'column', items: [
+				  new Ext.Panel({ layout: 'form', items: [
+				    combos[<%= campo.id %>] = new Ext.form.ComboBox({
+				      fieldLabel: '<%= campo.label %>',
+				      name: 'campo[<%= campo.id %>]',
+				      hiddenName: 'campo[<%= campo.id %>]',
+				      store: new Ext.data.Store({
+					  // load using HTTP
+					  url: urlPrefix+'/<%=@event.entidade.sigla%>/<%=@event.codigo%>/listavalores/valores/<%=campo.id%>.xml',
+					  <% if (campo.setup_value != nil && campo.setup_value != '') %>
+					    autoLoad: true,
+					  <% end %>
+					  // the return will be XML, so lets set up a reader
+					  reader: new Ext.data.XmlReader({
+						 record: 'val',
+						 id: 'id',
+						 totalRecords: '@total'
+					     }, [
+						 '<%= campo.lista_valores.value_field %>', '<%= campo.lista_valores.text_field %>'
+					     ])
+					   <% if (campo.setup_value != nil && campo.setup_value != '') %>,
+					   listeners:
+					   {
+						load: function(store, records, options){
+						    combos[<%= campo.id %>].expand();
+						    combos[<%= campo.id %>].setValue('<%= campo.setup_value %>');
+						    combos[<%= campo.id %>].collapse();
+						    
+						}
+					   }
+					   <%end%>
+					}),
+					valueField: '<%= campo.lista_valores.value_field %>',
+					displayField:'<%= campo.lista_valores.text_field %>',
+					mode: 'remote',
+					typeAhead: true,
+					forceSelection: true,
+					triggerAction: 'all',
+					emptyText:'Escolha...',
+					selectOnFocus:true,
+					width: 257,
+					allowBlank: <%= !campo.required || !campo.mostra_inserir %> || (userInSession.profile == "ADMIN" && <%=campo.default_value != nil && campo.default_value != ''%>),
+					blankText: "Este campo é obrigatório",
+					msgTarget: "under",
+					hidden: <%= !campo.mostra_inserir %>,
+					hideLabel: <%= !campo.mostra_inserir %>,
+					listeners:
+					{
+					   focus: function(ev) {
+					      Ext.get('ldp').fadeOut();
+					      longDescriptionPanel.removeAll();
+					      <% if(campo.long_description != nil && campo.long_description != "") %>
+						longDescriptionPanel.add(
+						  new Ext.Panel({
+						    html:"<br/><%= campo.long_description %>"
+						  })
+						);
+						longDescriptionPanel.render('ldp');
+						Ext.get('ldp').fadeIn();
+					      <% else %>
+						longDescriptionPanel.render('ldp');
+					      <% end %>
+					      <% if(campo.nota != nil && campo.nota != "") %>
+						 if(tip != null){
+						    tip.destroy();
+						 }
+						 tip = new Ext.ToolTip({
+						       target: 'campo[<%= campo.id %>]',
+						       anchor: 'left',
+						       width:250,
+						       html: '<%= campo.nota %>',
+						       dismissDelay : 0,
+						       closable:true
+						   });
+						 target = ev.el.getXY();
+						 x = target[0] + 265;
+						 y = target[1];
+						 tip.showAt([x,y]);
+					      <% end %>
+					   },
+					   
+					   select: function(ev) {
+						var mgr = dummyPanel.getUpdater();
+						mgr.formUpdate(
+						    fs,
+						    urlPrefix+'/<%=@event.entidade.sigla%>/<%= @event.codigo %>/inscricoes/get_consumos_temp',
+						    false,
+						    function(el, sucess, response) {
+							 if(sucess){
+							     consumosStore.loadData(response.responseXML);
+							     //consumosPanel.render("consumos");
+							 }
+						     }
+						)
+					   }
+					}
+				    })
+				  ]})
+				    <% if(campo.lista_valores.editavel && campo.mostra_inserir) %>
+				    ,
+				    new Ext.Button({
+				      id: 'addButton',
+				      text: 'Não Encontra...',
+				      icon: urlPrefix+'/images/add.png',
+				      tooltip: 'ADICIONAR <%= campo.label.upcase %>',
+				      handler: function() {
+					 if(!win){
+					    var form = new Ext.FormPanel({
+						frame: true,
+						labelAlign: 'right',
+						labelWidth: 120,
+						width:"75%",
+						waitMsgTarget: true,
+						defaultType: 'textfield',
+						errorReader: new Ext.form.XmlErrorReader(),
+						items: [
+						    new Ext.form.FieldSet({
+							title: 'Dados da <%= campo.label %>',
+							collapsible: false,
+							autoHeight: true,
+							items: [
+							    <% columns = eval(campo.lista_valores.class_name+".columns") %>
+							    <% inner_numero = 0 %>
+							    <% columns.each do |column| %>
+								<% if ((column.name.upcase != "ID") && (column.name.upcase != "CREATED_AT") && (column.name.upcase != "UPDATED_AT") && (column.name.upcase != "FULL_NAME")) %>
+								    <% inner_numero = inner_numero + 1 %>
+								<% end %>
+							    <% end %>
+							    <% columns.each do |column| %>
+							      <% if ((column.name.upcase != "ID") && (column.name.upcase != "CREATED_AT") && (column.name.upcase != "UPDATED_AT") && (column.name.upcase != "FULL_NAME")) %>
+								new Ext.form.TextField({
+								    fieldLabel: '<%= column.name.sub("_"," ").upcase %>',
+								    name: 'campo[<%= column.name %>]',
+								    width:"80%"
+								  })
+								<% inner_numero = inner_numero-1 %>
+								<% if inner_numero > 0 %>
+								  ,
+								<% end %>
+							      <% end %>
+							    <% end %>
+							]
+						    })
+						],
+						layout: 'form'
+					     })
+				      
+					    win = new Ext.Window({
+						layout      : 'fit',
+						width       : 400,
+						height      : 375,                                            
+						closeAction :'hide',
+						title:'Adicionar Nova <%= campo.label %>',
+						animateTarget: 'addButton',
+						
+						items: [
+						  form
+						],
+						
+						buttons: [
+						    {
+							text     : 'Adicionar',
+							icon     : urlPrefix+'/images/add.png',
+							disabled : false,
+							handler  : function(){
+							    form.getForm().submit({
+								url:urlPrefix+'/<%=@event.entidade.sigla%>/<%=@event.codigo%>/listavalores/regista_valor/<%= campo.id %>',
+								waitMsg:'A Registar <%= campo.label %>...',
+								reset: true,
+								success:function(){
+								  win.hide();
+								  combos[<%= campo.id %>].getStore().reload();
+								  Ext.MessageBox.show({
+								      title: '<%= campo.label %> Registada',
+								      msg: '<%= campo.label %> foi correctamente registada. Pode escolher o novo valor na caixa de selecção',
+								      width: 350,
+								      buttons: Ext.MessageBox.OK,
+								      icon: Ext.MessageBox.INFO
+								  });
+								}
+							    });
+							}
+						    } , 
+						    {
+							text     : 'Cancelar',
+							icon     : urlPrefix+'/images/cancel.png',
+							handler  : function(){
+							    win.hide();
+							}
+						    }
+						]
+					    });
+					}
+					win.show();
+				      }
+				    })
+				  <% end %>
+				]
+			      })
+			  <% end %>
+			  <% if(campo.tipo.upcase == "DATE") %>
+			      new Ext.form.DateField({
+				fieldLabel  : '<%= campo.label %>',
+				name        : 'campo[<%= campo.id %>]',
+				width       : "66.5%",
+				format      : 'd-m-Y',
+				allowBlank  : <%= !campo.required || !campo.mostra_inserir %> || (userInSession.profile == "ADMIN" && <%=campo.default_value != nil && campo.default_value != ''%>),
+				blankText   : "Este campo é obrigatório",
+				hidden      : <%= !campo.mostra_inserir %>,
+				hideLabel   : <%= !campo.mostra_inserir %>,
+				<% if(campo.maskRe != nil && campo.maskRe != '') %>
+				    maskRe      : <%= campo.maskRe %>,
+				<% end %>
+				<% if(campo.tamanho != nil && campo.tamanho > 0) %>
+				    maxLength       : <%= campo.tamanho %>,
+				    maxLengthText   : "O tamanho do valor deste campo tem que ser inferior a <%= campo.tamanho %> caracteres",
+				<% end %>
+				<% if(campo.tamanho_min != nil && campo.tamanho_min > 0) %>
+				    minLength       : <%= campo.tamanho_min %>,
+				    minLengthText   : "O tamanho do valor deste campo tem que ser superior a <%= campo.tamanho_min %> caracteres",
+				<% end %>
+				<% if(campo.regexp != nil && campo.regexp != '') %>
+				    regex       : <%= campo.regexp %>,
+				    regexText   : "<%= campo.regex_text %>",
+				<% end %>
+				<% if (campo.setup_value != nil && campo.setup_value != '') %>
+				    value: '<%= campo.setup_value %>',
+				<% end %>
+				listeners:
+				    {
+				       focus: function(ev) {
+					  Ext.get('ldp').fadeOut();
+					  longDescriptionPanel.removeAll();
+					  <% if(campo.long_description != nil && campo.long_description != "") %>
+					    longDescriptionPanel.add(
+					      new Ext.Panel({
+						html:"<br/><%= campo.long_description %>"
+					      })
+					    );
+					    longDescriptionPanel.render('ldp');
+					    Ext.get('ldp').fadeIn();
+					  <% else %>
+					    longDescriptionPanel.render('ldp');
+					  <% end %>
+					  <% if(campo.nota != nil && campo.nota != "") %>
+					      if(tip != null){
+						 tip.destroy();
+					      }
+					      tip = new Ext.ToolTip({
+						    target: 'campo[<%= campo.id %>]',
+						    anchor: 'left',
+						    width:250,
+						    html: '<%= campo.nota %>',
+						    dismissDelay : 0,
+						    closable: true
+						});
+					      target = ev.el.getXY();
+					      x = target[0] + 265;
+					      y = target[1];
+					      tip.showAt([x,y]);
+					   <% end %>
+				       },
+				       
+				       blur: function(ev) {
+					var mgr = dummyPanel.getUpdater();
+					mgr.formUpdate(
+					    fs,
+					    urlPrefix+'/<%=@event.entidade.sigla%>/<%= @event.codigo %>/inscricoes/get_consumos_temp',
+					    false,
+					    function(el, sucess, response) {
+						 if(sucess){
+						     consumosStore.loadData(response.responseXML);
+						     //consumosPanel.render("consumos");
+						 }
+					     }
+					)
+				       }
+				    }
+			      })
+			  <% end %>
+			  <% if(campo.tipo.upcase == "TEXT") %>
+			      new Ext.form.TextArea({
+			      fieldLabel: '<%= campo.label %>',
+				name: 'campo[<%= campo.id %>]',
+				width:"66.5%",
+				allowBlank: <%= !campo.required || !campo.mostra_inserir %> || (userInSession.profile == "ADMIN" && <%=campo.default_value != nil && campo.default_value != ''%>),
+				blankText: "Este campo é obrigatório",
+				hidden: <%= !campo.mostra_inserir %>,
+				hideLabel: <%= !campo.mostra_inserir %>,
+				<% if(campo.maskRe != nil && campo.maskRe != '') %>
+				    maskRe      : <%= campo.maskRe %>,
+				<% end %>
+				<% if(campo.tamanho != nil && campo.tamanho > 0) %>
+				    maxLength       : <%= campo.tamanho %>,
+				    maxLengthText   : "O tamanho do valor deste campo tem que ser inferior a <%= campo.tamanho %> caracteres",
+				<% end %>
+				<% if(campo.tamanho_min != nil && campo.tamanho_min > 0) %>
+				    minLength       : <%= campo.tamanho_min %>,
+				    minLengthText   : "O tamanho do valor deste campo tem que ser superior a <%= campo.tamanho_min %> caracteres",
+				<% end %>
+				<% if(campo.regexp != nil && campo.regexp != '') %>
+				    regex       : <%= campo.regexp %>,
+				    regexText   : "<%= campo.regex_text %>",
+				<% end %>
+				<% if (campo.setup_value != nil && campo.setup_value != '') %>
+				    value: '<%= campo.setup_value %>',
+				<% end %>
+				listeners:
+				    {
+				       focus: function(ev) {
+					  Ext.get('ldp').fadeOut();
+					  longDescriptionPanel.removeAll();
+					  <% if(campo.long_description != nil && campo.long_description != "") %>
+					    longDescriptionPanel.add(
+					      new Ext.Panel({
+						html:"<br/><%= campo.long_description %>"
+					      })
+					    );
+					    longDescriptionPanel.render('ldp');
+					    Ext.get('ldp').fadeIn();
+					  <% else %>
+					    longDescriptionPanel.render('ldp');
+					  <% end %>
+					  <% if(campo.nota != nil && campo.nota != "") %>
+					      if(tip != null){
+						 tip.destroy();
+					      }
+					      tip = new Ext.ToolTip({
+						    target: 'campo[<%= campo.id %>]',
+						    anchor: 'left',
+						    width:250,
+						    html: '<%= campo.nota %>',
+						    dismissDelay : 0,
+						    closable: true
+						});
+					      target = ev.el.getXY();
+					      x = target[0] + 265;
+					      y = target[1];
+					      tip.showAt([x,y]);
+					   <% end %>
+				       },
+				       
+				       blur: function(ev) {
+					var mgr = dummyPanel.getUpdater();
+					mgr.formUpdate(
+					    fs,
+					    urlPrefix+'/<%=@event.entidade.sigla%>/<%= @event.codigo %>/inscricoes/get_consumos_temp',
+					    false,
+					    function(el, sucess, response) {
+						 if(sucess){
+						     consumosStore.loadData(response.responseXML);
+						     //consumosPanel.render("consumos");
+						 }
+					     }
+					)
+				       }
+				    }
+			      })
+			    
+			  <% end %>
+			  <% if(campo.tipo.upcase == "STRING"  || campo.tipo.upcase == "INT" || campo.tipo.upcase == "DECIMAL") %>
+			    {
+				fieldLabel: '<%= campo.label %>',
+				name: 'campo[<%= campo.id %>]',
+				width:"66.5%",
+				allowBlank: <%= !campo.required || !campo.mostra_inserir %> || (userInSession.profile == "ADMIN" && <%=campo.default_value != nil && campo.default_value != ''%>),
+				blankText: "Este campo é obrigatório",
+				hidden: <%= !campo.mostra_inserir %>,
+				hideLabel: <%= !campo.mostra_inserir %>,
+				<% if(campo.maskRe != nil && campo.maskRe != '') %>
+				    maskRe      : <%= campo.maskRe %>,
+				<% end %>
+				<% if(campo.tamanho != nil && campo.tamanho > 0) %>
+				    maxLength       : <%= campo.tamanho %>,
+				    maxLengthText   : "O tamanho do valor deste campo tem que ser inferior a <%= campo.tamanho %> caracteres",
+				<% end %>
+				<% if(campo.tamanho_min != nil && campo.tamanho_min > 0) %>
+				    minLength       : <%= campo.tamanho_min %>,
+				    minLengthText   : "O tamanho do valor deste campo tem que ser superior a <%= campo.tamanho_min %> caracteres",
+				<% end %>
+				<% if(campo.regexp != nil && campo.regexp != '') %>
+				    regex       : <%= campo.regexp %>,
+				    regexText   : "<%= campo.regex_text %>",
+				<% end %>
+				<% if (campo.setup_value != nil && campo.setup_value != '') %>
+				    value: '<%= campo.setup_value %>',
+				<% end %>
+				<% if(campo.is_email) %>
+				vtype:'email',
+				vtypeText:'Este campo tem que ter o formato de um e-mail válido',
+				<% end %>
+				listeners:
+				    {
+				       focus: function(ev) {
+					  Ext.get('ldp').fadeOut();
+					  longDescriptionPanel.removeAll();
+					  <% if(campo.long_description != nil && campo.long_description != "") %>
+					    longDescriptionPanel.add(
+					      new Ext.Panel({
+						html:"<br/><%= campo.long_description %>"
+					      })
+					    );
+					    longDescriptionPanel.render('ldp');
+					    Ext.get('ldp').fadeIn();
+					  <% else %>
+					    longDescriptionPanel.render('ldp');
+					  <% end %>
+					  <% if(campo.nota != nil && campo.nota != "") %>
+					      if(tip != null){
+						 tip.destroy();
+					      }
+					      tip = new Ext.ToolTip({
+						    target: 'campo[<%= campo.id %>]',
+						    anchor: 'left',
+						    width:250,
+						    html: '<%= campo.nota %>',
+						    dismissDelay : 0,
+						    closable:true
+						});
+					      target = ev.el.getXY();
+					      x = target[0] + 265;
+					      y = target[1];
+					      tip.showAt([x,y]);
+					   <% end %>
+				       },
+				       blur: function(ev) {
+					var mgr = dummyPanel.getUpdater();
+					mgr.formUpdate(
+					    fs,
+					    urlPrefix+'/<%=@event.entidade.sigla%>/<%= @event.codigo %>/inscricoes/get_consumos_temp',
+					    false,
+					    function(el, sucess, response) {
+						 if(sucess){
+						     consumosStore.loadData(response.responseXML);
+						     //consumosPanel.render("consumos");
+						 }
+					     }
+					)
+				       }
+				    }
+			    }
+			  <% end %>
+			  <% if numero != 0 %>
+			    ,
+			  <% end %>
+		      <% end %>
+		      ]})
+		      <% if numero_grupo != 0 %>
+			,
+		      <% end %>
+		<% end %>
+	      ]});
+	      
+	      
+	submit = fs.addButton({
+	    text: 'Enviar Inscrição',
+	    handler: function(){
+                if(fs.getForm().isValid()){
+                    Ext.Ajax.request({
+                        url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/user_in_session",
+                        success: function(result, request){
+                           records = userReader.readRecords(result.responseXML);
+                           
+                           if(records.totalRecords > 0){
+                             userInSession = records.records[0].data
+                           }
+                           renderUserPanel(userInSession);
+                           if(userInSession != null && userInSession.login != "" && userInSession.login != "FALSE"){
+                                submitForm();
+                           } else {
+                                renderLogin(function(){ submitForm(); }); //passar callback como argumento
+                           }
+                        }
+                    });
+                } else {
+                    Ext.MessageBox.show({
+                      buttons: Ext.MessageBox.OK,
+                      icon: Ext.MessageBox.WARNING,
+                      title: 'Atenção',
+                      msg: '<b>Há erros no preenchimento do formulário</b><br/><br/>Por favor corrija-os antes de submeter o formulário de novo.'
+                  });
+                }
+            }
+	});
+	
+	fs.render('form');
+    }
+
+    
+    
+    
+    function submitForm(){
+        fs.getForm().submit({
+            url:urlPrefix+'/<%=@event.entidade.sigla%>/<%= @event.codigo %>/inscricoes/regista',
+            waitMsg:'A Registar Inscrição...',
+            reset: true,
+            timeout: 60,
+            success:function(){
+              fs.hide();
+              consumosPanel.hide();
+              
+              var spot = new Ext.ux.Spotlight({
+                  easing: 'easeOut',
+                  duration: .3
+              });
+              
+              successWindow = new Ext.Window({
+                  id          : 'successWin',
+                  layout      : 'fit',
+                  width       : 450,
+                  height      : 215,
+                  closeAction :'hide',
+                  plain       : true,
+                  title: 'Inscrição Enviada',
+                  
+                  items: [
+                     new Ext.Panel({
+                          html: 'A sua inscrição foi registada com sucesso.<br/><br/>Receberá e-mails de confirmação e com instruções para pagamento.<br/><br/>Se quiser, agora, pode ver a sua lista de inscrições, a sua lista de recibos, ou registar uma nova inscrição para o mesmo evento.<br/><br/>Qualquer esclarecimento adicional pode ser obtido contactando-nos pelo e-mail: <a href="mailto:<%=@event.entidade.contacts_email%>"><%=@event.entidade.contacts_email%></a><br/>',
+                          width: "100%",
+                          frame: true
+                     })
+                  ],
+                  buttons:  [
+                      {
+                          text     : 'Lista de Inscrições',
+                          icon     : urlPrefix+'/images/user.png',
+                          disabled : false,
+                          handler  : function(){
+                              window.location = urlPrefix+"/<%=@event.entidade.sigla%>/inscricoes/lista"
+                          }
+                      } , 
+                      {
+                          text     : 'Lista de Recibos',
+                          icon     : urlPrefix+'/images/page_green.png',
+                          handler  : function(){
+                              window.location = urlPrefix+"/<%=@event.entidade.sigla%>/recibos/lista"
+                          }
+                      } ,
+                      {
+                          text     : 'Registar nova inscrição',
+                          icon     : urlPrefix+'/images/user_add.png',
+                          handler  : function(){
+                              window.location = urlPrefix+"/<%=@event.entidade.sigla%>/<%=@event.codigo%>/inscricoes/nova"
+                          }
+                      }
+                  ]
+              });
+              
+              successWindow.show();
+              spot.show('successWin');
+              
+              Ext.Ajax.request({
+                  url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/user_in_session",
+                  success: function(result, request){
+                     records = userReader.readRecords(result.responseXML);
+                     if(records.totalRecords > 0){
+                       userInSession = records.records[0].data
+                     }
+                     renderUserPanel(userInSession);
+                  }
+              });
+              
+            },
+            failure:function(form, action){
+              if(action.failureType == "client"){
+                  Ext.MessageBox.show({
+                      buttons: Ext.MessageBox.OK,
+                      icon: Ext.MessageBox.WARNING,
+                      title: 'Atenção',
+                      msg: '<b>Há erros no preenchimento do formulário</b><br/><br/>Por favor corrija-os antes de submeter o formulário de novo.'
+                  });
+              } else {
+                  Ext.MessageBox.show({
+                      buttons: Ext.MessageBox.OK,
+                      icon: Ext.MessageBox.ERROR,
+                      title: 'Erro',
+                      msg: '<b>Houve um erro inesperado a registar a inscrição</b><br/><br/>Antes de resubmeter uma nova inscrição igual, por favor, <b>verifique se esta não ficou já registada apesar do erro</b>. Pode ver isto na sua lista de inscrições (siga o link no menu lateral esquerdo)<br/><br/>Se este erro persistir, por favor contacte-nos para o email: <a href="mailto:<%=@event.entidade.support_email%>"><%=@event.entidade.support_email%></a><br/>'
+                  });
+              }
+            }
+          });
+    }
+    
+    
+    longDescriptionPanel = new Ext.Panel({
+	title       : 'Notas',
+	//layout      :'accordion',
+	frame       : true,
+	width       : 200,
+	collapsible : true,
+	margins     : '5 0 5 5',
+	cmargins    : '5 5 5 5'
+    });
+    
+    
+    consumosPanel = new Ext.Panel({
+	title       : 'Consumos',
+	//frame       : true,
+	width       : 200,
+	collapsible : true,
+	//margins     : '5 0 5 5',
+	//cmargins    : '5 5 5 5',
+	items       : [
+	    consumosGrid = new xg.GridPanel({
+		store : consumosStore,
+		width: "100%",
+		frame    : true,
+		height   : 'auto',
+		iconCls: 'icon-grid',
+		stripeRows: true,
+		autoHeight: true,
+		plugins: [summary],
+		columns: [
+		  {id:'produto', header: "Produto", sortable: true, dataIndex: 'produto', summaryType:'count', width: 130},
+		  {id:'preco', header: "Valor", sortable: true, width: 53, dataIndex: 'preco', renderer:preco, summaryType:'sum', summaryRenderer:preco}
+		]
+	    })
+	    
+	]
+    })
+    
+    function renderEventPanel(events){
+	eventosStore.load({
+	    callback: function(){
+                if(eventosStore.data.items.length > 1){
+                    var eventPanel = new Ext.Panel({
+                        frame: true,
+                        tbar : [{
+                            xtype: 'buttongroup',
+                            columns: 1,
+                            title: 'Menu de Eventos',
+                            collapsible: true,
+                            items: [
+                                button = new Ext.SplitButton({
+                                    text     : '<b>Eventos</b><br/><%=@entidade.nome_curto%>',
+                                    scale    : 'large',
+                                    icon     : urlPrefix+'/images/calendar-32.png',
+                                    iconAlign: 'top',
+                                    arrowAlign:'bottom',
+                                    width    :129,
+                                    menu: [],
+                                    handler: function(){
+                                        window.location = urlPrefix+"/<%=@event.entidade.sigla%>";
+                                    }
+                                })
+                            ]
+                        }]
+                    });
+                    
+                    eventPanel.render("events");
+                    
+                    nEventos = eventosStore.data.items.length
+                    for(i=0;i<nEventos;i++){
+                        button.menu.add(
+                            menuItem = new Ext.menu.Item({
+                                codigo  : eventosStore.data.items[i].data.codigo,
+                                icon: urlPrefix+'/images/user_edit.png',
+                                text: '<b>'+eventosStore.data.items[i].data.nome+'</b><br/><font style="font-size:0.7em;">Registar nova inscrição</font>',
+                                handler: function(item, ev){
+                                        window.location = urlPrefix+"/<%=@event.entidade.sigla%>/"+item.codigo+"/inscricoes/nova";
+                                    }
+                                })
+                        )
+                    }
+                }
+	    } 
+	});
+    }
+    
+    function renderUserPanel(user){
+        if(userPanel != null){
+            userPanel.destroy();
+        }
+        if(user != null && user.login != "" && user.login != "FALSE"){
+            if(user.profile != "ADMIN" && !((user.profile == "EVENTO_LEITURA" || user.profile == "EVENTO_ESCRITA" || user.profile == "EVENTO_FACTURACAO_LEITURA" || user.profile == "EVENTO_FACTURACAO_ESCRITA"))) {
+                userPanel = new Ext.Panel({
+                    frame:true,
+                    //autoHeight: true,
+                    tbar: [{
+                        xtype: 'buttongroup',
+                        columns: 1,
+                        title: 'Menu de Utilizador',
+                        collapsible: true,
+                        //autoHeight: true,
+                        items: [{
+                            text: '<b>'+user.login+'</b><br/><font style="font-size:0.7em;">'+user.email+'</font>',
+                            scale: 'large',
+                            icon     : urlPrefix+'/images/user-32.png',
+                            iconAlign: 'top',
+                            width:129
+                        },{
+                            text: '<b>'+user.recibos_count+' Recibos</b><br/><font style="font-size:0.9em; color:red">'+user.divida_total+'€ em Dívida</font>',
+                            icon: urlPrefix+'/images/coins-32.png',
+                            scale: 'large',
+                            iconAlign: 'top',
+                            width:"100%",
+                            handler: function(){
+                                window.location = urlPrefix+"/<%=@event.entidade.sigla%>/recibos/lista";
+                            }
+                        },{
+                            text: '<b>'+user.inscricoes_count+' Inscrições</b><br/>'+user.inscricoes_activas+' Activas',
+                            icon: urlPrefix+'/images/user-group-32.png',
+                            scale: 'large',
+                            iconAlign: 'top',
+                            width:"100%",
+                            handler: function(){
+                                window.location = urlPrefix+"/<%=@event.entidade.sigla%>/inscricoes/lista";
+                            }
+                        },
+                        {
+                            text: '<b>Desligar Sessão</b><br/>&nbsp;',
+                            icon: urlPrefix+'/images/lock-32.png',
+                            scale: 'large',
+                            iconAlign: 'top',
+                            width:"100%",
+                            handler: function(){
+                                Ext.Ajax.request({
+                                 url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/destroy.xml",
+                                 success: function(result2, request2){
+                                    Ext.Ajax.request({
+                                        url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/user_in_session.xml",
+                                        success: function(result2, request2){
+                                           records = userReader.readRecords(result2.responseXML);                                        
+                                           if(records.totalRecords > 0){
+                                             userInSession = records.records[0].data;
+                                           }
+                                           renderUserPanel(userInSession)
+                                        }
+                                    });
+                                 }
+                             });
+                            }
+                        }]
+                    }]
+                });
+            } else {
+                userPanel = new Ext.Panel({
+                    frame:true,
+                    //autoHeight: true,
+                    tbar: [{
+                        xtype: 'buttongroup',
+                        columns: 1,
+                        title: 'Menu de Utilizador',
+                        collapsible: true,
+                        //autoHeight: true,
+                        items: [{
+                            text: '<b>'+user.login+'</b><br/><font style="font-size:0.7em;">'+user.email+'</font>',
+                            scale: 'large',
+                            icon     : urlPrefix+'/images/user-32.png',
+                            iconAlign: 'top',
+                            width:129
+                        },{
+                            text: '<b>'+user.recibos_count+' Recibos</b><br/><font style="font-size:0.9em; color:red">'+user.divida_total+'€ em Dívida</font>',
+                            icon: urlPrefix+'/images/coins-32.png',
+                            scale: 'large',
+                            iconAlign: 'top',
+                            width:"100%",
+                            handler: function(){
+                                window.location = urlPrefix+"/<%=@event.entidade.sigla%>/recibos/lista";
+                            }
+                        },{
+                            text: '<b>'+user.inscricoes_count+' Inscrições</b><br/>'+user.inscricoes_activas+' Activas',
+                            icon: urlPrefix+'/images/user-group-32.png',
+                            scale: 'large',
+                            iconAlign: 'top',
+                            width:"100%",
+                            handler: function(){
+                                window.location = urlPrefix+"/<%=@event.entidade.sigla%>/inscricoes/lista";
+                            }
+                        },
+                        {
+                            text: '<b>Administração</b><br/>&nbsp;',
+                            icon: urlPrefix+'/images/admin-32.png',
+                            scale: 'large',
+                            iconAlign: 'top',
+                            width:"100%",
+                            handler: function(){
+                                window.location = urlPrefix+"/<%=@event.entidade.sigla%>/<%=@event.codigo%>/admin";
+                            }
+                        },
+                        {
+                            text: '<b>Desligar Sessão</b><br/>&nbsp;',
+                            icon: urlPrefix+'/images/lock-32.png',
+                            scale: 'large',
+                            iconAlign: 'top',
+                            width:"100%",
+                            handler: function(){
+                                Ext.Ajax.request({
+                                 url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/destroy.xml",
+                                 success: function(result2, request2){
+                                    Ext.Ajax.request({
+                                        url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/user_in_session.xml",
+                                        success: function(result2, request2){
+                                           records = userReader.readRecords(result2.responseXML);                                        
+                                           if(records.totalRecords > 0){
+                                             userInSession = records.records[0].data;
+                                           }
+                                           renderUserPanel(userInSession)
+                                        }
+                                    });
+                                 }
+                             });
+                            }
+                        }
+                        ]
+                    }]
+                });
+            }
+        } else {
+            userPanel = new Ext.Panel({
+                frame:true,
+                tbar: [{
+                    xtype: 'buttongroup',
+                    columns: 1,
+                    title: 'Menu de Utilizador',
+                    collapsible: true,
+                    items: [{
+                        text: '<b>Iniciar Sessão</b><br/>&nbsp;',
+                        scale: 'large',
+                        icon     : urlPrefix+'/images/login-32.png',
+                        iconAlign: 'top',
+                        width:129,
+                        handler: function(){
+                            renderLogin(function(){;});   
+                        }
+                    },{
+                        text: '<b>Criar Conta</b><br/>&nbsp;',
+                        icon: urlPrefix+'/images/user-add-32.png',
+                        scale: 'large',
+                        iconAlign: 'top',
+                        width:"100%",
+                        handler: function(){
+                            if(loginWindow){
+                                loginWindow.destroy();
+                            }
+                            renderRegister(function(){;});
+                        }
+                    }]
+                }]
+            });            
+        }
+	
+	userPanel.render("user");
+    }
+    
+    function renderLogin(callback){
+        if(loginWindow != null){
+            loginWindow.destroy();
+        }
+        
+        var spot = new Ext.ux.Spotlight({
+            easing: 'easeOut',
+            duration: .3
+        });
+
+        loginWindow = new Ext.Window({
+           id          : 'loginWindow',
+           layout      : 'fit',
+           width       : 400,
+           height      : 260,
+           closeAction :'hide',
+           plain       : true,
+           
+           items: [
+              loginForm = new Ext.FormPanel({
+                 frame: true,
+                 title:'Iniciar Sessão',
+                 labelAlign: 'right',
+                 labelWidth: 120,
+                 width:"75%",
+                 waitMsgTarget: true,
+                 defaultType: 'textfield',
+                 timeout: 200,
+                 errorReader: new Ext.form.XmlErrorReader(),
+                 items: [
+                    new Ext.form.Label({html:"<div style=\"text-align:center\">Para registar inscrições tem que ter uma conta no nosso site. Se ainda não se tiver registado, por favor faça-o através do botão 'Criar Nova Conta'.<br/><br/><div>"}),
+                    {
+                        fieldLabel: 'E-Mail',
+                        name: 'login',
+                        width:"80%",
+                        vtype:'email',
+                        allowBlank: false
+                    },
+                    {
+                        fieldLabel: 'Password',
+                        name: 'password',
+                        width:"80%",
+                        inputType: "password",
+                        allowBlank: false
+                    },
+                    new Ext.form.Label({html:"<div style=\"text-align:center\"><br/>Se tiver problemas com a sua inscrição contacte-nos para:<br/><a href=\"mailto:ajuda@inscreve-te.com.pt\">ajuda@inscreve-te.com.pt</a><div>"})
+                 ]
+              })
+           ],
+           listeners: {
+                          hide: function(){spot.hide();},
+                          show: function(){spot.show('loginWindow');}
+                      },
+           buttons: [{
+               text     : 'Criar Nova Conta',
+               icon     : urlPrefix+'/images/user_add.png',
+               disabled : false,
+               handler  : function(){
+                 loginWindow.hide();
+                 renderRegister(callback);
+               }
+           },
+           {
+               text     : 'Esqueci-me da Password!',
+               icon     : urlPrefix+'/images/error.png',
+               disabled : false,
+               handler  : function(){
+                 loginWindow.hide();
+                 newPasswordWindow = new Ext.Window({
+                    id          : 'newPasswordWindow',
+                    layout      : 'fit',
+                    width       : 400,
+                    height      : 240,
+                    closeAction :'hide',
+                    plain       : true,
+                    
+                    items: [
+                       newPasswordForm = new Ext.FormPanel({
+                          frame: true,
+                          title:'Obter Nova Password',
+                          labelAlign: 'right',
+                          labelWidth: 120,
+                          width:"75%",
+                          waitMsgTarget: true,
+                          defaultType: 'textfield',
+                          items: [
+                            new Ext.form.Label({
+                                html: 'Por favor indique-nos o seu e-mail para que possamos enviar-lhe uma nova password.<br/><br/>'
+                            }),
+                            {
+                                fieldLabel: 'Email',
+                                name: 'user',
+                                width:"80%"
+                            },
+                            new Ext.form.Label({html:"<div style=\"text-align:center\"><br/>Ao pedir uma nova password, esta ser-lhe-á enviada por e-mail, para o endereço que nos forneceu quando criou a sua conta. Se não conseguir obter uma nova password ou estiver com problemas de login, peça-nos ajuda para <a href=\"mailto:ajuda@inscreve-te.com.pt\">ajuda@inscreve-te.com.pt</a><br/><br/><div>"})
+                          ]
+                       })
+                    ],
+                    listeners: {
+                          hide: function(){spot.hide();},
+                          show: function(){spot.show('newPasswordWindow');}
+                      },
+                    buttons: [
+                       {
+                          text  : 'Cancelar',
+                          icon  : urlPrefix+'/images/delete.png',
+                          handler: function(){
+                             newPasswordWindow.hide();
+                             loginWindow.show();
+                          }
+                       },
+                       {
+                          text  : 'Enviar Nova Password',
+                          icon  : urlPrefix+'/images/email_go.png',
+                          handler  : function(){
+                             newPasswordForm.getForm().submit({
+                                 url: urlPrefix+"/<%=@event.entidade.sigla%>/resetpassword",
+                                 waitMsg:'A Gerar Nova Password...'
+                             });
+                             newPasswordWindow.hide();
+                             loginWindow.show();
+                             Ext.Msg.alert("Password Gerada", "A sua nova password foi enviada para o seu endereço de e-mail. Por favor consulte o seu e-mail e faça login com os dados que lhe foram enviados.");
+                          }
+                       }
+                    ]
+                 });
+                 newPasswordWindow.show();
+               }
+           },
+           {
+               text     : 'Login',
+               icon     : urlPrefix+'/images/user_go.png',
+               disabled : false,
+               handler  : function(){
+                   loginForm.getForm().submit({
+                       url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/create/",
+                       waitMsg:'A Autenticar...',
+                       success:function(){
+                         Ext.Ajax.request({
+                             url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/user_in_session.xml",
+                             success: function(result2, request2){
+                                records = userReader.readRecords(result2.responseXML);                                        
+                                if(records.totalRecords > 0){
+                                  userInSession = records.records[0].data;
+                                }
+                                if(userInSession != null && userInSession.login != "" && userInSession.login != "FALSE"){
+                                    callback();
+                                    loginWindow.hide();
+                                    renderUserPanel(userInSession)
+                                } else {
+                                    Ext.Msg.alert("Login falhou","Processo de autenticação falhou, por favor tente novamente ");
+                                }
+                             }/*,
+                             failure: function(){alert("Não foi possível obter informação do utilizador em sessão");}*/
+                         });
+                       }
+                   })
+               }
+           }]
+        });
+        loginWindow.show();
+    }
+    
+    function renderRegister(callback){
+        if(registerWindow != null){
+            registerWindow.destroy();
+        }
+        
+        var spot = new Ext.ux.Spotlight({
+            easing: 'easeOut',
+            duration: .3
+        });
+        
+        registerWindow = new Ext.Window({
+            id          : 'registerWindow',
+            layout      : 'fit',
+            width       : 400,
+            height      : 280,
+            closeAction :'hide',
+            plain       : true,
+            
+            items: [
+               registerForm = new Ext.FormPanel({
+                  frame: true,
+                  title:'Criar Nova Conta',
+                  labelAlign: 'right',
+                  labelWidth: 120,
+                  width:"75%",
+                  waitMsgTarget: true,
+                  defaultType: 'textfield',
+                  errorReader: new Ext.form.XmlErrorReader(),
+                  items: [
+                     {
+                         fieldLabel: 'Email',
+                         name: 'user[email]',
+                         width:"80%",
+                         vtype:'email',
+                         allowBlank: false
+                     },
+                     {
+                         fieldLabel: 'Confirmar Email',
+                         name: 'user[email_confirmation]',
+                         width:"80%",
+                         vtype:'email',
+                         allowBlank: false
+                     },
+                     {
+                         fieldLabel: 'Password',
+                         name: 'user[password]',
+                         width:"80%",
+                         inputType: "password",
+                         allowBlank: false
+                     },
+                     {
+                         fieldLabel: 'Confimar Password',
+                         name: 'user[password_confirmation]',
+                         width:"80%",
+                         inputType: "password",
+                         allowBlank: false
+                     },
+                     new Ext.form.Label({html:"<div style=\"text-align:center\"><br/>Ao registar uma nova conta, vai-lhe ser enviada uma mensagem para o endereço de email que nos fornecer. Deve verificar, de seguida, o seu email e seguir as instruções que contém<br/><br/><div>"})
+                  ]
+               })
+            ],
+            listeners: {
+                  hide: function(){spot.hide();},
+                  show: function(){spot.show('registerWindow');}
+              },
+            buttons: [
+               {
+                  text  : 'Cancelar',
+                  icon  : urlPrefix+'/images/delete.png',
+                  handler: function(){
+                     registerWindow.hide();
+                     if(loginWindow){
+                      loginWindow.show(function(){;});
+                     }
+                  }
+               },
+               {
+                  text  : 'Registar Nova Conta',
+                  icon  : urlPrefix+'/images/add.png',
+                  handler  : function(){
+                     registerForm.getForm().submit({
+                         url: urlPrefix+'/<%=@event.entidade.sigla%>/register/',
+                         waitMsg:'A Criar Conta...',
+                         success: function(form, action) {
+                            registerWindow.hide();
+                            Ext.Msg.show({
+                              title:'Conta criada',
+                              msg: 'Conta criada com sucesso.<br/><br/>Deve agora confirmar o seu endereço e-mail.<br/>Para fazê-lo consulte agora o seu e-mail e siga as instruções que lhe enviámos.<br/><br/><b>Se não receber o nosso e-mail, poderá haver algum problema com o endereço de e-mail que nos forneceu</b><br/><br/>Se não conseguir confirmar o seu e-mail ou estiver com problemas de login, peça-nos ajuda para <a href="mailto:ajuda@inscreve-te.com.pt">ajuda@inscreve-te.com.pt</a>"',
+                              buttons: Ext.Msg.OK,
+                              fn: function(btn){
+                                    if(btn == 'ok'){
+                                      Ext.Ajax.request({
+                                          url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/user_in_session",
+                                          success: function(result, request){
+                                             records = userReader.readRecords(result.responseXML);
+                                             
+                                             if(records.totalRecords > 0){
+                                               userInSession = records.records[0].data
+                                             }
+                                             renderUserPanel(userInSession);
+                                             if(userInSession != null && userInSession.login != "" && userInSession.login != "FALSE"){
+                                                  callback();
+                                              } else {
+                                                  Ext.Msg.alert("Registo falhou","Processo de registo falhou, por favor tente novamente ");
+                                              }
+                                          }
+                                      })
+                                    }
+                                  },
+                              animEl: 'elId',
+                              icon: Ext.MessageBox.INFO
+                           });
+                         }
+                     })
+                  }
+               }
+            ]
+         });
+         registerWindow.show();
+    }
+    
+    
+    
+    if(isBrowserIE()){
+	Ext.Msg.alert("Browser Incompatível","Não use o INTERNET EXPLORER 6 para fazer as suas incrições, porque são conhecidas incompatibilidades críticas.<br/><br/>Por favor actualize o seu Internet Explorer para a versão 7 ou 8. Em alternativa pode usar o <a href=\"http://www.firefox.com\">Mozilla Firefox</a>, o <a href=\"http://www.apple.com/safari/\">Safari</a> ou o <a href=\"http://www.google.com/chrome/\">Google Chrome</a>. Todos eles lhe garantirão uma óptima experiência de navegação.<br/><br/><b>SE TIVER DIFICULDADES, POR FAVOR ENVIE-NOS UM EMAIL COM AS SUAS DÚVIDAS PARA <a href=\"mailto:ajuda@inscreve-te.com.pt\">ajuda@inscreve-te.com.pt</a></b>");
+    } else {
+	Ext.Ajax.request({
+            url: urlPrefix+"/<%=@event.entidade.sigla%>/sessions/user_in_session",
+            success: function(result, request){
+               records = userReader.readRecords(result.responseXML);
+               if(records.totalRecords > 0){
+                 userInSession = records.records[0].data
+               } 
+               renderUserPanel(userInSession);
+               renderForm();
+               consumosPanel.render('consumos');
+               renderEventPanel(null);
+               dummyPanel.render('dummy');
+            },
+            failure: function(result, request){
+                renderUserPanel(userInSession);
+                renderForm();
+                consumosPanel.render('consumos');
+                renderEventPanel(null);
+                dummyPanel.render('dummy');
+            }
+        });
+        
+        
+        
+        <% if(@event.mensagem != nil && @event.mensagem != '') %>
+            Ext.Msg.show({
+              id: 'mensagem',
+              title:'<%= @event.nome %> - AVISO',
+              msg: '<%= @event.mensagem %>',
+              buttons: Ext.Msg.OK,
+              icon: Ext.MessageBox.INFO
+            });
+        <% end %>
+    }
+});
+
+
+
+
+// A reusable error reader class for XML forms
+Ext.form.XmlErrorReader = function(){
+    Ext.form.XmlErrorReader.superclass.constructor.call(this, {
+            record : 'field',
+            success: '@success',
+            successProperty: '@success',
+            idProperty: 'id',
+            messageProperty: 'msg'
+        }, [
+            'id', 'msg'
+        ]
+    );
+};
+Ext.extend(Ext.form.XmlErrorReader, Ext.data.XmlReader);
+
+
+
+Ext.lib.Ajax.isCrossDomain = function(u) {
+	var match = /(?:(\w*:)\/\/)?([\w\.]*(?::\d*)?)/.exec(u);
+	if (!match[1]){
+	    return false; // No protocol, not cross-domain
+	} else {
+	    return true;
+	}
+	//return (match[1] != location.protocol) || (match[2] != location.host);
+};
+
+Ext.override(Ext.data.Connection, {
+
+    request : function(o){
+	if(this.fireEvent("beforerequest", this, o) !== false){
+	    var p = o.params;
+
+	    if(typeof p == "function"){
+		p = p.call(o.scope||window, o);
+	    }
+	    if(typeof p == "object"){
+		p = Ext.urlEncode(p);
+	    }
+	    if(this.extraParams){
+		var extras = Ext.urlEncode(this.extraParams);
+		p = p ? (p + '&' + extras) : extras;
+	    }
+
+	    var url = o.url || this.url;
+	    if(typeof url == 'function'){
+		url = url.call(o.scope||window, o);
+	    }
+
+	    if(o.form){
+		var form = Ext.getDom(o.form);
+		url = url || form.action;
+
+		
+		//var enctype = form.getAttribute("enctype");
+		//if(o.isUpload || (enctype && enctype.toLowerCase() == 'multipart/form-data')){
+		//    return this.doFormUpload(o, p, url);
+		//}
+		//var f = Ext.lib.Ajax.serializeForm(form);
+		var f = Form.serialize(form.id);
+		p = p ? (p + '&' + f) : f;
+	    }
+
+	    var hs = o.headers;
+	    if(this.defaultHeaders){
+		hs = Ext.apply(hs || {}, this.defaultHeaders);
+		if(!o.headers){
+		    o.headers = hs;
+		}
+	    }
+
+	    var cb = {
+		success: this.handleResponse,
+		failure: this.handleFailure,
+		scope: this,
+		argument: {options: o},
+		timeout : this.timeout
+	    };
+
+	    var method = o.method||this.method||(p ? "POST" : "GET");
+
+	    if(method == 'GET' && (this.disableCaching && o.disableCaching !== false) || o.disableCaching === true){
+		url += (url.indexOf('?') != -1 ? '&' : '?') + '_dc=' + (new Date().getTime());
+	    }
+
+	    if(typeof o.autoAbort == 'boolean'){ // options gets top priority
+		if(o.autoAbort){
+		    this.abort();
+		}
+	    }else if(this.autoAbort !== false){
+		this.abort();
+	    }
+	    if((method == 'GET' && p) || o.xmlData || o.jsonData){
+		url += (url.indexOf('?') != -1 ? '&' : '?') + p;
+		p = '';
+	    }
+	    if (o.scriptTag || this.scriptTag || Ext.lib.Ajax.isCrossDomain(url)) {
+	       this.transId = this.scriptRequest(method, url, cb, p, o);
+	    } else {
+	       this.transId = Ext.lib.Ajax.request(method, url, cb, p, o);
+	    }
+	    return this.transId;
+	}else{
+	    Ext.callback(o.callback, o.scope, [o, null, null]);
+	    return null;
+	}
+    },
+    
+    scriptRequest : function(method, url, cb, data, options) {
+	var transId = ++Ext.data.ScriptTagProxy.TRANS_ID;
+	var trans = {
+	    id : transId,
+	    cb : options.callbackName || "stcCallback"+transId,
+	    scriptId : "stcScript"+transId,
+	    options : options
+	};
+
+	url += (url.indexOf("?") != -1 ? "&" : "?") + data + String.format("&{0}={1}", options.callbackParam || this.callbackParam || 'callback', trans.cb);
+
+	var conn = this;
+	window[trans.cb] = function(o){
+	    conn.handleScriptResponse(o, trans);
+	};
+
+//      Set up the timeout handler
+	trans.timeoutId = this.handleScriptFailure.defer(cb.timeout, this, [trans]);
+
+	var script = document.createElement("script");
+	script.setAttribute("src", url);
+	script.setAttribute("type", "text/javascript");
+	script.setAttribute("id", trans.scriptId);
+	document.getElementsByTagName("head")[0].appendChild(script);
+
+	return trans;
+    },
+
+    handleScriptResponse : function(o, trans){
+	this.transId = false;
+	this.destroyScriptTrans(trans, true);
+	var options = trans.options;
+	
+//      Attempt to parse a string parameter as XML.
+	var doc;
+	if (typeof o == 'string') {
+	    if (window.ActiveXObject) {
+		doc = new ActiveXObject("Microsoft.XMLDOM");
+		doc.async = "false";
+		doc.loadXML(o);
+	    } else {
+		doc = new DOMParser().parseFromString(o,"text/xml");
+	    }
+	}
+
+//      Create the bogus XHR
+	response = {
+	    responseObject: o,
+	    responseText: (typeof o == "object") ? Ext.util.JSON.encode(o) : String(o),
+	    responseXML: doc,
+	    argument: options.argument
+	}
+	this.fireEvent("requestcomplete", this, response, options);
+	Ext.callback(options.success, options.scope, [response, options]);
+	Ext.callback(options.callback, options.scope, [options, true, response]);
+    },
+    
+    handleScriptFailure: function(trans) {
+	this.transId = false;
+	this.destroyScriptTrans(trans, false);
+	var options = trans.options;
+	response = {
+	    argument:  options.argument,
+	    status: 500,
+	    statusText: 'Server failed to respond',
+	    responseText: ''
+	};
+	this.fireEvent("requestexception", this, response, options, {
+	    status: -1,
+	    statusText: 'communication failure'
+	});
+	Ext.callback(options.failure, options.scope, [response, options]);
+	Ext.callback(options.callback, options.scope, [options, false, response]);
+    },
+    
+    // private
+    destroyScriptTrans : function(trans, isLoaded){
+	document.getElementsByTagName("head")[0].removeChild(document.getElementById(trans.scriptId));
+	clearTimeout(trans.timeoutId);
+	if(isLoaded){
+	    window[trans.cb] = undefined;
+	    try{
+		delete window[trans.cb];
+	    }catch(e){}
+	}else{
+	    // if hasn't been loaded, wait for load to remove it to prevent script error
+	    window[trans.cb] = function(){
+		window[trans.cb] = undefined;
+		try{
+		    delete window[trans.cb];
+		}catch(e){}
+	    };
+	}
+    }
+});

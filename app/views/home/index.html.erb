@@ -1,0 +1,32 @@
+<% if(@entidade != nil) %>
+    <% if flash[:notice] != nil %>
+    <div class="box">
+        <div class="box_inner">	
+          <h2><%= flash[:notice] %></h2>
+          <p></p>
+        </div>
+      </div>
+    <br />
+    <% end %>
+    <h2>Eventos com inscrições abertas:</h2>
+    <% @eventos.each do |evento| %>
+        <div class="evento">
+            <h3><%= evento.nome %></h3>
+            <%if evento.data_inicio != evento.data_fim %>
+                <b><%= evento.data_inicio.strftime("%d-%m-%Y") %> a <%= evento.data_fim.strftime("%d-%m-%Y") %><br /></b>
+            <% else %>
+                <b><%= evento.data_inicio.strftime("%d-%m-%Y") %><br /></b>
+            <% end %>
+            <a href="/<%= evento.entidade.sigla%>/<%= evento.codigo %>/inscricoes/nova">Inscreva-se aqui</a> | <a href="mailto:<%=evento.email_responsavel%>">Envie email a pedir mais informações</a> | <% if current_user != nil && (current_user.profile == "ADMIN" || current_user.evento_id == evento.id) %> <a href="/<%= evento.entidade.sigla%>/<%= evento.codigo %>/admin/">Administração</a> [INSCRIÇÕES: <%= evento.inscricaos.count %> (<%= Inscricao.count(:all, :conditions=>"created_at >= '"+Date.today.to_s+"' AND evento_id = "+evento.id.to_s).to_s %> hoje)]<% end %>
+            <br/><br/>
+        </div>
+    <% end %>
+<% else %>
+    <div style="width:100%;text-align:center;vertical-align:middle;">
+        <font face="verdana">Para qualquer informação escreva para: <a href="mailto:geral@inscreve-te.com.pt">geral@inscreve-te.com.pt</a></font>
+        <br/><br/>
+        <img src="/images/inscrevete.jpg" />
+        <br/><br/>
+        <font face="verdana"><%= @entidades_count %> Entidades | <%= @eventos_count %> Eventos | <%= @inscricoes_count %> Inscrições</font>
+    <div>
+<% end %>

@@ -1,0 +1,168 @@
+﻿<factura>
+  <id><%= @recibo.id %></id>
+  <nome><%= @recibo.nome %></nome>
+  <nif><%= @recibo.nif %></nif>
+  <morada1><%= @recibo.morada1 %></morada1>
+  <morada2><%= @recibo.morada2 %></morada2>
+  <codigo_postal><%= @recibo.codigo_postal %></codigo_postal>
+  <localidade><%= @recibo.localidade %></localidade>
+  <data><%= @recibo.data.strftime("%d-%m-%Y")%></data>
+  <evento_nome><%= @recibo.evento.nome %></evento_nome>
+  <barcode><%= "R-"+@recibo.evento.codigo+"-"+@recibo.id.to_s.rjust(4, '0') %></barcode>
+  <emitente_nome><%= @recibo.evento.entidade.nome %></emitente_nome>
+  <emitente_nif><%= @recibo.evento.entidade.nif %></emitente_nif>
+  <emitente_morada1><%= @recibo.evento.entidade.morada %></emitente_morada1>
+  <emitente_morada2></emitente_morada2>
+  <emitente_morada3></emitente_morada3>
+  <emitente_email><%= @recibo.evento.entidade.email %></emitente_email>
+  <emitente_telefone><%= @recibo.evento.entidade.telefone %></emitente_telefone>
+  <emitente_fax><%= @recibo.evento.entidade.fax %></emitente_fax>
+  <inscricoes>
+    <% @linhas_recibo.each do |item| %>
+      <% if(item != nil) %>
+        <inscricao>
+          <% if(item.inscricao != nil) %>
+            <id><%= item.inscricao.id %></id>
+            <nome><%= item.inscricao.nome %></nome>
+            <idade><%= item.inscricao.calcula_idade %></idade>
+          <% else %>
+            <id>0</id>
+            <nome></nome>
+            <idade>0</idade>
+          <% end %>
+          <consumos>
+            <% item.linhas_recibo.each do |consumo| %>
+              <% if(consumo != nil) %>
+                <consumo>
+                  <descricao><%= consumo.descricao %></descricao>
+                  <preco_un><%= consumo.preco %></preco_un>
+                  <quantidade><%= consumo.quantidade %></quantidade>
+                  <subtotal><%= consumo.subtotal %></subtotal>
+                </consumo>
+              <% end %>
+            <% end %>
+          </consumos>
+          <descontos>
+            <% item.linhas_recibo_desconto.each do |desconto| %>
+              <% if(desconto != nil) %>
+                <desconto>
+                  <descricao><%= desconto.descricao %></descricao>
+                  <valor><%= desconto.valor %></valor>
+                </desconto>
+              <% end %>
+            <% end %>
+          </descontos>
+        </inscricao>
+      <% end %>
+    <% end %>
+  </inscricoes>
+  <pagamentos>
+  <% @recibo.pagamentos.each do |pagamento| %>
+    <% if(pagamento != nil) %>
+      <pagamento>
+            <id><%= pagamento.id %></id>
+            <observacoes><%= pagamento.observacoes %></observacoes>
+            <data><%= pagamento.data.strftime("%d-%m-%Y") %></data>
+            <valor><%= pagamento.valor%></valor>
+      </pagamento>
+    <% end %>
+  <% end %>
+  </pagamentos>
+  <total_pago>
+    <%= @recibo.total_pago %>
+  </total_pago>
+  <mudancas_preco>
+      <% @recibo.mudancas_preco.each do |mudanca_preco|  %>
+        <%if mudanca_preco != nil %>
+        <mudanca_preco>
+          <data_inicio> <%= mudanca_preco.data.strftime("%d-%m-%Y") %> </data_inicio>
+          <% if(mudanca_preco.proxima_data != nil)%>
+            <data_fim> <%= mudanca_preco.proxima_data.strftime("%d-%m-%Y") %> </data_fim>
+          <% else %>
+            <data_fim></data_fim>
+          <% end %>
+          <valor><%= mudanca_preco.valor %></valor>
+          <desconto><%= mudanca_preco.desconto %></desconto>
+          <total><%= mudanca_preco.valor-mudanca_preco.desconto %></total>
+        <% end %>
+        </mudanca_preco>
+      <% end %>
+  </mudancas_preco>
+  
+  <pagamento_integral>
+    <valor><%= @recibo.total_recibo-@recibo.valor_desconto_antecipado-@recibo.total_pago %></valor>
+    <multibanco>
+      <entidade_mb><%= @recibo.evento.entidade_mb %></entidade_mb>
+      <referencia_mb><%= @recibo.referencia_multibanco %></referencia_mb>
+      <data_limite>
+        <% if(@recibo.total_pago < @recibo.taxa_inscricao) %>
+          <%= (@recibo.data + @recibo.evento.dias_para_pagamento_taxa.days).strftime("%d/%m/%Y") %>
+        <% else %>
+          <% if(@recibo.evento.data_limite_pagamento_total != nil) %>
+            <%= (@recibo.evento.data_limite_pagamento_total).strftime("%d/%m/%Y") %>
+          <% else %>
+            <% if(@recibo.evento.dias_para_pagamento_total != nil && @recibo.evento.dias_para_pagamento_total > 0) %>
+              <%= (@recibo.data + @recibo.evento.dias_para_pagamento_total.days).strftime("%d/%m/%Y") %>
+            <%else%>
+              <%= (@recibo.evento.data_inicio - 3.days).strftime("%d/%m/%Y") %>
+            <%end%>
+          <% end %>
+        <% end %>
+      </data_limite>
+    </multibanco>
+  </pagamento_integral>
+  
+  <pagamento_taxa>
+    <valor><%= @recibo.taxa_inscricao %></valor>
+    <multibanco>
+      <entidade_mb><%= @recibo.evento.entidade_mb %></entidade_mb>
+      <referencia_mb><%= @recibo.referencia_multibanco_taxa_inscricao %></referencia_mb>
+      <data_limite><%= (@recibo.data + @recibo.evento.dias_para_pagamento_taxa.days).strftime("%d/%m/%Y") %></data_limite>
+    </multibanco>
+  </pagamento_taxa>
+  
+  <mensagens>
+    <% if(@recibo.taxa_inscricao > 0) %>
+      <mensagem>
+        <texto>
+          Da totalidade deste recibo, pelo menos <%= number_to_currency(@recibo.taxa_inscricao, :unit => "€",  :separator => ",", :delimiter => ".", :format => "%n %u") %> têm que ser pagos nos primeiros <%=  @recibo.evento.dias_para_pagamento_taxa %> dias, ou seja, até <%= (@recibo.data + @recibo.evento.dias_para_pagamento_taxa.days).strftime("%d-%m-%Y") %>
+        </texto>
+      </mensagem>
+      <mensagem>
+        <texto>
+          O não pagamento ou sinalização do recibo dentro do prazo acima referido levará ao cancelamento das reservas a que se refere.
+        </texto>
+      </mensagem>
+    <% end %>
+    <%if(@recibo.evento.data_limite_pagamento_total != nil)%>
+      <% if(@recibo.taxa_inscricao > 0) %>
+        <mensagem><texto>O montante em divida APÓS o pagamento da taxa de inscrição tem que ser pago até <%= @recibo.evento.data_limite_pagamento_total.strftime("%d-%m-%Y") %></texto></mensagem>
+      <% else %>
+        <mensagem><texto>Este recibo tem que ser pago na sua TOTALIDADE até <%= @recibo.evento.data_limite_pagamento_total.strftime("%d-%m-%Y") %></texto></mensagem>
+      <%end%>
+    <% else %>
+      <% if(@recibo.taxa_inscricao > 0) %>
+        <%if (@recibo.evento.dias_para_pagamento_total != nil && @recibo.evento.dias_para_pagamento_total > 0)%>
+          <mensagem><texto>O montante em divida APÓS o pagamento da taxa de inscrição tem que ser pago até dia <%= (@recibo.data + @recibo.evento.dias_para_pagamento_total.days).strftime("%d-%m-%Y") %></texto></mensagem>
+        <%else%>
+          <mensagem><texto>O montante em divida APÓS o pagamento da taxa de inscrição pode ser pago à chegada no dia do evento</texto></mensagem>
+        <%end%>
+      <% else %>
+        <%if (@recibo.evento.dias_para_pagamento_total != nil && @recibo.evento.dias_para_pagamento_total > 0)%>
+          <mensagem><texto>Este recibo tem que ser pago na sua TOTALIDADE até dia <%= (@recibo.data + @recibo.evento.dias_para_pagamento_total.days).strftime("%d-%m-%Y") %></texto></mensagem>
+        <%else%>
+          <mensagem><texto>Este recibo pode ser pago na sua TOTALIDADE à chegada no dia do evento</texto></mensagem>
+        <%end%>
+      <%end%>
+    <% end %>
+    <% if(@recibo.merece_desconto_antecipado && (@recibo.total_recibo-@recibo.valor_desconto_antecipado)-@recibo.total_pago > 0  ) %>
+      <mensagem>
+        <texto>
+      <% if(@recibo.evento.dias_para_pagamento_taxa != nil && @recibo.evento.dias_para_pagamento_taxa > 0) %>  
+        Se optar por pagar a TOTALIDADE da inscrição até <%= @recibo.data_desconto.strftime("%d-%m-%Y") %> terá direito a um desconto de pagamento integral antecipado no valor de <%= number_to_currency(@recibo.valor_desconto_antecipado, :unit => "€",  :separator => ",", :delimiter => ".", :format => "%n %u") %> (valor já descontado no montante em dívida apresentado)
+      <% end %>
+        </texto>
+      </mensagem>
+    <% end %>
+  </mensagens>
+</factura>

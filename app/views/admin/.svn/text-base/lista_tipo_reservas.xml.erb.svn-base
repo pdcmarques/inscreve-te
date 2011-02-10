@@ -1,0 +1,10 @@
+﻿<tipo_reservas totalCount="<%= @tipos_reservas.size %>">
+  <totalCount><%= @tipos_reservas.size %></totalCount>
+  <% @tipos_reservas.each do |tipo_reserva| %>
+    <tipo_reserva>
+      <ids><%= tipo_reserva.ids %></ids>
+      <nome><%= tipo_reserva.nome %></nome>
+      <icon><%= tipo_reserva.icon %></icon>
+    </tipo_reserva>
+  <% end %>
+</tipo_reservas>

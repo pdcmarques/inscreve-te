@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>05-06-2009 21:42</DATA_HORA>
+    <TERMINAL>0036000801-Braga</TERMINAL>
+    <REFERENCIA>853758088</REFERENCIA>
+    <VALOR>91</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>90.15</VALORLIQUIDO>
+  </pagamentoMB>
+  <pagamentoMB>
+    <DATA_HORA>06-06-2009 16:56</DATA_HORA>
+    <TERMINAL>0032030102-PORTO</TERMINAL>
+    <REFERENCIA>853157336</REFERENCIA>
+    <VALOR>91</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>90.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

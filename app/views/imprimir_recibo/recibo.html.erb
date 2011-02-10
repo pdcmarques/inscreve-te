@@ -1,0 +1,73 @@
+
+<div id="geadresseerde">
+<p class="firmanaam"><%= @recibo.nome %></p>
+<p><%= @recibo.morada %></p>
+<p><%= @recibo.codigo_postal %></p>
+</div>
+
+<div id="factuurinhoud">
+<div id="factuur">Aviso de Recebimento</div>
+
+<div id="topitems">
+<div class="titel1">Nº de Recibo</div>
+<div class="titel2">&nbsp;</div>
+<div class="titel3">Data de Pagamento</div>
+
+<div class="titelitem">R-AGCBP-<%= @recibo.id.to_s.rjust(4, '0') %></div>
+<div class="titelitem">&nbsp;</div>
+<div class="titelitemlast"><% if @recibo.data != nil %><%= @recibo.data.strftime("%d-%m-%Y") %><%end%></div>
+<!--
+<div class="titel1">Meio de Pagamento</div>
+<div class="titel2">&nbsp;</div>
+<div class="titel3">&nbsp;</div>
+
+<div class="titelitem"></div>
+<div class="titelitem">&nbsp;</div>
+<div class="titelitemlast">&nbsp;</div-->
+<div class="clear"></div>
+</div>
+
+<div id="omschrijvingtitel">Descrição</div>
+<div id="prijstitel">Preço</div>
+<div id="aantaltitel">Quantidade</div>
+<div id="subtotaaltitel">Subtotal</div>
+
+<% for item in @linhas_recibo %>
+  <% if item != nil %>
+    <div class="factuurlijn">
+      <div class="omschrijving">
+        <p><%= item.descricao %><br />
+          <!--span class="small">company.com: 23/8/4 - 22/8/5</span-->
+        </p>
+      </div>
+    
+      <div class="prijs"><p><%= number_to_currency(item.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></p></div>
+      <div class="aantal"><p><%= item.quantidade %></p></div>
+      <div class="subtotaal"><p><%= number_to_currency(item.subtotal, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></p></div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+<% end %>
+
+</div>
+
+</div>
+
+<div id="footer">
+<div id="barcode">
+<%= barcode "R-AGCBP-"+@recibo.id.to_s.rjust(4, '0') %>
+</div>
+<div id="totalen">
+<div class="titel">TOTAL DO RECIBO</div>
+<div id="totalenleft">
+<div class="totleft">Total:</div >
+<div  class="totleft">Recebido: </div>
+<div  class="totleft"></div>
+<div  class="tebetalenleft">Em dívida: </div>
+</div>
+<div id="totalenright">
+<div  class="totright"> <%= number_to_currency(@recibo.total_recibo, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> </div>
+<div  class="totright"> <%= number_to_currency(@recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> </div>
+<div  class="totright"> </div>
+<div  class="tebetalenright"><%= number_to_currency(@recibo.total_recibo-@recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></div>
+</div>

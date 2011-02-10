@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/project/!svn/ver/749/trunk/app/views/admin
+END
+lista_recibos.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/718/trunk/app/views/admin/lista_recibos.xml.erb
+END
+_inscricao_listitem.xls.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/121/trunk/app/views/admin/_inscricao_listitem.xls.erb
+END
+estatisticas.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/114/trunk/app/views/admin/estatisticas.html.erb
+END
+consumos_inscricao.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/541/trunk/app/views/admin/consumos_inscricao.xml.erb
+END
+recibos_inscricao.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/718/trunk/app/views/admin/recibos_inscricao.xml.erb
+END
+evolucao_inscricoes.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/695/trunk/app/views/admin/evolucao_inscricoes.html.erb
+END
+lista_reservas.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/771/trunk/app/views/admin/lista_reservas.xml.erb
+END
+lista_inscricoes.xls.rxls
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/743/trunk/app/views/admin/lista_inscricoes.xls.rxls
+END
+pagamentos_recibo.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/804/trunk/app/views/admin/pagamentos_recibo.xml.erb
+END
+envia_email_generico.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/310/trunk/app/views/admin/envia_email_generico.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/71/trunk/app/views/admin/index.html.erb
+END
+lista_recibos.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/103/trunk/app/views/admin/lista_recibos.html.erb
+END
+lista_igrejas.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/116/trunk/app/views/admin/lista_igrejas.html.erb
+END
+lista_inscricoes.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/828/trunk/app/views/admin/lista_inscricoes.xml.erb
+END
+email_enviado.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/264/trunk/app/views/admin/email_enviado.erb
+END
+resposta_xhr.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/312/trunk/app/views/admin/resposta_xhr.xml.erb
+END
+_recibo_listitem.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/133/trunk/app/views/admin/_recibo_listitem.html.erb
+END
+old_inscricao_listitem_old.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/140/trunk/app/views/admin/old_inscricao_listitem_old.html.erb
+END
+lista_inscricoes_old.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/211/trunk/app/views/admin/lista_inscricoes_old.html.erb
+END
+_inscricao_listitem.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/193/trunk/app/views/admin/_inscricao_listitem.html.erb
+END
+_igreja_listitem.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/116/trunk/app/views/admin/_igreja_listitem.html.erb
+END
+pagamentos_mb.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/449/trunk/app/views/admin/pagamentos_mb.html.erb
+END
+lista_tipo_reservas.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/770/trunk/app/views/admin/lista_tipo_reservas.xml.erb
+END
+lista_inscricoes.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/807/trunk/app/views/admin/lista_inscricoes.html.erb
+END
+descontos_inscricao.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/541/trunk/app/views/admin/descontos_inscricao.xml.erb
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/project/!svn/ver/762/trunk/app/views/recibos
+END
+detalhe_xml.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/803/trunk/app/views/recibos/detalhe_xml.xml.erb
+END
+detalhe.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/731/trunk/app/views/recibos/detalhe.html.erb
+END
+_recibo_listitem.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/282/trunk/app/views/recibos/_recibo_listitem.html.erb
+END
+lista.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/282/trunk/app/views/recibos/lista.html.erb
+END

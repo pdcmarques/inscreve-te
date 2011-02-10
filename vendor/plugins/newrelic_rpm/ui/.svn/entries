@@ -1,0 +1,44 @@
+10
+
+dir
+744
+http://pedromarques.svn.beanstalkapp.com/project/trunk/vendor/plugins/newrelic_rpm/ui
+http://pedromarques.svn.beanstalkapp.com/project
+
+
+
+2009-09-29T20:44:05.566092Z
+481
+pedromarques
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+d91fc93e-853d-4985-93ed-3d75665aff2a
+
+
+
+
+
+
+0
+
+controllers
+dir
+
+helpers
+dir
+
+views
+dir
+

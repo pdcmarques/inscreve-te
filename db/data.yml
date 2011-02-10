@@ -1,0 +1,960 @@
+
+--- 
+dormidas: 
+  columns: 
+  - id
+  - nome
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - "Casa Branca/Girassol J\xC3\x81 RESERVADA POR OUTRA PESSOA"
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+  - - "2"
+    - Reserva Casa Branca/Girassol
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+  - - "3"
+    - Reserva no Acampamento
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+  - - "4"
+    - Fora do Acampamento
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+
+--- 
+estatutos: 
+  columns: 
+  - id
+  - nome
+  - protected
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - Delegado
+    - false
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+  - - "2"
+    - Acompanhante
+    - false
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+  - - "3"
+    - Institucional
+    - false
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+
+--- 
+igrejas: 
+  columns: 
+  - id
+  - nome
+  - localidade
+  - email
+  - telefone
+  - responsavel
+  - created_at
+  - updated_at
+  - morada
+  - codigo_postal
+  - full_name
+  records: 
+  - - "1"
+    - ABRANTES
+    - ABRANTES
+    - "ieba@clix.pt "
+    - ""
+    - Jonathan Andrews
+    - 2009-01-24 00:00:00
+    - 2009-01-24 00:00:00
+    - Rua de Angola, 8A
+    - "2200 "
+    - Igreja Baptista de Abrantes
+  - - "2"
+    - "ANGRA DO HERO\xC3\x8DSMO"
+    - "ANGRA DO HERO\xC3\x8DSMO"
+    - ""
+    - ""
+    - Narciso da Silva Braga
+    - 2009-01-31 00:00:00
+    - 2009-01-31 00:00:00
+    - "Rua Dr. Jacinto C\xC3\xA2ndido, 3"
+    - 9700-101
+    - "Igreja Baptista de Angra do Hero\xC3\xADsmo"
+  - - "3"
+    - HORTA
+    - HORTA
+    - 
+    - 
+    - Rui Sabino
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Av. Marginal, 17
+    - "9900"
+    - Igreja Baptista da Horta
+  - - "4"
+    - "PONTA DELGADA   "
+    - "PONTA DELGADA   "
+    - 
+    - 
+    - Dale Robson Nogueira da Silva
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua do Lagedo, 43
+    - 9500-213
+    - Igreja Baptista de Ponta Delgada
+  - - "5"
+    - "PRAIA DA VIT\xC3\x93RIA"
+    - "PRAIA DA VIT\xC3\x93RIA"
+    - 
+    - 295 513 330
+    - "R\xC3\xBAben Couto"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua da Estrela, 41
+    - "9760-455 "
+    - "Igreja Baptista da Praia da Vit\xC3\xB3ria"
+  - - "6"
+    - "\xC3\x81GUEDA"
+    - "\xC3\x81GUEDA"
+    - ""
+    - 
+    - Heitor Gomes
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Av. do Emigrante
+    - "3750 "
+    - "Igreja Baptista de \xC3\x81gueda"
+  - - "7"
+    - "ALCOBA\xC3\x87A   "
+    - "ALCOBA\xC3\x87A   "
+    - "igrejabaptista@netvis\xC3\xA3o.pt  "
+    - "262 590 310   "
+    - "Mois\xC3\xA9s Gomes "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Dr. Afonso Lopes Vieira, 38-44
+    - "2461-901 "
+    - "Igreja Baptista de Alcoba\xC3\xA7a"
+  - - "8"
+    - ALFANDANGA
+    - MONCARAPACHO
+    - ""
+    - 
+    - Jaime Fernandes
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Estrada Nacional, 125 - Caixa Postal 714-H
+    - 8700-061
+    - Igreja Baptista de Alfandanga
+  - - "9"
+    - ALMADA
+    - ALMADA
+    - 
+    - ""
+    - "Virg\xC3\xADlio Barros"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua das Torcatas, 8
+    - "2800-212 "
+    - Igreja Baptista de Almada
+  - - "10"
+    - AMADORA
+    - AMADORA
+    - 
+    - 
+    - "Manuel Alexandre J\xC3\xBAnior "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Av. Comb. Grande Guerra, 24-A
+    - "2700-219 "
+    - Igreja Baptista da Amadora
+  - - "11"
+    - AVEIRO
+    - AVEIRO
+    - ""
+    - 234 429 044
+    - "J\xC3\xBAlio S\xC3\xA9rgio Felizardo"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Tenente Resende, 29
+    - 
+    - Igreja Baptista de Aveiro
+  - - "12"
+    - BARREIRO
+    - BARREIRO
+    - ""
+    - "212 131 575 "
+    - "Rosa Maria Rosado "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Nuno \xC3\x81lvares Pereira, 41-A"
+    - "2830"
+    - Igreja Baptista do Barreiro
+  - - "13"
+    - "BRAGA "
+    - "BRAGA "
+    - igrejabaptista@bomfim.org
+    - "253 271 267      "
+    - Mauro Altamiro G.S. Prado
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Boavista, 152/154
+    - "4700-416 "
+    - Igreja Baptista de Braga
+  - - "14"
+    - "CAC\xC3\x89M   "
+    - "CAC\xC3\x89M   "
+    - ""
+    - "219 141 936     "
+    - "Jos\xC3\xA9 Pinto Ferreira "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua D. Maria II, 33
+    - "2735-296 "
+    - "Igreja Baptista do Cac\xC3\xA9m"
+  - - "15"
+    - "CALDAS DA RAINHA "
+    - "CALDAS DA RAINHA "
+    - ""
+    - 262 844 049
+    - "Alan Pallister    "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Dr. Jos\xC3\xA9 Saudade e Silva n.\xC2\xBA 27"
+    - "2500-191 "
+    - Igreja Baptista de Caldas da Rainha
+  - - "16"
+    - "CHAN\xC3\x87A"
+    - CHANCELARIA ALT
+    - ""
+    - 245 965 263
+    - "M\xC3\xA1rio Pascoal "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua da Rep\xC3\xBAblica"
+    - "7440-201 "
+    - "Igreja Baptista de Chan\xC3\xA7a"
+  - - "17"
+    - ELVAS
+    - ELVAS
+    - ""
+    - ""
+    - "M\xC3\xA1rio Pascoal"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua do Alcamim n.\xC2\xBA 8 R/C"
+    - 7350-074
+    - Igreja Baptista de Elvas
+  - - "18"
+    - COIMBRA
+    - COIMBRA
+    - ""
+    - 239 828 551
+    - Marcos Amazonas dos Santos
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Av. Em\xC3\xADdio Navarro, 54A-55"
+    - "3000-150 "
+    - Igreja Baptista de Coimbra
+  - - "19"
+    - CASCAIS
+    - ALCABIDECHE
+    - ""
+    - "214 845 212 "
+    - "Lu\xC3\xADs Alexandre Ribeiro Branco"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Estrada de Alvide, 468 "
+    - "2755-027 "
+    - Igreja Baptista  de Cascais
+  - - "20"
+    - "\xC3\x89VORA"
+    - "\xC3\x89VORA"
+    - ""
+    - "266 741 083 "
+    - Samuel Nunes
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Rom\xC3\xA3o Ramalho, 32"
+    - "7000-671 "
+    - "Igreja Baptista de \xC3\x89vora"
+  - - "21"
+    - "FIGUEIRA DA FOZ "
+    - "FIGUEIRA DA FOZ "
+    - ""
+    - ""
+    - 
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Poeta Ac\xC3\xA1cio Antunes n.\xC2\xBA 3 \xE2\x80\x93 Lote 1 Lojas A/B"
+    - 3080-158
+    - Igreja Baptista da Figueira da Foz
+  - - "22"
+    - FARO
+    - FARO
+    - ""
+    - 289 827 454
+    - Samuel Mendes
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Horta Machado, 36B
+    - "8000-362 "
+    - Igreja Baptista de Faro
+  - - "23"
+    - LEIRIA
+    - LEIRIA
+    - ""
+    - 244 823 252
+    - "Ant\xC3\xB3nio J. R. Gon\xC3\xA7alves"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Av. Combatentes Grande Guerra, 25
+    - "2400-123 "
+    - Igreja Baptista de Leiria
+  - - "24"
+    - "MANGUALDE "
+    - "MANGUALDE "
+    - ""
+    - 232 612 113
+    - "Jos\xC3\xA9 Lopes"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Av. Gen. Humberto Delgado, 4
+    - "3350"
+    - Igreja Baptista de Mangualde
+  - - "25"
+    - MAIA
+    - "\xC3\x81GUAS SANTAS MAIA"
+    - 
+    - 229 715 962
+    - Ernesto Sobrado
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Gago Coutinho, 21
+    - "4445-089 "
+    - Igreja Baptista da Maia
+  - - "26"
+    - MACEIRA-LIS
+    - MACEIRA-LIS
+    - ""
+    - 
+    - 
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Estrada da Marinha Grande
+    - "2405 "
+    - Igreja Baptista da Maceira
+  - - "27"
+    - LISBOA, III
+    - LISBOA
+    - ""
+    - "213 554 636       "
+    - "Ant\xC3\xB3nio dos Santos"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Filipe Folque, 36
+    - "1050-114 "
+    - III Igreja Baptista de Lisboa
+  - - "28"
+    - MATOSINHOS
+    - MATOSINHOS
+    - ""
+    - 229 389 335
+    - "Jos\xC3\xA9 de Sousa"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Dr. Afonso Cordeiro, 168
+    - 4450-001
+    - Igreja Baptista de Matosinhos
+  - - "29"
+    - MATOS
+    - MARINHA DAS ONDAS
+    - ""
+    - ""
+    - "Jo\xC3\xA3o Manuel Santos"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Joaquim Gon\xC3\xA7alves Carvalho, 22 - Matos"
+    - "3090-766 "
+    - Igreja Baptista dos Matos
+  - - "30"
+    - MEM MARTINS
+    - MEM MARTINS
+    - ib.mem-martins@mail.telepac.pt
+    - ""
+    - "M\xC3\xA1rio Jorge F. Marques "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Horta Fanares, 1 D/E
+    - "2725-327 "
+    - Igreja Baptista de Mem Martins
+  - - "31"
+    - "NAZAR\xC3\x89"
+    - "NAZAR\xC3\x89"
+    - ""
+    - 262 553 502
+    - Marcello Mendanha
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Av. Vieira Guimar\xC3\xA3es, 50"
+    - 2450-111
+    - "Igreja Baptista da Nazar\xC3\xA9"
+  - - "32"
+    - ESTORIL
+    - S. PEDRO DO ESTORIL
+    - ""
+    - 214 670 581
+    - ""
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Av. Inf. D. Henrique, Lt. 3-B, Loja Dta
+    - "2765 "
+    - Igreja Baptista do Estoril
+  - - "33"
+    - "OLH\xC3\x83O"
+    - "OLH\xC3\x83O"
+    - 
+    - 
+    - Jaime Fernandes
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Humberto Delgado, 36
+    - "8700-473 "
+    - "Igreja Baptista de Olh\xC3\xA3o"
+  - - "34"
+    - OEIRAS
+    - OEIRAS
+    - 
+    - 214 439 796
+    - Walters Frichenbruders
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Praceta Quelimane, 4A
+    - 2780-032
+    - Igreja Baptista de Oeiras
+  - - "35"
+    - OLIVEIRA DO HOSPITAL
+    - OLIVEIRA DO HOSPITAL
+    - ""
+    - "238 645 109 "
+    - Edson Souza Antunes Filho
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Ant\xC3\xB3nio Canastrinha 5B"
+    - "3400-059 "
+    - Igreja Baptista de Oliveira do Hospital
+  - - "36"
+    - ORTIGA
+    - "MA\xC3\x87\xC3\x83O"
+    - ""
+    - ""
+    - "Jo\xC3\xA3o C. Nunes"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Ladeira do Porto, 4 - Ortiga
+    - "6120-542 "
+    - Igreja Baptista de Ortiga
+  - - "37"
+    - FRANCOS
+    - FRANCOS
+    - 
+    - 
+    - "Louren\xC3\xA7o Maria Jacinto"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua do Lugarinho, 6
+    - ""
+    - Igreja Baptista de Francos
+  - - "38"
+    - CEDOFEITA
+    - PORTO
+    - iebaptista.cedofeita@gmail.com
+    - "222 056 781 "
+    - Abel Pego
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua de Cedofeita, 169-173
+    - "4050-179 "
+    - Igreja Baptista de Cedofeita
+  - - "39"
+    - ANTAS
+    - PORTO
+    - ""
+    - ""
+    - 
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Coutinho Azevedo, 132-142
+    - "4000-187 "
+    - Igreja Baptista das Antas
+  - - "40"
+    - "PORTIM\xC3\x83O"
+    - "PORTIM\xC3\x83O"
+    - ""
+    - 
+    - "M\xC3\xA1rio Jaime Ribeiro"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Av. 25 de Abril, Lote 17, R/C
+    - "8500-511 "
+    - "Igreja Baptista de Portim\xC3\xA3o"
+  - - "41"
+    - "PIAS "
+    - PIAS MNC
+    - ""
+    - ""
+    - "Rog\xC3\xA9rio Clemente"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Caixa Postal 417 - Lugar do Cristelo
+    - "4950 "
+    - Igreja Baptista de Pias
+  - - "42"
+    - PAREDE
+    - PAREDE
+    - ""
+    - 214 575 370
+    - "Jos\xC3\xA9 Santana Ramos"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Machado dos Santos,  365
+    - "2775-236 "
+    - Igreja Baptista da Parede
+  - - "43"
+    - PENAFIEL
+    - PENAFIEL
+    - ""
+    - ""
+    - "Ab\xC3\xADlio Lucas"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua de Alfredo Pereira n.\xC2\xBA 231"
+    - "4560 "
+    - Igreja Baptista de Penafiel
+  - - "44"
+    - "S. JO\xC3\x83O DA MADEIRA"
+    - "S. JO\xC3\x83O DA MADEIRA"
+    - ""
+    - 
+    - "Alexandre Gl\xC3\xB3ria "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua J\xC3\xBAlio Dinis, 15"
+    - 3700-161
+    - "Igreja Baptista de S. Jo\xC3\xA3o da Madeira"
+  - - "45"
+    - "S. BR\xC3\x81S DE ALPORTEL"
+    - "S. BR\xC3\x81S DE ALPORTEL"
+    - ""
+    - 
+    - "M\xC3\xA1rio Jaime Ribeiro"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Jos\xC3\xA9 Louren\xC3\xA7o Viegas, 13"
+    - "8150-153 "
+    - "Igreja Baptista de S. Br\xC3\xA1s de Alportel"
+  - - "46"
+    - SANTO TIRSO
+    - SANTO TIRSO
+    - ""
+    - 
+    - "Rui Duarte  "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua do Olival, 98
+    - "4780-512 "
+    - Igreja Baptista de Santo Tirso
+  - - "47"
+    - "SANTAR\xC3\x89M         "
+    - "SANTAR\xC3\x89M         "
+    - ""
+    - 
+    - "Jos\xC3\xA9 Correia Seleiro Gon\xC3\xA7alves"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Padre Jo\xC3\xA3o Rodrigues Ribeiro, N\xC2\xBA5 Cave"
+    - "2000-184 "
+    - "Igreja Baptista de Santar\xC3\xA9m"
+  - - "48"
+    - RIO DE MOURO
+    - RIO DE MOURO
+    - ""
+    - ""
+    - "S\xC3\xA9rgio Felizardo Gomes"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Cal\xC3\xA7ada da Rinchoa, 50"
+    - "2635-309 "
+    - Igreja Baptista de Rio de Mouro
+  - - "49"
+    - QUELUZ
+    - QUELUZ
+    - ibq@netcabo.pt
+    - 214 352 923
+    - "Ant\xC3\xB3nio Miguel Pires"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua 9 de Abril, 19A
+    - "2745-187 "
+    - Igreja Baptista de Queluz
+  - - "50"
+    - PORTO, III
+    - PORTO
+    - ""
+    - 
+    - "Jo\xC3\xA3o Emanuel G. M. Carneiro"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Dami\xC3\xA3o de G\xC3\xB3is n.\xC2\xBA 34 \xE2\x80\x93 S/L 4"
+    - "4050-221 "
+    - III Igreja Baptista do Porto
+  - - "51"
+    - PORTO, II
+    - PORTO
+    - ""
+    - 22 537 9255
+    - Abiniel Macaia
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua do Moreira, 161-167
+    - "4000-347  "
+    - II Igreja Baptista do Porto
+  - - "52"
+    - "TAVIRA  "
+    - "TAVIRA  "
+    - ""
+    - ""
+    - Neilson Amorim
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Jo\xC3\xA3o Vaz Corte Real, 58-A"
+    - "8800-351 "
+    - Igreja Baptista de Tavira
+  - - "53"
+    - "SET\xC3\x9ABAL"
+    - "SET\xC3\x9ABAL"
+    - 
+    - 
+    - "Rog\xC3\xA9rio Flamino"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua das Andorinhas, 68
+    - "2910-095 "
+    - "Igreja Baptista de Set\xC3\xBAbal"
+  - - "54"
+    - SETE RIOS
+    - LISBOA
+    - ""
+    - 
+    - Samuel Quimputo
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Dr. Ant\xC3\xB3nio Martins, 25-A"
+    - "1070-091 "
+    - Igreja Baptista de Sete Rios
+  - - "55"
+    - "TREM\xC3\x8AS"
+    - "TREM\xC3\x8AS"
+    - ""
+    - 243 479 178
+    - "Ant\xC3\xB3nio Tiago Pereira\t"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Rua Cidade de Santar\xC3\xA9m"
+    - "2025-557 TREM\xC3\x8AS"
+    - "Igreja Baptista de Trem\xC3\xAAs"
+  - - "56"
+    - TONDELA
+    - TONDELA
+    - 
+    - 
+    - "Jos\xC3\xA9 Manuel Lopes"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Av. Dr. Ant\xC3\xB3nio Jos\xC3\xA9 Almeida"
+    - "3460"
+    - Igreja Baptista de Tondela
+  - - "57"
+    - TOMAR
+    - TOMAR
+    - ""
+    - 249 312 079
+    - "Jo\xC3\xA3o Nunes"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Av. Torres Pinheiro, 70-72
+    - "2300 "
+    - Igreja Baptista de Tomar
+  - - "58"
+    - TIRES
+    - S. DOMINGOS DE RANA
+    - ""
+    - 214 445 558
+    - Daniel Pascoal
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua das Fontainhas - Largo de Tires
+    - "2785-626 "
+    - Igreja Baptista de Tires
+  - - "59"
+    - VIEIRA DE LEIRIA
+    - VIEIRA DE LEIRIA
+    - ""
+    - 244 697 966
+    - "Pedro Paulo Afonso "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - "Trav. Padre Franklim, 8 "
+    - "2430-789 "
+    - Igreja Baptista de Vieira de Leiria
+  - - "60"
+    - VIANA DO CASTELO
+    - VIANA DO CASTELO
+    - ""
+    - ""
+    - "John Daniel Mosely "
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Quinta de Monserrate, Lote 20, cave 1
+    - "4900-378 "
+    - Igreja Baptista de Viana do Castelo
+  - - "61"
+    - VALE DA AMOREIRA
+    - VALE DA AMOREIRA
+    - ""
+    - 
+    - Itaiguara Celani Barros
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Adriano Correia de Oliveira, Zona J
+    - "2835-226 "
+    - Igreja Baptista do Vale da Amoreira
+  - - "62"
+    - "VALEN\xC3\x87A"
+    - "VALEN\xC3\x87A"
+    - ""
+    - ""
+    - "Rog\xC3\xA9rio Clemente"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Loteamento Mata Sete - Seara
+    - "4930"
+    - "Igreja Baptista de Valen\xC3\xA7a"
+  - - "63"
+    - "TROVISCAL "
+    - "TROVISCAL "
+    - ""
+    - 234 752 373
+    - "Jos\xC3\xA9 Lopes da Silveira"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Travessa do Cruzeiro
+    - "3770-410 "
+    - Igreja Baptista do Troviscal
+  - - "64"
+    - VILA NOVA DE GAIA
+    - VILA NOVA DE GAIA
+    - 
+    - 223 756 165
+    - Ludgero Coelho
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Soares dos Reis, 41
+    - "4400-315 "
+    - Igreja Baptista de Vila Nova de Gaia
+  - - "65"
+    - "VISEU     "
+    - "VISEU     "
+    - ""
+    - 232 424 257
+    - "J\xC3\xB3natas Figueiredo"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Rua Com. Grande Guerra, 34
+    - "3500-109 "
+    - Igreja Baptista de Viseu
+  - - "66"
+    - VILA REAL
+    - VILA REAL
+    - ""
+    - ""
+    - "J\xC3\xB3natas Figueiredo"
+    - 2009-11-02 00:00:00
+    - 2009-11-02 00:00:00
+    - Lugar das Tourinhas
+    - 
+    - Igreja Baptista de Vila Real
+
+--- 
+produtos: 
+  columns: 
+  - id
+  - descricao
+  - preco
+  - preco2
+  - created_at
+  - updated_at
+  records: 
+  - - "1"
+    - "Refei\xC3\xA7\xC3\xA3o de Adulto"
+    - "6"
+    - "6"
+    - 2009-01-24 00:00:00
+    - 2009-01-24 00:00:00
+  - - "2"
+    - Alojamento - Delegado
+    - "0"
+    - "0"
+    - 2009-01-24 00:00:00
+    - 2009-01-24 00:00:00
+  - - "3"
+    - Alojamento de Acompanhante
+    - "10"
+    - "10"
+    - 2009-01-24 00:00:00
+    - 2009-01-24 00:00:00
+  - - "4"
+    - "Inscri\xC3\xA7\xC3\xA3o de Delegado"
+    - "9"
+    - "9"
+    - 2009-01-24 00:00:00
+    - 2009-01-24 00:00:00
+  - - "5"
+    - Alojamento - Casa Branca/Girassol
+    - "25"
+    - "25"
+    - 2009-01-24 00:00:00
+    - 2009-01-24 00:00:00
+  - - "6"
+    - "Refei\xC3\xA7\xC3\xA3o de Crian\xC3\xA7a"
+    - "3"
+    - "3"
+    - 2009-01-24 00:00:00
+    - 2009-01-24 00:00:00
+  - - "7"
+    - Noite de cama extra - Casa Branca/Girassol
+    - "5"
+    - "5"
+    - 2009-02-11 00:00:00
+    - 2009-02-11 00:00:00
+
+--- 
+refeicaos: 
+  columns: 
+  - id
+  - nome
+  - created_at
+  - updated_at
+  - tipo_refeicao
+  records: 
+  - - "1"
+    - Sem Reserva
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - "-"
+  - - "4"
+    - Pescada Frita
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - PEIXE
+  - - "5"
+    - Carne Assada
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - CARNE
+  - - "6"
+    - Bacalhau com Natas
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - PEIXE
+  - - "7"
+    - Febras Grelhadas
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - CARNE
+  - - "8"
+    - Arroz de Polvo
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - PEIXE
+  - - "9"
+    - Frango no Forno
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - CARNE
+  - - "10"
+    - Feijoada
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - CARNE
+  - - "11"
+    - Peixe Cozido
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - PEIXE
+  - - "12"
+    - Peixe Cozido com Batatas e Legumes
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - PEIXE 2
+  - - "13"
+    - Peixe Frito com Arroz
+    - 2009-02-05 00:00:00
+    - 2009-02-05 00:00:00
+    - PEIXE 1
+
+--- 
+users: 
+  columns: 
+  - id
+  - login
+  - email
+  - crypted_password
+  - salt
+  - created_at
+  - updated_at
+  - remember_token
+  - remember_token_expires_at
+  - activation_code
+  - activated_at
+  - state
+  - deleted_at
+  - profile
+  - igreja_id
+  records: 
+  - - "11"
+    - pdcmarques
+    - pdcmarques@gmail.com
+    - e53bee7a075d1ed25fb8bf781f1d24308f1ea716
+    - c1e7abd529c322e6e4f94183731159ce8d35167c
+    - 2009-01-30 20:30:06
+    - 2009-01-31 18:38:31
+    - 
+    - 
+    - 
+    - 2009-01-30 20:35:11
+    - active
+    - 
+    - IGREJA
+    - "1"
+  - - "14"
+    - pedromarques
+    - pdcmarques@mail.telepac.pt
+    - 7e8561a89df2b79e17a8f50602608c41fcbcc8b7
+    - 0def104b629be02424d4040f6b9c779d8c828af8
+    - 2009-02-11 17:36:44
+    - 2009-02-11 17:37:26
+    - 
+    - 
+    - 
+    - 2009-02-11 17:37:26
+    - active
+    - 
+    - 
+    - 

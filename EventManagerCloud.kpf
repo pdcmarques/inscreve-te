@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="85c09302-f688-c84a-be9f-2af076056cef" kpf_version="4" name="EventManagerCloud.kpf">
+<preference-set idref="85c09302-f688-c84a-be9f-2af076056cef">
+  <boolean id="import_live">1</boolean>
+</preference-set>
+</project>

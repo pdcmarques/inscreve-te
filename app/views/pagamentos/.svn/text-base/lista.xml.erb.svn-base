@@ -1,0 +1,30 @@
+﻿<pagamentos totalCount="<%= @pagamentos.size %>">
+  <totalCount><%= @pagamentos.size %></totalCount>
+  <% @pagamentos.each do |pagamento| %>
+    <pagamento>    
+      <id><%= pagamento.id %></id>
+      <data><%= pagamento.data.strftime("%d-%m-%Y") %></data>
+      <valor><%= pagamento.valor %></valor>
+      <observacoes><%= pagamento.observacoes %></observacoes>
+      <factura_id><%= pagamento.recibo_id %></factura_id>
+      <factura_nome><%= pagamento.recibo.nome %></factura_nome>
+      <% if(pagamento.tipo_pagamento != nil) %>
+      <tipo_pagamento>
+        <id><%= pagamento.tipo_pagamento_id %></id>
+        <nome><%= pagamento.tipo_pagamento.nome %></nome>
+        <nome_curto><%= pagamento.tipo_pagamento.nome_curto %></nome_curto>
+        <icone><%= pagamento.tipo_pagamento.icone %></icone>
+      </tipo_pagamento>
+      <% else %>
+        <tipo_pagamento></tipo_pagamento>
+      <% end %>
+      <% if pagamento.pagamento_mb != nil %>
+        <comissao>
+          <%= pagamento.pagamento_mb.tarifa %>
+        </comissao>
+      <% else %>
+        <comissao>0</comissao>
+      <% end %>
+    </pagamento>
+  <% end %>
+</pagamentos>

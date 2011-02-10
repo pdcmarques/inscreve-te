@@ -1,0 +1,305 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/project/!svn/ver/470/trunk/test/unit
+END
+documento_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/323/trunk/test/unit/documento_test.rb
+END
+igrejasummit_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/462/trunk/test/unit/igrejasummit_test.rb
+END
+role_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/project/!svn/ver/236/trunk/test/unit/role_test.rb
+END
+lista_valores_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/146/trunk/test/unit/lista_valores_test.rb
+END
+gupo_campos_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/146/trunk/test/unit/gupo_campos_test.rb
+END
+reserva_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/470/trunk/test/unit/reserva_test.rb
+END
+produto_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/14/trunk/test/unit/produto_test.rb
+END
+refeicao_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/37/trunk/test/unit/refeicao_test.rb
+END
+recomendacao_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/146/trunk/test/unit/recomendacao_test.rb
+END
+valor_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/146/trunk/test/unit/valor_test.rb
+END
+comunicacao_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/253/trunk/test/unit/comunicacao_test.rb
+END
+consumo_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/14/trunk/test/unit/consumo_test.rb
+END
+igreja_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/14/trunk/test/unit/igreja_test.rb
+END
+campo_produto_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/246/trunk/test/unit/campo_produto_test.rb
+END
+i18n_local_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/842/trunk/test/unit/i18n_local_test.rb
+END
+user_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/project/!svn/ver/3/trunk/test/unit/user_test.rb
+END
+refeicao_servida_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/125/trunk/test/unit/refeicao_servida_test.rb
+END
+reserva_estado_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/470/trunk/test/unit/reserva_estado_test.rb
+END
+pagamento_mb_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/102/trunk/test/unit/pagamento_mb_test.rb
+END
+campo_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/146/trunk/test/unit/campo_test.rb
+END
+pacote_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/276/trunk/test/unit/pacote_test.rb
+END
+preco_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/246/trunk/test/unit/preco_test.rb
+END
+desconto_inscricao_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/276/trunk/test/unit/desconto_inscricao_test.rb
+END
+codigo_desconto_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/837/trunk/test/unit/codigo_desconto_test.rb
+END
+campo_valor_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/146/trunk/test/unit/campo_valor_test.rb
+END
+evento_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/146/trunk/test/unit/evento_test.rb
+END
+inscricaos_campos_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/146/trunk/test/unit/inscricaos_campos_test.rb
+END
+estatuto_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/37/trunk/test/unit/estatuto_test.rb
+END
+user_mailer_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/3/trunk/test/unit/user_mailer_test.rb
+END
+empresa_facide_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/799/trunk/test/unit/empresa_facide_test.rb
+END
+eventos_grupos_campos_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/146/trunk/test/unit/eventos_grupos_campos_test.rb
+END
+tipo_pagamento_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/799/trunk/test/unit/tipo_pagamento_test.rb
+END
+grupo_inscricoes_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/246/trunk/test/unit/grupo_inscricoes_test.rb
+END
+entidade_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/146/trunk/test/unit/entidade_test.rb
+END
+inscricao_reserva_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/470/trunk/test/unit/inscricao_reserva_test.rb
+END
+estado_reserva_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/470/trunk/test/unit/estado_reserva_test.rb
+END
+dormida_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/37/trunk/test/unit/dormida_test.rb
+END
+igrejamg_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/401/trunk/test/unit/igrejamg_test.rb
+END
+evento_campo_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/146/trunk/test/unit/evento_campo_test.rb
+END
+desconto_factura_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/276/trunk/test/unit/desconto_factura_test.rb
+END
+inscricao_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/14/trunk/test/unit/inscricao_test.rb
+END
+ip_range_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/842/trunk/test/unit/ip_range_test.rb
+END
+recibo_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/14/trunk/test/unit/recibo_test.rb
+END
+pagamento_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/41/trunk/test/unit/pagamento_test.rb
+END
+pacote_produtos_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/246/trunk/test/unit/pacote_produtos_test.rb
+END
+desconto_estatuto_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/276/trunk/test/unit/desconto_estatuto_test.rb
+END
+desconto_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/276/trunk/test/unit/desconto_test.rb
+END
+tipo_reserva_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/470/trunk/test/unit/tipo_reserva_test.rb
+END
+translation_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/841/trunk/test/unit/translation_test.rb
+END
+reserva_produto_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/470/trunk/test/unit/reserva_produto_test.rb
+END

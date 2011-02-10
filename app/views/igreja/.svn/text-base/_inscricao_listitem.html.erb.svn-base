@@ -1,0 +1,25 @@
+<% if(inscricao_listitem != nil) %>
+  <tr class="<%= cycle('odd', 'even') -%>">
+    <td><%= inscricao_listitem.nome %></td>
+    <td><%= inscricao_listitem.evento.nome %></td>
+    <td width="80px" align="center"><%= inscricao_listitem.created_at.strftime("%d-%m-%Y") %></td>
+    <td align="center">
+      <a href="/<%= inscricao_listitem.evento.codigo %>/inscricoes/detalhe/<%= inscricao_listitem.id %>"><img src="/images/information.png" /></a>&nbsp;&nbsp;
+      <% if(inscricao_listitem.evento.precisa_recomendacao) %>
+        <a href="/<%= inscricao_listitem.evento.codigo %>/inscricoes/recomendar/<%= inscricao_listitem.id %>"><img id="recomendar_<%= inscricao_listitem.id %>" src="/images/accept.png" /></a>
+        <script>
+        new Tip('recomendar_<%= inscricao_listitem.id %>',
+                    '<div style="line-heigth:11px">Carregue neste botão para recomendar esta inscrição. <br/><br/> A recomendação de um participante numa actividade do Acampamento Baptista implica o reconhecimento, por parte do pastor ou líder da igreja, da capacidade do campista para participar no acampamento, bem como a certificação da correcção dos dados da inscrição.<br/><br/> Pedimos-lhe para verificar se todos os dados fornecidos na inscrição são correctos. Caso haja alguma informação que os líderes do acampamento devam saber acerca deste campista, a mesma deve ser enviada directamente para os líderes deste acampamento, ou para a direcção do AB. <br/><br/> Obrigado pela sua colaboração. </div>',
+                    {
+                      title: 'RECOMENDAR <%= inscricao_listitem.nome.upcase %>',
+                      style: 'protogrey',
+                      stem: 'rightMiddle',
+                      hook: { tip: 'rightMiddle', target: 'leftMiddle'},
+                      offset: { x: 10, y: 10 },
+                      width:'200px'
+                    });
+          </script>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

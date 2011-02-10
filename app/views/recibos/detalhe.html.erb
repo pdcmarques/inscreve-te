@@ -1,0 +1,317 @@
+﻿<!--table width="100%" class="noprint">
+  <tr>
+    <td align="left" valign="top">
+      <h1>Aviso de <span>Recebimento</span></h1>
+      <br/><br/>
+    </td>
+    <td align="right" valign="top">
+      <div class="noprint"><a href="/<%= @entidade.sigla %>/recibos/detalhe/<%=@recibo.id%>.pdf"><img src="/images/page_white_acrobat.png">&nbsp;&nbsp;Exportar para PDF</a></div>
+    </td>
+  </tr>
+</table-->
+<div style="page-break-after:avoid; page-break-before:avoid">
+  <table width="100%">
+    <tr>
+      <td colspan="2" align="right">
+        <div class="noprint"><a href="/<%= @entidade.sigla %>/recibos/detalhe/<%=@recibo.id%>.pdf"><img src="/images/page_white_acrobat.png">&nbsp;&nbsp;Exportar para PDF</a></div>
+      </td>
+    </tr>
+    <tr>
+      <td align="left" valign="top">
+        <img src="/images/<%=@recibo.evento.entidade.sigla%>/factura_logo.jpg"/>
+      </td>
+      <td align="right" valign="top">
+        <font style="font-size:400%" color="#CCCCCC"><b>FACTURA</b></font>
+      </td>
+    </tr>
+    <tr>
+      <td  colspan="2" align="left" valign="top">
+        <font  style="font-size:150%" ><b><%= @recibo.evento.nome %></b></font>
+      </td>
+    </tr>
+  </table>
+  <br/><br/>
+
+  <table width="100%">
+    <tr>
+      <td><b>NOME: </b><%= @recibo.nome %></td>
+      <td rowspan="3" align="right" valign="bottom">
+        <%= barcode "R-"+@recibo.evento.codigo+"-"+@recibo.id.to_s.rjust(4, '0'), :height=>50 %>
+      </td>
+    </tr>
+    <tr>
+      <td><b>NIF: </b><%= @recibo.nif %></td>
+    </tr>
+    <tr>
+      <td><b>DATA: </b><%= @recibo.data.strftime("%d-%m-%Y")%></td>
+    </tr>
+  </table>
+  <br/><br/>
+</div>
+
+<table class="user_detail_table" style="page-break-inside:auto; page-break-before:avoid">
+  <tr class="header">
+    <th width="50px"></th>
+    <th>Descrição</th>
+    <th>Preço</th>
+    <th>Qtd</th>
+    <th>Subtotal</th>
+  </tr>
+  <% @linhas_recibo.each do |item| %>
+    <% if item != nil %>
+      <tr>
+        <td colspan="5"><b>INSCRIÇÃO DE <%= item.inscricao.nome.upcase %></b></td>
+      </tr>
+      <% item.linhas_recibo.each do |consumo| %>
+        <% if consumo != nil %>
+          <tr>
+            <td></td>
+            <td><%= consumo.descricao %></td>
+            <td align="right"><%= number_to_currency(consumo.preco.to_f, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+            <td align="right"><%= consumo.quantidade %></td>
+            <td align="right"><%= number_to_currency(consumo.subtotal.to_f, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <% item.linhas_recibo_desconto.each do |desconto| %>
+        <% if desconto != nil %>
+          <tr>
+            <td></td>
+            <td><%= desconto.descricao %></td>
+            <td align="right"></td>
+            <td align="right"></td>
+            <td align="right"><%= number_to_currency(-desconto.valor.to_f, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+    <tr class="blank">
+      <td colspan="5" class="blank">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="5" class="blank" style="padding:5px 5px 5px 5px; text-align:left;">
+          <div style="width:400px; color:#111111">
+            <h4>CONDIÇÕES DE PAGAMENTO</h4>
+            <ul>
+              <% if(@recibo.taxa_inscricao > 0) %>
+                <li>
+                  Da totalidade deste recibo, pelo menos <%= number_to_currency(@recibo.taxa_inscricao, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> têm que ser pagos nos primeiros <%=  @recibo.evento.dias_para_pagamento_taxa %> dias, ou seja, até <%= (@recibo.data + @recibo.evento.dias_para_pagamento_taxa.days).strftime("%d-%m-%Y") %><br /><br />
+                </li>
+                <li>
+                  O não pagamento ou sinalização do recibo dentro do prazo acima referido levará ao cancelamento das reservas a que se refere.<br /><br />
+                </li>
+              <% end %>
+              <%if(@recibo.evento.data_limite_pagamento_total != nil)%>
+                <% if(@recibo.taxa_inscricao > 0) %>
+                  <li>O montante em divida APÓS o pagamento da taxa de inscrição tem que ser pago até <%= @recibo.evento.data_limite_pagamento_total.strftime("%d-%m-%Y") %><br /><br /></li>
+                <% else %>
+                  <li>Este recibo tem que ser pago na sua TOTALIDADE até <%= @recibo.evento.data_limite_pagamento_total.strftime("%d-%m-%Y") %><br /><br /></li>
+                <%end%>
+              <% else %>
+                <% if(@recibo.taxa_inscricao > 0) %>
+                  <%if (@recibo.evento.dias_para_pagamento_total != nil && @recibo.evento.dias_para_pagamento_total > 0)%>
+                    <li>O montante em divida APÓS o pagamento da taxa de inscrição tem que ser pago até dia <%= (@recibo.data + @recibo.evento.dias_para_pagamento_total.days).strftime("%d-%m-%Y") %></li>
+                  <%else%>
+                    <li>O montante em divida APÓS o pagamento da taxa de inscrição pode ser pago à chegada no dia do evento<br /><br /></li>
+                  <%end%>
+                <% else %>
+                  <%if (@recibo.evento.dias_para_pagamento_total != nil && @recibo.evento.dias_para_pagamento_total > 0)%>
+                    <li>Este recibo tem que ser pago na sua TOTALIDADE até dia <%= (@recibo.data + @recibo.evento.dias_para_pagamento_total.days).strftime("%d-%m-%Y") %></li>
+                  <%else%>
+                    <li>Este recibo pode ser pago na sua TOTALIDADE à chegada no dia do evento</li>
+                  <%end%>
+                <%end%>
+              <% end %>
+              <% if(@recibo.merece_desconto_antecipado && (@recibo.total_recibo-@recibo.valor_desconto_antecipado)-@recibo.total_pago > 0  ) %>
+              <li>
+                <% if(@recibo.evento.dias_para_pagamento_taxa != nil && @recibo.evento.dias_para_pagamento_taxa > 0) %>
+                
+                  Se optar por pagar a TOTALIDADE da inscrição até <%= @recibo.data_desconto.strftime("%d-%m-%Y") %> terá direito a um desconto de pagamento integral antecipado no valor de <%= number_to_currency(@recibo.valor_desconto_antecipado, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> (valor já descontado no montante em dívida apresentado)<br /><br />
+                
+                <% end %>
+              </li>
+              <% end %>
+            <ul>
+          </div>
+      </td>
+      
+      <td align="right" class="highlight">TOTAL</td>
+      <td align="right"><%= number_to_currency(@recibo.total_recibo, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> </td>
+    </tr>
+    <tr>
+      <td align="right" class="highlight">RECEBIDO</td>
+      <td align="right"><%= number_to_currency(@recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> </td>
+    </tr>
+    <% if(@recibo.merece_desconto_antecipado && @recibo.valor_desconto_antecipado > 0) %>
+      <tr>
+        <td align="right" class="highlight">DESCONTOS</td>
+        <td align="right"><%= number_to_currency(@recibo.valor_desconto_antecipado, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td align="right" class="highlight">EM DÍVIDA:</td>
+      <td align="right"><%= number_to_currency((@recibo.total_recibo-@recibo.valor_desconto_antecipado)-@recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    </tr>
+    <tr class="blank">
+      <td colspan="2"></td>
+    </tr>
+</table>
+<br />
+
+<% if ((((@recibo.total_recibo-@recibo.valor_desconto_antecipado)-@recibo.total_pago) >= 10) && (@recibo.evento.prefixo_ref_mb != nil && @recibo.evento.prefixo_ref_mb.to_s != "")) %>
+  <table width="100%" class="user_detail_table">
+    <tr class="header">
+      <th></th>
+      <th>PAGAMENTO INTEGRAL</th>
+      <% if ((@recibo.taxa_inscricao) >= 1) %>
+      <th>SÓ TAXA DE INSCRIÇÃO</th>
+      <% end %>
+    </tr>
+    <tr>
+      <td>
+        <img align="left" class="mbimage" src="/images/brand.jpg">
+      </td>
+      <td valign="top" align="center">
+        <div style="display:block; padding:10px; width:230px;  height:80px; font-family:monospace; text-align:center; vertical-align:middle">
+            <table class="multibanco" width="100%" cellpadding="0px" cellspacing="0px">
+              <tr>
+                <td colspan="2" align="center">
+                  <b>PAGAMENTO AUTOMÁTICO MB</b>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" >Entidade: </td>
+                <td align="right"><b><%= @recibo.evento.entidade_mb %></b></td>
+              </tr>
+              <tr>
+                <td align="left" >Referência: </td>
+                <td align="right"><b><%= @recibo.referencia_multibanco %></b></td>
+              </tr>
+              <tr>
+                <td align="left" >Montante: </td>
+                <td align="right"><b><%= number_to_currency(@recibo.total_recibo-@recibo.valor_desconto_antecipado-@recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b></td>
+              </tr>
+              <tr>
+                <td align="left" >Data Limite: </td>
+                <td align="right">
+                  <% if(@recibo.total_pago < @recibo.taxa_inscricao) %>
+                    <b><%= (@recibo.data + @recibo.evento.dias_para_pagamento_taxa.days).strftime("%d/%m/%Y") %></b>
+                  <% else %>
+                    <% if(@recibo.evento.data_limite_pagamento_total != nil) %>
+                      <b><%= (@recibo.evento.data_limite_pagamento_total).strftime("%d/%m/%Y") %></b>
+                    <% else %>
+                      <% if(@recibo.evento.dias_para_pagamento_total != nil && @recibo.evento.dias_para_pagamento_total > 0) %>
+                        <b><%= (@recibo.data + @recibo.evento.dias_para_pagamento_total.days).strftime("%d/%m/%Y") %></b>
+                      <%else%>
+                        <b><%= (@recibo.evento.data_inicio - 3.days).strftime("%d/%m/%Y") %></b>
+                      <%end%>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          </div>
+      </td>
+      <td valign="top" align="center">
+        <% if ((@recibo.taxa_inscricao) >= 10) %>
+          <div style="display:block; padding:10px; width:230px;  height:80px; font-family:monospace; text-align:center; vertical-align:middle">
+              <table class="multibanco" width="100%" cellpadding="0px" cellspacing="0px">
+                <tr>
+                  <td colspan="2" align="center">
+                    <b>PAGAMENTO AUTOMÁTICO MB</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left" >Entidade: </td>
+                  <td align="right"><b><%= @recibo.evento.entidade_mb %></b></td>
+                </tr>
+                <tr>
+                  <td align="left" >Referência: </td>
+                  <td align="right"><b><%= @recibo.referencia_multibanco_taxa_inscricao %></b></td>
+                </tr>
+                <tr>
+                  <td align="left" >Montante: </td>
+                  <td align="right"><b><%= number_to_currency(@recibo.taxa_inscricao, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b></td>
+                </tr>
+                <tr>
+                  <td align="left" >Data Limite: </td>
+                  <td align="right"><b><%= (@recibo.data + @recibo.evento.dias_para_pagamento_taxa.days).strftime("%d/%m/%Y") %></b></td>
+                </tr>
+              </table>
+            </div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center">
+        <b>O talão emitido pelo caixa automático faz prova de pagamento. Conserve-o</b><br/><b>Não use a mesma referência para fazer mais do que um pagamento, porque assim não podemos garantir o correcto funcionamento do sistema de pagamentos.</b>
+      </td>
+    </tr>
+  </table>
+  <br /><br />
+<% end %>
+
+<h3>Pagamentos recebidos para este documento</h3>
+<table class="user_detail_table" style="page-break-before:avoid">
+  <tr class="header">
+    <th width="5%" align="center"></th>
+    <th width="60%">Descrição</th>
+    <th>Data</th>
+    <th width="15%">Valor</th>
+  </tr>
+  <% for pagamento in @recibo.pagamentos %>
+    <tr>
+      <td valign="middle" align="center">
+        <%if @current_user != nil && @current_user.profile == "ADMIN" %>
+          <a href="/admin/elimina_pagamento/<%=pagamento.id%>" class="noprint"><img src="/images/delete.png" alt="Apagar" /></a>
+        <% end %>
+      </td>
+      <td><%= pagamento.observacoes %></td>
+      <td><%= pagamento.data.strftime("%d-%m-%Y") %></td>
+      <td align="right"><%= number_to_currency(pagamento.valor, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td align="right" class="highlight">TOTAL RECEBIDO</td>
+    <td align="right"><%= number_to_currency(@recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> </td>
+  </tr>
+</table>
+<br />
+
+
+
+  <%if @recibo.mudancas_preco.length > 1 %>
+    <h3>Evolução do preço total para este documento</h3>
+    <table class="user_detail_table" style="page-break-before:avoid">
+      <tr class="header">
+        <th width="60%">Data de Pagamento</th>
+        <th>Valor</th>
+        <th>Desconto*</th>
+        <th>Total</th>
+      </tr>
+      <% @recibo.mudancas_preco.each do |mudanca_preco|  %>
+        <%if mudanca_preco != nil %>
+          <tr>
+            <td>
+              <% if mudanca_preco.proxima_data != nil %>
+                Entre <b><%= mudanca_preco.data.strftime("%d-%m-%Y") %></b> e <b><%= mudanca_preco.proxima_data.strftime("%d-%m-%Y") %></b>
+              <% else %>
+                Após <b><%= mudanca_preco.data.strftime("%d-%m-%Y") %></b>
+              <% end %>
+            </td>
+            <td align="right"><%= number_to_currency(mudanca_preco.valor, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+            <td align="right"><%= number_to_currency(mudanca_preco.desconto, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+            <td align="right"><%= number_to_currency(mudanca_preco.valor-mudanca_preco.desconto, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+    <br />
+    <div style="font-size:smaller">*A coluna 'Desconto' refere-se a um desconto pontencial que só será aplicado no caso de fazer um pagamento integral até à data especificada. Caso opte por um pagamento parcial, este desconto não é aplicado, passando o total a ser considerado igual à coluna 'valor'.</div>
+    <br />
+  <%end%>
+

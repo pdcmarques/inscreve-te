@@ -1,0 +1,20 @@
+<br/>
+<h2>Lista de Recibos</h2>
+<br/>
+<table class="user_detail_table">
+  <tr class="header">
+      <th align="left">Nome</th>
+      <th align="center">Total</th>
+      <th align="center">Recebido</th>
+      <th align="center">Dívida</th>
+      <th></th>
+  </tr>
+  <%= render(:partial=>"recibo_listitem", :collection=>@recibos) %>
+  <tr class="header">
+      <td align="right"><b>NOME</b></td>
+      <td align="right"><b><%= number_to_currency(@total_recibos, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b></td>
+      <td align="right"><b><%= number_to_currency(@total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b></td>
+      <td align="right"><b><%= number_to_currency(@total_divida, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b></td>
+      <td></td>
+  </tr>
+</table>

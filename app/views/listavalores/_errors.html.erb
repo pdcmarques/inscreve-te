@@ -1,0 +1,9 @@
+<% if (errors != nil) && (errors.count > 0) %>
+  <h3 style="color:red">Por favor corrija os seguintes erros:</h3>
+  <ul>
+    <% for error in errors %>
+      <li><%= error[1] %></li>
+    <%end%>
+  </ul>
+  <br/><br/>
+<% end %>

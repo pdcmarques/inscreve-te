@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>07-10-2009 14:32</DATA_HORA>
+    <TERMINAL>0036005701-Portalegre</TERMINAL>
+    <REFERENCIA>853111170</REFERENCIA>
+    <VALOR>59</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>58.15</VALORLIQUIDO>
+  </pagamentoMB>
+  <pagamentoMB>
+    <DATA_HORA>07-10-2009 18:16</DATA_HORA>
+    <TERMINAL>0035043001-Malveira</TERMINAL>
+    <REFERENCIA>853100919</REFERENCIA>
+    <VALOR>135</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>134.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

@@ -1,0 +1,117 @@
+﻿<% if(@totalCount > 0) %>
+  <reservas totalCount="<%= @totalCount %>">
+    <totalCount><%= @totalCount %></totalCount>
+    <% @reservas.each do |reserva| %>
+      <reserva id="reserva.id">
+        <id><%= reserva.id %></id>
+        <inscricao_id><%= reserva.inscricao_id %></inscricao_id>
+        <inscricao_nome><%= reserva.inscricao.nome %></inscricao_nome>
+        <inscricao_idade><%= reserva.inscricao.idade %></inscricao_idade>
+        <reserva_id><%= reserva.reserva_id %></reserva_id>
+        <reserva_nome><%= reserva.reserva.nome %></reserva_nome>
+        <reserva_nome_curto><%= reserva.reserva.nome_curto %></reserva_nome_curto>
+        <reserva_ementa><%= reserva.reserva.ementa %></reserva_ementa>
+        <reserva_custo><%= reserva.reserva.cost %></reserva_custo>
+        <% if(reserva.reserva.data_consumo != nil) %>
+          <reserva_data_consumo><%= reserva.reserva.data_consumo.strftime("%d-%m-%Y") %></reserva_data_consumo>
+        <% else %>
+          <reserva_data_consumo></reserva_data_consumo> 
+        <% end %>
+        <reserva_tipo_reserva_id><%= reserva.reserva.tipo_reserva_id%></reserva_tipo_reserva_id>
+        <reserva_tipo_reserva_nome><%= reserva.reserva.tipo_reserva.nome%></reserva_tipo_reserva_nome>
+        <reserva_tipo_reserva_icon><%= reserva.reserva.tipo_reserva.icone%></reserva_tipo_reserva_icon>
+        <% estado_actual_descoberto = false %>
+        <% reserva.reserva_estados.each do |estado| %>
+          <% if(estado.data_fim == nil) %>
+            <% estado_actual_descoberto = true %>
+            <reserva_estadoactual_id><%= estado.id%></reserva_estadoactual_id>
+            <reserva_estadoactual_nome><%= estado.estado_reserva.nome%></reserva_estadoactual_nome>
+            <reserva_estadoactual_descricao><%= estado.estado_reserva.descricao%></reserva_estadoactual_descricao>
+            <reserva_estadoactual_data_inicio><%= estado.data_inicio.strftime("%d-%m-%Y") %></reserva_estadoactual_data_inicio>
+            <reserva_estadoactual_icon><%= estado.estado_reserva.icon %></reserva_estadoactual_icon>
+            <reserva_estadoactual_isfinal><%= estado.estado_reserva.final_state %></reserva_estadoactual_isfinal>
+            <reserva_estadoactual_iswarning><%= estado.estado_reserva.warning_state %></reserva_estadoactual_iswarning>
+            <% if(@ja_consumida) %>
+              <reserva_estadoactual_backcolor>#F08080</reserva_estadoactual_backcolor>
+              <reserva_aviso>ESTA RESERVA JÁ FOI CONSUMIDA</reserva_aviso>
+            <% else %>
+              <% if(estado.estado_reserva.warning_state) %>
+                <reserva_estadoactual_backcolor>#FFF68F</reserva_estadoactual_backcolor>
+                <reserva_aviso></reserva_aviso>
+              <% else %>
+                <% if(estado.estado_reserva.final_state) %>
+                  <reserva_estadoactual_backcolor>#EEE9E9</reserva_estadoactual_backcolor>
+                  <reserva_aviso></reserva_aviso>
+                <% else %>
+                  <reserva_estadoactual_backcolor>#FFFFFF</reserva_estadoactual_backcolor>
+                  <reserva_aviso></reserva_aviso>
+                <% end %>
+              <% end %>
+            <% end %>
+            <% break %>
+          <% end %>
+        <% end %>
+        <% if (!estado_actual_descoberto) && @estado_anterior != nil%>
+          <% estado = @estado_anterior%>
+          <reserva_estadoactual_id><%= estado.id%></reserva_estadoactual_id>
+          <reserva_estadoactual_nome><%= estado.estado_reserva.nome%></reserva_estadoactual_nome>
+          <reserva_estadoactual_descricao><%= estado.estado_reserva.descricao%></reserva_estadoactual_descricao>
+          <reserva_estadoactual_data_inicio><%= estado.data_inicio.strftime("%d-%m-%Y") %></reserva_estadoactual_data_inicio>
+          <reserva_estadoactual_icon><%= estado.estado_reserva.icon %></reserva_estadoactual_icon>
+          <reserva_estadoactual_isfinal><%= estado.estado_reserva.final_state %></reserva_estadoactual_isfinal>
+          <reserva_estadoactual_iswarning><%= estado.estado_reserva.warning_state %></reserva_estadoactual_iswarning>
+          <% if(@ja_consumida) %>
+            <reserva_estadoactual_backcolor>#F08080</reserva_estadoactual_backcolor>
+            <reserva_aviso>ESTA RESERVA JÁ FOI CONSUMIDA</reserva_aviso>
+          <% else %>
+            <% if(estado.estado_reserva.warning_state) %>
+              <reserva_estadoactual_backcolor>#FFF68F</reserva_estadoactual_backcolor>
+              <reserva_aviso></reserva_aviso>
+            <% else %>
+              <% if(estado.estado_reserva.final_state) %>
+                <reserva_estadoactual_backcolor>#EEE9E9</reserva_estadoactual_backcolor>
+                <reserva_aviso></reserva_aviso>
+              <% else %>
+                <reserva_estadoactual_backcolor>#A6D785</reserva_estadoactual_backcolor>
+                <reserva_aviso></reserva_aviso>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </reserva>
+    <% end %>
+  </reservas>
+<% else %>
+  <%if(@inscricao != nil)%>
+    <reservas totalCount="1">
+      <totalCount>1</totalCount>
+      <reserva>
+          <id>0</id>
+          <inscricao_id><%= @inscricao_id %></inscricao_id>
+          <inscricao_nome><%= @inscricao.nome %></inscricao_nome>
+          <inscricao_idade><%= @inscricao.idade %></inscricao_idade>
+          <reserva_id>0</reserva_id>
+          <reserva_nome><%= @inscricao.nome %> não tem reserva para <%= @reserva.nome %></reserva_nome>
+          <reserva_nome_curto>Não foram encontradas reservas</reserva_nome_curto>
+          <reserva_ementa></reserva_ementa>
+          <reserva_custo>0</reserva_custo>
+          <reserva_data_consumo></reserva_data_consumo>
+          <reserva_tipo_reserva_id>0</reserva_tipo_reserva_id>
+          <reserva_tipo_reserva_nome><%= @reserva.nome %></reserva_tipo_reserva_nome>
+          <reserva_tipo_reserva_icon>cancel.png</reserva_tipo_reserva_icon>
+          <reserva_estadoactual_id>0</reserva_estadoactual_id>
+          <reserva_estadoactual_nome>Sem Reserva</reserva_estadoactual_nome>
+          <reserva_estadoactual_descricao>A inscrição de <%= @inscricao.nome %> não tem reservas para o tipo de reserva escolhido</reserva_estadoactual_descricao>
+          <reserva_estadoactual_data_inicio><%= DateTime.now.strftime("%d-%m-%Y") %></reserva_estadoactual_data_inicio>
+          <reserva_estadoactual_icon>cancel.png</reserva_estadoactual_icon>
+          <reserva_estadoactual_isfinal>0</reserva_estadoactual_isfinal>
+          <reserva_estadoactual_iswarning>0</reserva_estadoactual_iswarning>
+          <reserva_estadoactual_backcolor>#F08080</reserva_estadoactual_backcolor>
+      </reserva>
+    </reservas>
+  <% else %>
+    <reservas totalCount="0">
+      <totalCount>0</totalCount>
+    </reservas>
+  <% end %>
+<% end %>

@@ -1,0 +1,61 @@
+10
+
+dir
+744
+http://pedromarques.svn.beanstalkapp.com/project/trunk/vendor/plugins
+http://pedromarques.svn.beanstalkapp.com/project
+
+
+
+2009-09-29T20:44:05.566092Z
+481
+pedromarques
+has-props
+has-prop-mods
+
+svn:externals
+
+
+
+
+
+
+
+
+
+
+d91fc93e-853d-4985-93ed-3d75665aff2a
+
+action_mailer_tls
+dir
+
+action_mailer_tls7
+dir
+
+acts_as_state_machine
+dir
+
+barcode_generator
+dir
+
+hoptoad_notifier
+dir
+
+newrelic_rpm
+dir
+
+princely
+dir
+
+rails-authorization-plugin
+dir
+
+restful_authentication
+dir
+
+spreadsheet_on_rails
+dir
+
+yaml_db
+dir
+

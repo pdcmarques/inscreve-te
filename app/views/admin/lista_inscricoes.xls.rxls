@@ -1,0 +1,158 @@
+
+@sheet1 = workbook.create_worksheet
+@sheet1.name = @event.nome_curto+" - RESUMO"
+
+header = Spreadsheet::Format.new :weight => :bold, :size => 16
+title = Spreadsheet::Format.new :weight => :bold, :size => 13
+body = Spreadsheet::Format.new :size => 11, :border=>[false, false, false, true], :border_color=>"gray"
+money = Spreadsheet::Format.new :size => 11, :border=>[false, false, false, true], :border_color=>"gray"
+money.number_format = Spreadsheet::Excel::Internals::BUILTIN_FORMATS[7]
+
+
+@sheet1.row(0).insert 1, @event.nome.upcase+" - LISTA DE INSCRIÇÕES"
+@sheet1.row(0).set_format(1, header)
+@sheet1.column(0).width = 10
+
+@sheet1.row(1).insert 1, "Lista resumida gerada em "+DateTime.now.strftime("%d-%m-%Y às %H:%M")
+
+@sheet1.row(3).insert 0, "N"
+@sheet1.row(3).set_format(0, title)
+@sheet1.column(0).width = 4
+i = 1
+grupos_campos = EventosGruposCampos.find_all_by_evento_id(@event.id, :order=>"`eventos_grupos_campos`.order")
+grupos_campos.each do |evento_grupo|
+     grupo = evento_grupo.grupo_campos
+     campos = Campo.find_all_by_grupo_campos_id(grupo.id, :order=>"`campos`.order")
+     campos.each do |campo|
+          if(campo.mostra_tabela || campo.is_data_nascimento)
+            if(campo.is_data_nascimento)
+               @sheet1.row(3).insert i, "Idade"
+               @sheet1.column(i).width = "Idade".size+2
+            else
+               @sheet1.row(3).insert i, campo.label
+               @sheet1.column(i).width = campo.label.size
+               if(campo.is_nome)
+                  @sheet1.column(i).width = 55
+               end
+            end
+            @sheet1.row(3).set_format(i, title)
+            i = i+1
+          end
+     end
+end
+if(@current_user != nil && ((@current_user.profile == "ADMIN") || ((@current_user.profile == "EVENTO_FACTURACAO_LEITURA" || @current_user.profile == "EVENTO_FACTURACAO_ESCRITA") && @current_user.evento_id == @event.id)))
+     @sheet1.row(3).insert i, "Preço"
+     @sheet1.row(3).set_format(i, title)
+     @sheet1.row(3).insert i+1, "Pago"
+     @sheet1.row(3).set_format(i+1, title)
+     @sheet1.row(3).insert i+2, "Dívida"
+     @sheet1.row(3).set_format(i+2, title)
+end
+
+
+j = 1
+@inscricoes.each do |inscricao|
+   @sheet1.row(3+j).insert 0, inscricao.numero
+   @sheet1.row(3+j).set_format(0, body)
+   i = 1
+   grupos_campos = EventosGruposCampos.find_all_by_evento_id(@event.id, :order=>"`eventos_grupos_campos`.order")
+   grupos_campos.each do |evento_grupo|
+     grupo = evento_grupo.grupo_campos
+     campos = Campo.find_all_by_grupo_campos_id(grupo.id, :order=>"`campos`.order")
+     campos.each do |campo|
+         valor = inscricao.valor_campo_string(campo.id)
+         if(campo.tipo == 'lov')
+            valor = inscricao.resolve_lov(campo.id)
+         end
+         if(campo.is_data_nascimento)
+            valor = inscricao.idade
+         end
+         if(campo.mostra_tabela || campo.is_data_nascimento)
+            @sheet1.row(3+j).insert i, valor
+            @sheet1.row(3+j).set_format(i, body)
+            if(@sheet1.column(i).width < valor.size)
+               @sheet1.column(i).width = valor.size
+            end
+            i = i+1
+         end
+      end
+   end
+   j = j+1
+   if(@current_user != nil && ((@current_user.profile == "ADMIN") || ((@current_user.profile == "EVENTO_FACTURACAO_LEITURA" || @current_user.profile == "EVENTO_FACTURACAO_ESCRITA") && @current_user.evento_id == @event.id)))
+     @sheet1.row(2+j).insert i, inscricao.preco
+     @sheet1.row(2+j).set_format(i, money)
+     @sheet1.row(2+j).insert i+1, inscricao.total_pago
+     @sheet1.row(2+j).set_format(i+1, money)
+     @sheet1.row(2+j).insert i+2, inscricao.preco-inscricao.total_pago
+     @sheet1.row(2+j).set_format(i+2, money)
+   end
+end
+
+
+@sheet2 = workbook.create_worksheet
+@sheet2.name = @event.nome_curto+" - DETALHE"
+@sheet2.row(0).insert 1, @event.nome.upcase+" - LISTA DE INSCRIÇÕES"
+@sheet2.row(0).set_format(1, header)
+
+@sheet2.row(1).insert 1, "Lista detalhada gerada em "+DateTime.now.strftime("%d-%m-%Y às %H:%M")
+
+@sheet2.row(3).insert 0, "N"
+@sheet2.row(3).set_format(0, title)
+@sheet2.column(0).width = 4
+i = 1
+   grupos_campos = EventosGruposCampos.find_all_by_evento_id(@event.id, :order=>"`eventos_grupos_campos`.order")
+   grupos_campos.each do |evento_grupo|
+     grupo = evento_grupo.grupo_campos
+     campos = Campo.find_all_by_grupo_campos_id(grupo.id, :order=>"`campos`.order")
+     campos.each do |campo|
+         if(campo.is_data_nascimento)
+            @sheet2.row(3).insert i, "Idade"
+            @sheet2.column(i).width = "Idade".size+2
+            @sheet2.row(3).set_format(i, title)
+            i = i+1
+            @sheet2.row(3).insert i, "Data Nascimento"
+            @sheet2.column(i).width = "Data Nascimento".size+2
+         else
+            @sheet2.row(3).insert i, campo.label
+            @sheet2.column(i).width = campo.label.size
+         end
+         @sheet2.row(3).set_format(i, title)
+         i = i+1
+     end
+end
+
+j = 1
+@inscricoes.each do |inscricao|
+   @sheet2.row(3+j).insert 0, inscricao.numero
+   @sheet2.row(3+j).set_format(0, body)
+   i = 1
+   grupos_campos = EventosGruposCampos.find_all_by_evento_id(@event.id, :order=>"`eventos_grupos_campos`.order")
+   grupos_campos.each do |evento_grupo|
+     grupo = evento_grupo.grupo_campos
+     campos = Campo.find_all_by_grupo_campos_id(grupo.id, :order=>"`campos`.order")
+     campos.each do |campo|
+         valor = inscricao.valor_campo_string(campo.id)
+         if(campo.tipo == 'lov')
+            valor = inscricao.resolve_lov(campo.id)
+         end
+         if(campo.is_data_nascimento)
+            valor = inscricao.idade
+            @sheet2.row(3+j).insert i, valor
+            @sheet2.row(3+j).set_format(i, body)
+            if(@sheet2.column(i).width < valor.size)
+               @sheet2.column(i).width = valor.size
+            end
+            i = i+1
+
+            valor = inscricao.valor_campo_string(campo.id)           
+         end
+         @sheet2.row(3+j).insert i, valor
+         @sheet2.row(3+j).set_format(i, body)
+         if(@sheet2.column(i).width < valor.size)
+            @sheet2.column(i).width = valor.size
+         end
+         i = i+1
+      end
+   end
+   j = j+1
+end

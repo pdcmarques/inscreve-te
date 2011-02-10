@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/project/!svn/ver/360/trunk/app/views/recepcao
+END
+detalhe.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/137/trunk/app/views/recepcao/detalhe.html.erb
+END
+_inscricao_listitem.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/project/!svn/ver/273/trunk/app/views/recepcao/_inscricao_listitem.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/131/trunk/app/views/recepcao/index.html.erb
+END
+lista_inscricoes.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/273/trunk/app/views/recepcao/lista_inscricoes.html.erb
+END
+.DS_Store
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/360/trunk/app/views/recepcao/.DS_Store
+END

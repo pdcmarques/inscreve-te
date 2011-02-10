@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>26-07-2009 22:06</DATA_HORA>
+    <TERMINAL>0018542405-ALGES</TERMINAL>
+    <REFERENCIA>853117331</REFERENCIA>
+    <VALOR>103</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>102.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

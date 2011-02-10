@@ -1,0 +1,14 @@
+<br/>
+<h2>Lista de Igrejas</h2>
+<br/>
+<table class="user_detail_table">
+  <tr class="header">
+      <th align="left">Nome</th>
+      <th align="center">Delegados</th>
+      <th align="center">Acompanhantes</th>
+      <th align="center">Nº Inscritos</th>
+      <th align="center">Total</th>
+      <th></th>
+  </tr>
+  <%= render(:partial=>"igreja_listitem", :collection=>@igrejas) %>
+</table>

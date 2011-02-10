@@ -1,0 +1,130 @@
+﻿<inscricoes totalCount="<%= @totalCount %>">
+  <totalCount><%= @totalCount %></totalCount>
+  <% @inscricoes.each do |inscricao| %>
+    <inscricao>
+      <id><%= inscricao.id %></id>
+      <numero><%= inscricao.numero %></numero>
+      <% @event.grupo_camposs.each do |grupo| %>
+        <% grupo.campos.each do |campo| %>
+              <% if(campo.tipo.upcase == "LOV") %>
+                <% if(campo.lista_valores.class_name != nil && campo.lista_valores.class_name != "") %>
+                  <% @columns = eval(campo.lista_valores.class_name+".columns") %>
+                  <% @valor = eval(campo.lista_valores.class_name+".find_by_id(\""+inscricao.valor_campo_string(campo.id)+"\")") %>
+                  <% if(@valor != nil) %>
+                      <<%= campo.lista_valores.class_name %>_class>
+                          <% @columns.each do |field| %>
+                              <<%=field.name%>><%= eval("@valor."+field.name) %></<%=field.name%>>
+                          <%end%>
+                      </<%= campo.lista_valores.class_name %>_class>
+                  <% end %>
+                <% else %>
+                  <% @columns = ['valor', 'descricao'] %>
+                  <% @valor = Valor.find_by_valor(inscricao.valor_campo(campo.id), :conditions=>"lista_valores_id = "+campo.lista_valores_id.to_s) %>
+                  <% if(@valor != nil) %>
+                    <<%= campo.nome %>_val>
+                        <% @columns.each do |field| %>
+                            <<%=field%>><%= eval("@valor."+field) %></<%=field%>>
+                        <%end%>
+                    </<%= campo.nome %>_val>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <<%= campo.nome%>><%= inscricao.valor_campo_string(campo.id) %></<%=campo.nome%>>
+                <% if(campo.nome.upcase == "DATANASCIMENTO" || campo.is_data_nascimento) %>
+                  <idadeCalculated><%= inscricao.idade %></idadeCalculated>
+                <% end %>
+              <% end %>
+        <% end %>
+      <% end %>
+      <% if(@current_user != nil && ((@current_user.profile == "ADMIN") || ((@current_user.profile == "EVENTO_FACTURACAO_LEITURA" || @current_user.profile == "EVENTO_FACTURACAO_ESCRITA") && @current_user.evento_id == @event.id))) %>
+        <pagamentos>
+          <% inscricao.pagamentos.each do |pagamento| %>
+            <pagamento inscricaoId="<%= inscricao.id %>">
+              <id><%= pagamento.id %></id>
+              <data><%= pagamento.data.strftime("%d-%m-%Y") %></data>
+              <valor><%= pagamento.valor %></valor>
+              <observacoes><%= pagamento.observacoes %></observacoes>
+            </pagamento>
+          <% end %>
+        </pagamentos>
+      <% end %>
+      <% if(@current_user != nil && ((@current_user.profile == "ADMIN") || ((@current_user.profile == "EVENTO_LEITURA" || @current_user.profile == "EVENTO_ESCRITA" || @current_user.profile == "EVENTO_FACTURACAO_LEITURA" || @current_user.profile == "EVENTO_FACTURACAO_ESCRITA") && @current_user.evento_id == @event.id))) %>
+        <numero_recomendacoes><%= inscricao.recomendacaos.count %></numero_recomendacoes>
+        <recomendacoes>
+          <% inscricao.recomendacaos.each do |recomendacao| %>
+            <recomendacao inscricaoId="<%= inscricao.id %>">
+              <id><%= recomendacao.id %></id>
+              <data><%= recomendacao.created_at.strftime("%d-%m-%Y") %></data>
+              <user><%= recomendacao.user.login %></user>
+              <assinatura><%= recomendacao.assinatura %></assinatura>
+            </recomendacao>
+          <% end %>
+        </recomendacoes>
+      <% end %>
+      <insc_created_at><%= inscricao.created_at.strftime("%d-%m-%Y") %></insc_created_at>
+      <user><%= inscricao.user.login %></user>
+      <user_profile><%= inscricao.user.profile %></user_profile>
+      <badge_printing_string><![CDATA[http://www.inscreve-te.com.pt/AB/COMACEP10/admin/report_reservas.pdf?ids=<%= inscricao.id %>]]></badge_printing_string>
+      <% estadopagamento = 0 %>
+      <reservas>
+        <% inscricao.inscricao_reservas.each do |reserva| %> 
+          <reserva id="<%=reserva.id%>" inscricao_id="<%= inscricao.id %>" reserva_id="<%= reserva.reserva_id %>" tipo_reserva_id="<%= reserva.reserva.tipo_reserva_id %>">
+            <id><%= reserva.id %></id>
+            <reserva_id><%= reserva.reserva_id %></reserva_id>
+            <reserva_nome><%= reserva.reserva.nome %></reserva_nome>
+            <reserva_nome_curto><%= reserva.reserva.nome_curto %></reserva_nome_curto>
+            <reserva_ementa><%= reserva.reserva.ementa %></reserva_ementa>
+            <reserva_custo><%= reserva.reserva.cost %></reserva_custo>
+            <% if(reserva.reserva.data_consumo != nil) %>
+              <reserva_data_consumo><%= reserva.reserva.data_consumo.strftime("%d-%m-%Y") %></reserva_data_consumo>
+            <% else %>
+              <reserva_data_consumo></reserva_data_consumo> 
+            <% end %>
+            <reserva_tipo_reserva_id><%= reserva.reserva.tipo_reserva_id%></reserva_tipo_reserva_id>
+            <reserva_tipo_reserva_nome><%= reserva.reserva.tipo_reserva.nome%></reserva_tipo_reserva_nome>
+            <reserva_tipo_reserva_icon><%= reserva.reserva.tipo_reserva.icone%></reserva_tipo_reserva_icon>
+            <% reserva.reserva_estados.each do |estado| %>
+              <% if(estado.data_fim == nil) %>
+                <reserva_estadoactual_id><%= estado.id%></reserva_estadoactual_id>
+                <% if((estadopagamento == 3 || estadopagamento == 0) && (estado.estado_reserva.id == 1 || estado.estado_reserva.id == 4)) %>
+                  <% estadopagamento = 3 %> <!-- Não pago -->
+                <% end %>
+                <% if(estadopagamento == 1 && (estado.id == 1 || estado.estado_reserva.id == 4)) %>
+                  <% estadopagamento = 2 %> <!-- Parcialmente pago -->
+                <% end %>
+                <% if((estadopagamento == 1 || estadopagamento == 0) && (estado.estado_reserva.id == 2)) %>
+                  <% estadopagamento = 1 %> <!-- Totalmente pago -->
+                <% end %>
+                <reserva_estadoactual_nome><%= estado.estado_reserva.nome%></reserva_estadoactual_nome>
+                <reserva_estadoactual_descricao><%= estado.estado_reserva.descricao%></reserva_estadoactual_descricao>
+                <reserva_estadoactual_data_inicio><%= estado.data_inicio.strftime("%d-%m-%Y") %></reserva_estadoactual_data_inicio>
+                <reserva_estadoactual_icon><%= estado.estado_reserva.icon %></reserva_estadoactual_icon>
+                <reserva_estadoactual_isfinal><%= estado.estado_reserva.final_state %></reserva_estadoactual_isfinal>
+                <reserva_estadoactual_iswarning><%= estado.estado_reserva.warning_state %></reserva_estadoactual_iswarning>
+                <% if(estado.estado_reserva.warning_state) %>
+                  <reserva_estadoactual_backcolor>#FFF68F</reserva_estadoactual_backcolor>
+                  <reserva_aviso></reserva_aviso>
+                <% else %>
+                  <% if(estado.estado_reserva.final_state) %>
+                    <reserva_estadoactual_backcolor>#EEE9E9</reserva_estadoactual_backcolor>
+                    <reserva_aviso></reserva_aviso>
+                  <% else %>
+                    <reserva_estadoactual_backcolor>#FFFFFF</reserva_estadoactual_backcolor>
+                    <reserva_aviso></reserva_aviso>
+                  <% end %>
+                <% end %>
+                <% break %>
+              <% end %>
+            <% end %>
+          </reserva>
+        <% end %>
+      </reservas>
+      <estadopagamento>
+        <%= estadopagamento %>
+      </estadopagamento>
+      <preco><%= inscricao.preco %></preco>
+      <total_descontos><%= inscricao.total_descontos %></total_descontos>
+      <pago><%= inscricao.total_pago %></pago>
+    </inscricao>
+  <% end %>
+</inscricoes>

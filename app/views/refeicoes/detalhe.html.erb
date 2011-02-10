@@ -1,0 +1,125 @@
+﻿
+<script>
+function check_sumbit(){
+  el = document.getElementById("codigo");
+  val = el.value;
+  if(val.length == 6){
+    form = document.getElementById("process");
+    form.submit();
+  }
+}
+</script>
+
+<style>
+td.active {
+  color: white;
+  background-color: green;
+  border: solid 5px #333333;
+}
+
+td.header {
+  color: white;
+  background-color: #333333;
+  font-size: 20px;
+  font-family: "impact"
+}
+
+td.counter {
+  color: #333333;
+  border-bottom: solid 1px #333333;
+  border-right: solid 1px #999999;
+  font-size: 20px;
+  font-family: "impact"
+}
+
+</style>
+<table width="100%">
+  <tr>
+      <td width="80%">
+        <table width="100%" cellpadding="4px">
+          <tr>
+            <td class="header"></td>
+            <td align="center" class="header">Reservas</td>
+            <td align="center" class="header">Servidas</td>
+            <td align="center" class="header">Por Servir</td>
+          </tr>
+          <% @ementas.each do |ementa|
+                reservas = InscricaoReserva.count(:conditions => "reserva_id="+ementa.reserva_id.to_s)
+                servidas = RefeicaoServida.count(:conditions=>"refeicao_id="+ementa.id.to_s)
+          %>
+          <tr>
+            <td align="center" class="header"><%= ementa.tipo_refeicao %></td>
+            <td align="center" class="counter"><%= reservas %></td>
+            <td align="center" class="counter"><%= servidas %></td>
+            <td align="center" class="counter"><%= reservas-servidas %></td>
+          </tr>
+          <% end %>
+        </table>
+      </td>
+      <td align="right" valign="top">
+        <% form_tag "/"+@entidade.sigla+"/"+@event.codigo+"/refeicoes/processar/?num_ref="+@refeicao_num.to_s, :id=>"process" do -%>
+          <%= text_field_tag :codigo, '', :size=>"11", :onkeyup => "check_sumbit()", :autocomplete=>"off"%>  <%= submit_tag 'OK' %>
+        <% end %>
+      </td>
+    </tr>
+</table>
+<br /><br />
+<% if @inscricao != nil %>
+  <table width="100%" cellpadding="10px" >
+    <tr>
+      <td colspan="3">
+        <div style="font-family:impact; font-size:35px; color:#333333" align="center"><%=@inscricao.nome%></div>
+      </td>
+    </tr>
+    <tr><td heigth="20px">&nbsp;</td></tr>
+    <tr bgcolor="#efefef" style="color:#000000">
+      <td align="center">6ª-Feira - 09/Out</td>
+      <td align="center">Sábado - 10/Out</td>
+      <td align="center">Domingo - 11/Out</td>
+    </tr>
+    <tr><td heigth="20px">&nbsp;</td></tr>
+    <tr>
+      <td width="33%" class="<%= if(@refeicao_num == 1) then "active" end %>">
+        <div style="font-family:impact; font-size:50px;" align="center"><%=@refeicoes_ui[1][1]%></div>
+        <div style="font-family:impact; font-size:15px" align="center"><%=@refeicoes_ui[1][2]%></div>
+      </td>
+      <td width="33%" class="<%= if(@refeicao_num == 4) then "active" end %>">
+        <div style="font-family:impact; font-size:50px;" align="center"><%=@refeicoes_ui[4][1]%></div>
+        <div style="font-family:impact; font-size:15px" align="center"><%=@refeicoes_ui[4][2]%></div>
+      </td>
+      <td width="33%" class="<%= if(@refeicao_num == 7) then "active" end %>">
+        <div style="font-family:impact; font-size:50px;" align="center"><%=@refeicoes_ui[7][1]%></div>
+        <div style="font-family:impact; font-size:15px" align="center"><%=@refeicoes_ui[7][2]%></div>
+      </td>
+    </tr>
+    <tr><td heigth="20px">&nbsp;</td></tr>
+    <tr>
+      <td width="33%" class="<%= if(@refeicao_num == 2) then "active" end %>">
+        <div style="font-family:impact; font-size:50px;" align="center"><%=@refeicoes_ui[2][1]%></div>
+        <div style="font-family:impact; font-size:15px" align="center"><%=@refeicoes_ui[2][2]%></div>
+      </td>
+      <td width="33%" class="<%= if(@refeicao_num == 5) then "active" end %>">
+        <div style="font-family:impact; font-size:50px;" align="center"><%=@refeicoes_ui[5][1]%></div>
+        <div style="font-family:impact; font-size:15px" align="center"><%=@refeicoes_ui[5][2]%></div>
+      </td>
+      <td width="33%" class="<%= if(@refeicao_num == 8) then "active" end %>">
+        <div style="font-family:impact; font-size:50px;" align="center"><%=@refeicoes_ui[8][1]%></div>
+        <div style="font-family:impact; font-size:15px" align="center"><%=@refeicoes_ui[8][2]%></div>
+      </td>
+    </tr>
+    <tr><td heigth="20px">&nbsp;</td></tr>
+    <tr>
+      <td width="33%" class="<%= if(@refeicao_num == 3) then "active" end %>">
+        <div style="font-family:impact; font-size:50px;" align="center"><%=@refeicoes_ui[3][1]%></div>
+        <div style="font-family:impact; font-size:15px" align="center"><%=@refeicoes_ui[3][2]%></div>
+      </td>
+      <td width="33%" class="<%= if(@refeicao_num == 6) then "active" end %>">
+        <div style="font-family:impact; font-size:50px;" align="center"><%=@refeicoes_ui[6][1]%></div>
+        <div style="font-family:impact; font-size:15px" align="center"><%=@refeicoes_ui[6][2]%></div>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+  <br/><br/><br/>
+<% end %>
+

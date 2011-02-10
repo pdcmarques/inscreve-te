@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>25-11-2009 09:57</DATA_HORA>
+    <TERMINAL>0045144103-Maia</TERMINAL>
+    <REFERENCIA>771151270</REFERENCIA>
+    <VALOR>40</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>39.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

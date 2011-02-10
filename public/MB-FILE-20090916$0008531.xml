@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>16-09-2009 12:49</DATA_HORA>
+    <TERMINAL>0000003241-MONTEPIO</TERMINAL>
+    <REFERENCIA>853104661</REFERENCIA>
+    <VALOR>39.9</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>39.05</VALORLIQUIDO>
+  </pagamentoMB>
+  <pagamentoMB>
+    <DATA_HORA>16-09-2009 17:59</DATA_HORA>
+    <TERMINAL>0018504802-Cruz Quebrada</TERMINAL>
+    <REFERENCIA>853100444</REFERENCIA>
+    <VALOR>84</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>83.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

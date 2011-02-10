@@ -1,0 +1,304 @@
+body {
+	background-color: #fff;
+	padding: 0;
+	margin: 0;
+}
+
+.clear {
+	clear: both;
+	height: 0;
+}
+
+br.clear {
+	clear: both;
+	height: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+#container {
+ 	margin: 0;
+	width: 194mm;
+}
+
+#factuurinhoud {
+ 	position: absolute;
+	left: 2mm;
+	top: 60mm;
+}
+
+#logo {
+	border: 0px;
+}
+
+#afzender {
+	color: #000;
+	font: italic 7pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	margin: 2mm 0 2mm 0mm;
+	position: absolute;
+	left: 96mm;
+	top: 30mm;
+}
+
+#geadresseerde {
+	border: 1px dotted #bababa;
+	width: 92mm;
+	height: 16mm;
+	padding: 10px;
+	position: absolute;
+	left: 96mm;
+	top: 36mm;
+}
+
+#geadresseerde p {
+	color: #000;
+	font: 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	margin: 0;
+	padding: 0;
+}
+
+#geadresseerde p.firmanaam {
+	color: #000;
+	font: bold 10pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+}
+
+
+#factuur {
+	font: bold 14pt/20pt  'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	color: #666;
+	letter-spacing: 2px;
+	display: block;
+	border-bottom: 1px dotted #666;
+	border-top: 1px dotted #666;
+	margin: 15mm 0 5mm 0;
+}
+
+#topitems {
+	background-color: #eee;
+	width: 196mm;
+}
+
+.titel1, .titel2, .titel3 {
+	font: bold 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	color: #5d5d5d;
+	border-top: 1px dotted #666;
+	border-bottom: 1px dotted #666;
+	background: #ccc;
+	padding: 5px;
+	float: left;
+}
+
+.titel1 {
+	border-left: 1px dotted #666;
+	width: 62mm;
+}
+
+.titel2 {
+	border-left: 1px dotted #666;
+	border-right: 1px dotted #666;
+	width: 62mm;
+}
+
+.titel3 {
+	border-right: 1px dotted #666;
+	width: 63mm;
+}
+
+.titelitem {
+	font: bold 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	background: #eee;
+	padding: 2px 5px 5px 5px;
+	margin: 1px 0 0 0;
+	width: 62mm;
+	float: left;
+}
+
+.titelitemlast {
+	font: bold 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	background: #eee;
+	padding: 2px 5px 5px 5px;
+	margin: 1px 0 0 0;
+	width: 64mm;
+	float: left;
+}
+
+#omschrijvingtitel, #prijstitel, #aantaltitel, #subtotaaltitel, #btwratetitel {
+	font: bold 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	border-top: 1px dotted #666;
+	border-bottom: 1px dotted #666;
+	background: #eee;
+	padding: 5px;
+	margin-top: 5mm;
+	float: left;
+}
+
+#omschrijvingtitel {
+	border-left: 1px dotted #666;
+	width: 110mm;
+}
+
+#prijstitel {
+	border-left: 1px dotted #666;
+	width: 25mm;
+}
+
+#aantaltitel {
+	border-left: 1px dotted #666;
+	width: 25mm;
+}
+
+#subtotaaltitel {
+	border-left: 1px dotted #666;
+	border-right: 1px dotted #666;
+	width: 24mm;
+}
+
+#btwratetitel {
+	border-left: 1px dotted #666;
+	border-right: 1px dotted #666;
+	width: 24mm;
+}
+
+.factuurlijn {
+	width: 196mm;
+	border-bottom: 1px solid #ccc;
+}
+
+.omschrijving {
+	padding: 0;
+	width: 110mm;
+	float: left;
+}
+
+.omschrijving p {
+	font: bold 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	padding: 0 0 0 2px;
+}
+
+.small {
+	font: bold 7pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+}
+
+
+.prijs, .aantal, .subtotaal, .btwrate {
+	width: 27mm;
+	float: left;
+	text-align: right;
+}
+
+.prijs p, .aantal p, .subtotaal p, .btwrate p {
+	font: bold 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	padding: 0 0 0 2px;
+}
+
+#footer {
+	margin: 20px 0 0 7mm;
+	width: 196mm;
+	position: absolute;
+	left: 0;
+	top: 225mm;
+}
+
+#footer div.text {
+	padding-top: 10px;
+	/*position: relative;
+	top: -37mm;*/
+	text-align: center;
+	font: bold 7pt/9pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	border-top: 1px dotted #666;
+}
+
+#totalen {
+	text-align: left;
+	margin: 0 0 20px 120mm;
+	/*position: relative;
+	top: -37mm;*/
+	padding: 1mm;
+	background: #eee;
+	width: 67mm;
+	height: 111px;
+	border: 1px solid #ccc;
+}
+
+#barcode {
+	text-align: center;
+	margin: 0 0 20px 5mm;
+	position: absolute;
+	/*top: -37mm;*/
+	padding: 1mm;
+	background: #eee;
+	width: 67mm;
+	height: 111px;
+	border: 1px solid #ccc;
+}
+
+#totalen div.titel {
+	font: bold 11pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	margin: 3px 0;
+	color: #666;
+	letter-spacing: 4px;
+	text-align: center;
+}
+
+#totalenleft {
+	width: 36mm;
+	height: 4mm;
+	float: left;
+	margin: 0;
+}
+
+#totalenright {
+	width: 30mm;
+	height: 4mm;
+	float: left;
+	clear: right;
+}
+
+.totleft {
+	font: bold 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	text-align: right;
+	width: 125px;
+	height: 4mm;
+	display: block;	
+	border: 1px dotted #999;
+	color: #000;
+	background: #fff;
+	padding: 1px 5px 1px 1px;
+	margin: 2px 0;
+}
+
+.totright {
+	font: bold 9pt/11pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	text-align: right;
+	width: 109px;
+	height: 4mm;
+	display: block;	
+	border: 1px dotted #999;
+	color: #000;
+	background: #fff;
+	padding: 1px 5px 1px 1px;
+	margin: 2px 0;
+}
+
+.tebetalenright {
+	font: bold 12pt/16pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	text-align: right;
+	width: 109px;
+	height: 6mm;
+	display: block;	
+	border: 1px dotted #999;
+	color: #000;
+	background: #fff;
+	padding: 1px 5px 1px 1px;
+}
+
+.tebetalenleft {
+	font: bold 11pt/16pt 'Lucida Grande', "Lucida Sans", "Lucida Sans Unicode";
+	text-align: right;
+	width: 125px;
+	height: 6mm;
+	display: block;	
+	border: 1px dotted #999;
+	color: #000;
+	background: #fff;
+	padding: 1px 5px 1px 1px;
+}

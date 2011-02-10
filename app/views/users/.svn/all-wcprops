@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/project/!svn/ver/620/trunk/app/views/users
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/620/trunk/app/views/users/new.html.erb
+END
+reset_password.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/452/trunk/app/views/users/reset_password.html.erb
+END
+reset_password.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/430/trunk/app/views/users/reset_password.xml.erb
+END
+create.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/430/trunk/app/views/users/create.xml.erb
+END

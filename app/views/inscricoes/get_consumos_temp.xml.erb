@@ -1,0 +1,12 @@
+<% if(params[:callback] != nil && params[:callback] != '') %><%= params[:callback] %>('<message success="<%= @inscricao.errors.length == 0%>"><consumos><% @consumos.each do |consumo| %><consumo><produto><%= consumo.produto.descricao %></produto><preco><%= consumo.preco %></preco></consumo><% end %></consumos></message>');<% else %><?xml version="1.0" encoding="UTF-8"?>
+<message success="<%= @inscricao.errors.length == 0%>">
+    <consumos totalCount="<%= @consumos.count %>">
+        <% @consumos.each do |consumo| %>
+            <consumo>
+                <produto><%= consumo.produto.descricao %></produto>
+                <preco><%= consumo.preco %></preco>
+            </consumo>
+        <% end %>
+    </consumos>
+</message>
+<% end %>

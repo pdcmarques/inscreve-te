@@ -1,0 +1,146 @@
+<h1>Nova <span>Inscrição</span></h1>
+<span id="slogan2">78ª Assembleia Geral da CBP</span>
+<br/>
+<div id="container">
+  <% if flash[:notice] != nil %>
+    <p style="color:red">
+      <%=flash[:notice]%>
+    <p>
+  <% end %>
+  
+  <%= error_messages_for :user %>
+  <br /><br /><br />
+  <% form_for :inscricao, :html=>{:class=>"niceform"}, :url => {:controller=>"inscricoes", :action=>"update", :id=>@inscricao.id} do |f| -%>
+  <fieldset>
+      <legend>Dados Pessoais</legend>
+      
+      <dl>
+        <dt><label for="nome">Nome:</label></dt>
+        <dd><%= f.text_field :nome, :maxlength=>"120", :size=>"59"%></dd>
+      </dl>
+      <dl>
+        <dt><label for="nome_cracha">Nome Abreviado:</label></dt>
+        <dd><%= f.text_field :nome_cracha, :maxlength=>"20", :size=>"25"%>&nbsp;(Máximo 20 letras)</dd>
+      </dl>
+      <dl>
+        <dt><label for="idade">Idade:</label></dt>
+        <dd><%= f.text_field :idade, :maxlength=>"2", :size=>"2"%>&nbsp;Anos</dd>
+      </dl>
+      <dl>
+        <dt><label for="morada">Morada:</label></dt>
+        <dd><%= f.text_field :morada, :maxlength=>"200", :size=>"59"%></dd>
+      </dl>
+      <dl>
+        <dt><label for="codigo_postal">Código Postal:</label></dt>
+        <dd><%= f.text_field :codigo_postal, :maxlength=>"8", :size=>"8"%>
+      </dl>
+      <dl>
+        <dt><label for="localidade">Localidade:</label></dt>
+        <dd><%= f.text_field :localidade, :maxlength=>"200", :size=>"59"%></dd>
+      </dl>
+  </fieldset>
+  <fieldset>
+      <legend>Igreja e Tipo de Inscrição</legend>
+      <dl>
+        <dt><label for="color">Igreja:</label></dt>
+          <dd>
+            <select size="1" id="inscricao_igreja_id" name="inscricao[igreja_id]" style="width:300px">
+              <%= options_from_collection_for_select Igreja.find(:all), :id, :nome, @inscricao.igreja.id  %>
+            </select>
+          </dd>
+        </dl>
+      <dl>
+        <dt><label for="color">Estatuto:</label></dt>
+          <dd>
+            <select size="1" id="inscricao_estatuto" name="inscricao[estatuto_id]"  style="width:300px" >
+              <%= options_for_select(Inscricao::ESTATUTO_OPCOES, @inscricao.estatuto.id) %>
+            </select>
+          </dd>
+        </dl>
+  </fieldset>
+  <fieldset>
+      <legend>Refeições</legend>
+      <dl>
+        <dt><label for="color">Almoço de 2/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao1" name="inscricao[refeicao1_id]" style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO1_OPCOES, @inscricao.refeicao1_id) %>
+            </select>
+          </dd>
+        </dl>
+      <dl>
+        <dt><label for="color">Jantar de 2/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao2" name="inscricao[refeicao2_id]"  style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO2_OPCOES, @inscricao.refeicao2_id) %>
+            </select>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="color">Almoço de 3/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao3" name="inscricao[refeicao3_id]" style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO3_OPCOES, @inscricao.refeicao3_id) %>
+            </select>
+          </dd>
+        </dl>
+      <dl>
+        <dt><label for="color">Jantar de 3/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao4" name="inscricao[refeicao4_id]"  style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO4_OPCOES, @inscricao.refeicao4_id) %>
+            </select>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="color">Almoço de 4/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_refeicao5" name="inscricao[refeicao5_id]"  style="width:300px">
+              <%= options_for_select(Inscricao::REFEICAO5_OPCOES, @inscricao.refeicao5_id) %>
+            </select>
+          </dd>
+        </dl>
+  </fieldset>
+  <fieldset>
+      <legend>Alojamento</legend>
+      <dl>
+        <dt><label for="inscricao_noite1">Noite de 2 para 3/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_noite1" name="inscricao[noite1_id]" style="width:400px">
+              <%= options_for_select(Inscricao::ALOJAMENTO_OPCOES, @inscricao.noite1_id) %>
+            </select>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="inscricao_noite2">Noite de 3 para 4/Abril</label></dt>
+          <dd>
+            <select size="1" id="inscricao_noite2" name="inscricao[noite2_id]" style="width:400px">
+              <%= options_for_select(Inscricao::ALOJAMENTO_OPCOES, @inscricao.noite2_id) %>
+            </select>
+          </dd>
+        </dl>
+        <% if (@current_user != nil && @current_user.profile == "ADMIN") %>
+        <dl>
+        <dt><label for="inscricao_noite2">Casa</label></dt>
+          <dd><%= f.text_field :tipo_alojamento %></dd>
+        </dl>
+        <dl>
+        <dt><label for="inscricao_noite2">Quarto</label></dt>
+          <dd><%= f.text_field :local_alojamento %></dd>
+        </dl>
+        <% end %>
+  </fieldset>
+  <fieldset>
+        <legend>Observações</legend>
+        <dl>
+          <dt><label for="observacoes">Observações</label></dt>
+          <dd><%= f.text_area :observacoes, :rows=>9, :cols=>58%></dd>
+        <dl>
+      <dl>
+  </fieldset>
+  <fieldset class="action">
+    <%= submit_tag 'Enviar Alterações' %>
+  </fieldset>
+  <% end %>
+  
+  

@@ -1,0 +1,22 @@
+[
+<% @inscricoes.each do |inscricao| %>
+    {
+        id: <%= inscricao.id %>,
+        produto: "<%= inscricao.nome %>",
+        uiProvider: 'col',
+        iconCls: 'consumo-inscricao',
+        children: [
+        <% @consumos_por_inscricao[inscricao.id].each do |consumo| %>
+            {
+                id: <%= consumo.id %>,
+                preco: <%= consumo.preco %>,
+                produto: '<%= consumo.produto.descricao %>',
+                uiProvider: 'col',
+                iconCls: 'consumo',
+                leaf:true
+            },
+        <% end %>
+        ]
+    },
+<% end %>
+]

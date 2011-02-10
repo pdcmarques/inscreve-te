@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message success="<%= @errors.length == 0%>">
+    <errors>
+        <% @errors.each do |error|%>
+            <field>
+                <id><%= error[0] %></id>
+                <msg><![CDATA[<%= error[1] %>]]></msg>
+            </field>
+        <% end %>
+    </errors>
+</message>

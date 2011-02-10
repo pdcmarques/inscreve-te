@@ -1,0 +1,19 @@
+#rcol {
+   position: relative;
+   left:-260px;
+   top: -110px;
+   width:720px;  
+}
+
+.noprint {
+    display: none ;
+}
+
+img.mbimage {
+    width: 1.8cm;
+}
+
+td.mb_message {
+    font-size: 50%;
+}
+

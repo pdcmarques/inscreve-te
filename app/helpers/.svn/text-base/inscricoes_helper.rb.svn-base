@@ -1,0 +1,4 @@
+module InscricoesHelper
+  
+  
+end

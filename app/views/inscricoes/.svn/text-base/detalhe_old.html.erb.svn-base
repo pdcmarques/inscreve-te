@@ -1,0 +1,115 @@
+<!--h1>Nova <span>Inscrição</span></h1>
+<span id="slogan2">78ª Assembleia Geral da CBP</span>
+<br/-->
+<h1><span><%= @inscricao.nome %></span></h1>
+<table width="100%">
+  <tr>
+    <td><h2><%= @inscricao.igreja.full_name %></span> </td>
+    <td aligh="right"><h2><%= @inscricao.estatuto.nome %></h2></td>
+  </tr>
+</table>
+<div id="container">
+  
+  <br /><br /><br />
+  <% form_for :inscricao, :html=>{:class=>"niceform"} do |f| -%>
+  <fieldset>
+      <legend>Dados Pessoais</legend>
+      <dl>
+        <dt><label for="idade">Idade:</label></dt>
+        <dd><%= @inscricao.idade %> Anos</dd>
+      </dl>
+      <dl>
+        <dt><label for="morada">Morada:</label></dt>
+        <dd><%= @inscricao.morada %>, <%= @inscricao.codigo_postal %> <%=@inscricao.localidade %></dd>
+      </dl>
+      <dl>
+        <dt><label for="morada">Contactos:</label></dt>
+        <dd><%= @inscricao.telefone%> / <%= @inscricao.email %></dd>
+      </dl>
+  </fieldset>
+  <fieldset>
+      <legend>Refeições</legend>
+      <dl>
+        <dt><label for="color">Almoço de 2/Abril</label></dt>
+          <dd>
+            <%= @inscricao.refeicao1.nome %>
+          </dd>
+        </dl>
+      <dl>
+        <dt><label for="color">Jantar de 2/Abril</label></dt>
+          <dd>
+            <%= @inscricao.refeicao2.nome %>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="color">Almoço de 3/Abril</label></dt>
+          <dd>
+            <%= @inscricao.refeicao3.nome %>
+          </dd>
+        </dl>
+      <dl>
+        <dt><label for="color">Jantar de 3/Abril</label></dt>
+          <dd>
+            <%= @inscricao.refeicao4.nome %>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="color">Almoço de 4/Abril</label></dt>
+          <dd>
+            <%= @inscricao.refeicao5.nome %>
+          </dd>
+        </dl>
+  </fieldset>
+  <fieldset>
+      <legend>Alojamento</legend>
+      <dl>
+        <dt><label for="inscricao_noite1">Noite de 2 para 3/Abril</label></dt>
+          <dd>
+            <%= @inscricao.noite1.nome %>
+          </dd>
+        </dl>
+        <dl>
+        <dt><label for="inscricao_noite2">Noite de 3 para 4/Abril</label></dt>
+          <dd>
+            <%= @inscricao.noite2.nome %>
+          </dd>
+        </dl>
+        <% if (@current_user != nil && @current_user.profile == "ADMIN") %>
+        <dl>
+        <dt><label for="inscricao_noite2">Casa</label></dt>
+          <dd><%= @inscricao.tipo_alojamento %></dd>
+        </dl>
+        <dl>
+        <dt><label for="inscricao_noite2">Quarto</label></dt>
+          <dd><%= @inscricao.local_alojamento %></dd>
+        </dl>
+        <% end %>
+  </fieldset>
+  <% if @inscricao.observacoes != "" %>
+  <fieldset>
+        <legend>Observações</legend>
+        <dl>
+          <dt><label for="observacoes">Observações</label></dt>
+          <dd><%= @inscricao.observacoes %></dd>
+        </dl>
+  </fieldset>
+  <% end %>
+  <% end %>
+<h2>Lista de <span>consumos</span> desta inscricao</h1>
+<br />
+<br />
+<table class="user_detail_table">
+  <tr class="header">
+      <th align="left">Produto</th>
+      <th align="center">Recibo</th>
+      <th align="center">Preço</th>
+  </tr>
+  <%= render(:partial=>"consumo_listitem", :collection=>@inscricao.consumos) %>
+</table>
+
+
+  <!--fieldset class="action">
+    <%= submit_tag 'Enviar Alterações' %>
+  </fieldset-->
+    
+  

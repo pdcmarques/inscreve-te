@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>22-07-2009 13:50</DATA_HORA>
+    <TERMINAL>0035008202-LISBOA</TERMINAL>
+    <REFERENCIA>853116410</REFERENCIA>
+    <VALOR>25</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>24.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

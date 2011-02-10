@@ -1,0 +1,28 @@
+﻿<%= javascript_include_tag "ext-base" %>
+<%= javascript_include_tag "ext-all" %>
+<%= stylesheet_link_tag "ext-all-notheme" %>
+<%= stylesheet_link_tag "xtheme-blue" %>
+
+Ext.onReady(function(){
+
+  fs = new Ext.FormPanel({
+	    frame: true,
+	    region: 'center',
+	    title:'<%= translate("i18n:nova_inscricao") %>',
+	    labelAlign: 'right',
+	    labelWidth: 120,
+	    width:"100%",
+	    margins: '10 10 10 10',
+	    waitMsgTarget: true,
+	    contentType:"application/x-www-form-urlencoded",
+    
+    
+	    // reusable eror reader class defined at the end of this file
+	    errorReader: new Ext.form.XmlErrorReader(),
+    
+	    items: [
+	    
+	    ]
+  })
+
+});

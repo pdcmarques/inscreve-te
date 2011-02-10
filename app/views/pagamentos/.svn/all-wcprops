@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/project/!svn/ver/804/trunk/app/views/pagamentos
+END
+totais_por_semana.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/804/trunk/app/views/pagamentos/totais_por_semana.xml.erb
+END
+lista.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/804/trunk/app/views/pagamentos/lista.xml.erb
+END
+tipos_pagamento.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/804/trunk/app/views/pagamentos/tipos_pagamento.xml.erb
+END

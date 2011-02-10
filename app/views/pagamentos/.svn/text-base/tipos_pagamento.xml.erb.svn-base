@@ -1,0 +1,11 @@
+<tipos_pagamento totalCount="<%= @tipos_pagamento.size %>">
+  <totalCount><%= @tipos_pagamento.size %></totalCount>
+  <% @tipos_pagamento.each do |tipo_pagamento| %>
+    <tipo_pagamento>    
+      <id><%= tipo_pagamento.id %></id>
+      <nome><%= tipo_pagamento.nome %></nome>
+      <nome_curto><%= tipo_pagamento.nome_curto %></nome_curto>
+      <icone><%= tipo_pagamento.icone %></icone>
+    </tipo_pagamento>
+  <% end %>
+</tipos_pagamento>

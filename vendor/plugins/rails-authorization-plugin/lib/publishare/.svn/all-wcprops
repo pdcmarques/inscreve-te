@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/lib/publishare
+END
+identity.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/lib/publishare/identity.rb
+END
+object_roles_table.rb
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/lib/publishare/object_roles_table.rb
+END
+exceptions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/lib/publishare/exceptions.rb
+END
+hardwired_roles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/lib/publishare/hardwired_roles.rb
+END
+parser.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/lib/publishare/parser.rb
+END

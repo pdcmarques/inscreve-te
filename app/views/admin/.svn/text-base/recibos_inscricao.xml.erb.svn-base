@@ -1,0 +1,27 @@
+﻿<recibos totalCount="<%= @recibos.size %>">
+  <totalCount><%= @recibos.size %></totalCount>
+  <% @recibos.each do |recibo| %>
+    <recibo>    
+      <id><%= recibo.id %></id>
+      <nome><%= recibo.nome %></nome>
+      <total><%= total = recibo.total_recibo %></total>
+      <pago><%= pago = recibo.total_pago %></pago>
+      <desconto><%= desconto = recibo.valor_desconto_antecipado %></desconto>
+      <divida><%= divida = total - desconto - pago %></divida>
+      <%if(divida == 0)%>
+      <estado>paid</estado>
+      <% end %>
+      <%if(divida > 0 && pago > 0)%>
+      <estado>halfpaid</estado>
+      <% end %>
+      <%if(pago == 0)%>
+      <estado>pending</estado>
+      <% end %>
+      <%if(divida < 0)%>
+      <estado>error</estado>
+      <% end %>
+      <nivel_alerta><%= recibo.nivel_alerta %></nivel_alerta>
+    </recibo>
+  <% end %>
+</recibos>
+

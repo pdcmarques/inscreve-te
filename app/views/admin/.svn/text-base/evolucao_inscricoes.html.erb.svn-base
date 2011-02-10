@@ -1,0 +1,44 @@
+<%= Seer::init_visualization %>
+
+<%= Seer::visualize(
+      @data, 
+      :as => :column_chart,
+      :in_element =>'chart1', 
+      :series => {:series_label => 'dia', :data_method => 'inscritos'},
+      :chart_options => {
+        :height => 400,
+        :width => 1000,
+        :is_3_d => false,
+        :legend => 'none',
+        :title => "Evolução de Inscrições - "+@event.nome,
+        :title_x => 'Data',
+        :title_y => 'Inscrições'
+      }
+    )
+ -%>
+ 
+ <%= Seer::visualize(
+      @data, 
+      :as => :area_chart,
+      :in_element => 'chart2',
+      :series => {
+        :data_label => 'dia',
+        :data_method => 'totalizador',
+        :series_label => 'tipo',
+        :data_series => [@data]
+      },
+      :chart_options => { 
+        :height => 400,
+        :width => 1000,
+        :title => "Evolução de Inscrições - "+@event.nome,
+        :title_x => 'Data',
+        :title_y => 'Total de Inscritos',
+        :point_size => 6,
+        :legend => 'none',
+      }
+    )
+ -%>
+ 
+ 
+<div id="chart1"></div><br/><br/>
+<div id="chart2"></div><br/><br/>

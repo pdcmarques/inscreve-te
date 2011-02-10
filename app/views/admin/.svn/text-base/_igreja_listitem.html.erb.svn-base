@@ -1,0 +1,21 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+  <td>
+    <%= igreja_listitem.full_name %>
+  </td>
+  <td align="center">
+    <%= Inscricao.count(:conditions => "estatuto_id = 1 AND igreja_id ="+igreja_listitem.id.to_s) %>
+  </td>
+  <td align="center">
+    <%= Inscricao.count(:conditions => "estatuto_id = 2 AND igreja_id ="+igreja_listitem.id.to_s) %>
+  </td>
+  <td align="center">
+    <%= igreja_listitem.numero_inscritos %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(igreja_listitem.total_recibos, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  
+  <td align="center">
+    <a href="/igreja/index/<%=igreja_listitem.id%>"><img src="/images/house.png" alt="Detalhe" /></a>
+  </td>
+</tr>

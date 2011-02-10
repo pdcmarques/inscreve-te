@@ -1,0 +1,17 @@
+<% if(params[:callback] != nil && params[:callback] != '') %><%= params[:callback] %>('<message success="true"><eventos><% @eventos.each do |evento| %><evento><codigo><%=evento.codigo%></codigo><nome><%=evento.nome%></nome><nome_curto><%=evento.nome_curto%></nome_curto><descricao><%=evento.descricao%></descricao><email><%= evento.email_responsavel %></email><data_inicio><%= evento.data_inicio %></data_inicio><data_fim><%= evento.data_inicio %></data_fim></evento><% end %></eventos></message>')<%else%><?xml version="1.0" encoding="UTF-8"?>
+<message success="true">
+    <eventos>
+        <% @eventos.each do |evento| %>    
+        <evento>
+            <codigo><%=evento.codigo%></codigo>
+            <nome><%=evento.nome%></nome>
+            <nome_curto><%=evento.nome_curto%></nome_curto>
+            <descricao><%=evento.descricao%></descricao>
+            <email><%= evento.email_responsavel %></email>
+            <data_inicio><%= evento.data_inicio %></data_inicio>
+            <data_fim><%= evento.data_inicio %></data_fim>
+        </evento>
+        <% end %>
+    </eventos>
+</message>
+<% end %>

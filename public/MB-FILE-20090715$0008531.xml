@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>15-07-2009 09:54</DATA_HORA>
+    <TERMINAL>0079015901-Areal</TERMINAL>
+    <REFERENCIA>853799388</REFERENCIA>
+    <VALOR>95</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>94.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

@@ -1,0 +1,97 @@
+# Filters added to this controller apply to all controllers in the application.
+# Likewise, all the methods added will be available for all controllers.
+
+class ApplicationController < ActionController::Base
+  include AuthenticatedSystem
+  include StringTranslator
+  
+  before_filter :set_locale
+  
+  #include HoptoadNotifier::Catcher
+  
+  helper :all # include all helpers, all the time
+
+  # See ActionController::RequestForgeryProtection for details
+  # Uncomment the :secret if you're not using the cookie session store
+  #protect_from_forgery # :secret => '87d75ee5cf3284375891fd4c66c561f3'
+  
+  # See ActionController::Base for details 
+  # Uncomment this to filter the contents of submitted sensitive data parameters
+  # from your application log (in this case, all fields with names like "password"). 
+  # filter_parameter_logging :password
+  
+  
+  def set_locale
+    locale = nil
+    if(params != nil && params[:locale] != nil)
+      locale = params[:locale]
+      session[:locale] = locale
+      cookies[:locale] = locale
+    end
+    if(cookies != nil && cookies[:locale] != nil)
+      locale = cookies[:locale]
+      session[:locale] = locale
+    end
+    if(session != nil && session[:locale] != nil)
+      locale = session[:locale]
+      cookies[:locale] = locale
+    end
+    if(locale == nil)
+      #GET LOCALE FROM REQUESTER COUNTRY
+      ip = request.remote_ip.split(".")
+      ip_number = 16777216*ip[0].to_i + 65536*ip[1].to_i + 256*ip[2].to_i + ip[3].to_i
+      iprange = IpRange.find_by_sql(["select * from ip_ranges WHERE ? BETWEEN start_nbr AND  end_nbr", ip_number])
+      if(iprange != nil && iprange.length > 0)
+        locale = iprange[0].country_code.downcase+"_"+iprange[0].country_code.upcase
+        session[:locale] = locale
+        cookies[:locale] = locale
+      end
+      
+      #IF NOT... FALLBACK INTO DEFAULTS
+      if(locale == nil)
+        locale = 'pt_PT'
+        if(params != nil and params[:event] != nil)
+        evento = Evento.find_by_codigo(params[:event])
+        end
+        if(params != nil and params[:evento] != nil)
+          evento = Evento.find_by_codigo(params[:evento])
+        end
+        if(evento != nil)
+          locale = evento.default_locale
+        end
+      end
+    end
+    StringTranslator.current_locale = locale
+  end
+  
+  
+  private
+  def authorize
+    if !self.logged_in?
+      #flash[:notice] = "Identifique-se para aceder a esta funcionalidade"
+      if(request.xhr?)
+        render :text => "NOT LOGGED IN", :layout => false
+      else
+        if(params[:callback] != nil)
+          render :text => params[:callback]+"('<message success=\"false\"><errors><error>NOT LOGGED IN</error></errors></message>');", :layout => false
+        else 
+          redirect_to :controller=>"sessions", :action=>"new"
+        end
+      end
+    else
+      if(params[:entidade] != nil)
+        @entidade = Entidade.find_by_sigla(params[:entidade])
+        if(@current_user.entidade_id != @entidade.id)
+          self.current_user.forget_me if logged_in?
+          cookies.delete :auth_token
+          reset_session
+          if(request.xhr?)
+            render :text => "NOT LOGGED IN", :layout => false
+          else
+            redirect_to :controller=>"sessions", :action=>"new", :entidade=>@entidade.sigla
+          end
+        end
+      end
+    end
+  end
+end

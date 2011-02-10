@@ -1,0 +1,13 @@
+<% if(params[:callback] != nil && params[:callback] != '') %>
+<%= params[:callback] %>('<valores><% @inscricoes.each do |inscricao| %><group><id><%= inscricao.grupo_inscricoes_id %></id><responsavel><%= inscricao.nome %></responsavel><group_id><%= inscricao.grupo_inscricoes_id %></group_id></group><% end %></valores>');
+<% else %>
+<valores>
+    <% @inscricoes.each do |inscricao| %>
+        <group>
+            <id><%= inscricao.grupo_inscricoes_id %></id>
+            <responsavel><%= inscricao.nome %></responsavel>
+            <group_id><%= inscricao.grupo_inscricoes_id %></group_id>
+        </group>
+    <% end %>
+</valores>
+<% end %>

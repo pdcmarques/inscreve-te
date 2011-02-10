@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/project/!svn/ver/21/trunk/config/initializers
+END
+mime_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/2/trunk/config/initializers/mime_types.rb
+END
+site_keys.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/3/trunk/config/initializers/site_keys.rb
+END
+hoptoad.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/21/trunk/config/initializers/hoptoad.rb
+END
+inflections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/2/trunk/config/initializers/inflections.rb
+END
+new_rails_defaults.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/2/trunk/config/initializers/new_rails_defaults.rb
+END

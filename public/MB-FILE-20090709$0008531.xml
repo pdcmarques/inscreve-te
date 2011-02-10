@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>09-07-2009 16:30</DATA_HORA>
+    <TERMINAL>0000003002-MILLENNIUM BCP</TERMINAL>
+    <REFERENCIA>853105067</REFERENCIA>
+    <VALOR>25</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>24.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

@@ -1,0 +1,153 @@
+10
+
+dir
+766
+http://pedromarques.svn.beanstalkapp.com/project/trunk/app/views
+http://pedromarques.svn.beanstalkapp.com/project
+
+
+
+2010-08-18T10:56:16.695757Z
+762
+pedromarques
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+d91fc93e-853d-4985-93ed-3d75665aff2a
+
+.DS_Store
+file
+797
+
+
+
+2010-10-05T13:24:55.000000Z
+4808d24e289702223b4712f2cc614cca
+2010-11-01T19:22:31.176311Z
+797
+pedromarques
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15364
+
+admin
+dir
+
+consumos
+dir
+
+descontos
+dir
+
+detalhe.html.erb
+file
+
+
+
+
+2010-08-04T19:30:15.000000Z
+d65fbb3e912779472d6e6c92a2a4c021
+2010-08-14T22:19:12.296466Z
+753
+pedromarques
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15188
+
+error
+dir
+
+eventos
+dir
+
+home
+dir
+
+igreja
+dir
+
+imprimir_recibo
+dir
+
+inscricoes
+dir
+
+layouts
+dir
+
+listavalores
+dir
+
+pagamentos
+dir
+
+produtos
+dir
+
+recepcao
+dir
+
+recibos
+dir
+
+refeicoes
+dir
+
+sessions
+dir
+
+user_mailer
+dir
+
+users
+dir
+

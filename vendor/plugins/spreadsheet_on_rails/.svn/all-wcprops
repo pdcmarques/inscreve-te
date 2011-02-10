@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/install.rb
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/Rakefile
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/MIT-LICENSE
+END
+uninstall.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/uninstall.rb
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/init.rb
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/README
+END

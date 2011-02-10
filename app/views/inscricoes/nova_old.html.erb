@@ -1,0 +1,42 @@
+<h1>Nova <span>Inscrição</span></h1>
+<span id="slogan2"><%= @event.nome %></span>
+<br/>
+<div id="container">
+  <% if flash[:notice] != nil %>
+    <p style="color:red">
+      <%=flash[:notice]%>
+    <p>
+  <% end %>
+  
+  <!--%= error_messages_for :inscricao %-->
+  <% if (@inscricao != nil && @inscricao.errors.count > 0) %>
+  <h3 style="color:red">Por favor corrija os seguintes erros:</h3>
+  <ul>
+    <% for error in @inscricao.errors %>
+      <li><%= error[1] %></li>
+    <%end%>
+  </ul>
+  <% end %>
+  <br />
+  <!--div align="center"><a href="/files/insc-papel.pdf">Download de inscrição em papel</a></div-->
+  <br /><br />
+  
+  <%= form_tag '/'+@event.codigo+'/inscricoes/regista', :class=>"niceform", :id=>"inscform"-%>
+    <% @event.grupo_camposs.each do |grupo| %>
+      <fieldset>
+        <legend><%= grupo.label %></legend>
+        <% grupo.campos.each do |campo| %>
+          <div id="campo<%= campo.id%>" style="height:40px; vertical-align:middle;" ><%= render(:partial=>"campo", :object=>campo) %></div>
+        <% end %>
+      </fieldset>
+    <% end %>
+  <fieldset class="action">
+    <%= submit_tag 'Enviar Inscrição' %>
+  </fieldset>
+  
+  
+<script type="text/javascript">
+  enterAsTab(document.forms[0]);
+</script>
+  
+  

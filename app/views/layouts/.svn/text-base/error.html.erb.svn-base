@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="pt-pt" xml:lang="pt-pt" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= @entidade.nome_curto %> - Erro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+	var pageTracker = _gat._getTracker("UA-81402-4");
+	pageTracker._trackPageview();
+      } catch(err) {}</script>
+   
+
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag "niceforms" %>
+    <%= stylesheet_link_tag @entidade.sigla+"/default" %>
+    <%= stylesheet_link_tag "niceforms-default" %>
+    
+  </head>
+  <body>
+<div id="header">
+	<div id="header_inner">
+		<!--h1><span>Inscri&ccedil;&otilde;es.</span>Acampamento Baptista</h1-->
+		<% if @current_user != nil && @current_user != false  %>
+		  <div id="slogan">Ligado como <b><%= @current_user.login %></b> - <a href="/<%= @entidade.sigla %>/logout">Sair</a></div>
+		<% else %>
+		  <div id="slogan"><a href="/<%= @entidade.sigla %>/login">Iniciar Sessão</a></div>
+		<% end %>
+	</div>
+</div>
+
+<div id="main">
+
+	<div id="lcol">
+		<div id="menu">
+			<ul>
+			  <li><a href="/">Eventos</a></li>
+			  <% if @current_user != nil && @current_user != false %>
+			    <li><a href="/inscricoes/lista">Minhas Inscrições<span></span></a></li>
+			  <% end %>
+			  <% if @current_user != nil && @current_user != false %>
+			    <li><a href="/recibos/lista">Meus Recibos<span></span></a></li>
+			  <% end %>
+			  <% if @current_user != nil && @current_user != false &&  (@current_user.profile == "PASTOR" || @current_user.profile == "ADMIN") %>
+			    <li><a href="/igreja/">Minha Igreja<span></span></a></li>
+			  <% end %>
+			</ul>
+		</div>
+		<div id="menu_end"></div>
+
+		<div id="lcontent">
+			<!--h3 class="first">Interesting.<span>Stuff</span></h3>
+			<ul class="divided">
+				<li class="first"><a href="#">Tincidunt aliquam</a></li>
+				<li><a href="#">Cursus lorem nulla</a></li>
+				<li><a href="#">Nunc ante elit</a></li>
+				<li><a href="#">Tincidunt aliquam</a></li>
+				<li><a href="#">Cursus sed tempus</a></li>
+			</ul>
+		
+			<h3>Aliquam.<span>Cursus</span></h3>
+			<p><a href="#">Sollicitudin sed</a> arcu et vivamus viverra. Nullam turpis. Vestibulum Nullam turpis vestibulum.</p>	
+			<div class="divider"></div>
+
+			<p><a href="#">Vestibulum veroeros</a> sed arcu et vivamus viverra lorem ipsum dolor sit amet dolore nulla facilisi.</p-->
+		</div>
+
+	</div>
+
+	<div id="rcol">
+		<div id="rcontent">
+		      <div id="BrowserWarning" style="width:100%; display:none; text-align:center;border: solid 1px red; padding:10px 10px 10px 10px; vertical-align:middle">
+			  <table>
+			    <tr>
+			      <td><img style="vertical-align:middle" src="/images/warning-big.jpg"/></td>
+			      <td><b>Não use o INTERNET EXPLORER para fazer as suas incrições, porque são conhecidas incompatibilidades graves.<br/>Por favor use o <a href="http://www.firefox.com">Mozilla Firefox</a>, o <a href="http://www.apple.com/safari/">Safari</a> ou o <a href="http://www.google.com/chrome/">Google Chrome</a>. Todos eles lhe garantirão uma óptima experiência de navegação enquanto as incompatibilidades não são resolvidas.</b></td>
+			    </tr>
+			  </table>
+			</div>
+                        <br/>
+                        <%= yield %>
+
+			<!--h3>Obscure.<span>Explanations</span></h3>
+			<p><strong>Curiously Green</strong>, a free, fully standards-compliant CSS template designed by <a href="http://www.nodethirtythree.com/">NodeThirtyThree</a> for <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>, released for free under the <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5</a> license. The photos in this design are from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. You're free to use this template for anything as long as you link back to <a href="http://www.freecsstemplates.org/">my site</a>. Enjoy :)</p>
+
+			<p>Be sure to check out some of my commercial work over at <a href="http://www.4templates.com/?aff=n33">4Templates</a>.</p>
+			<div class="divider"></div>
+			<div class="summary">Lorem ipsum dolor sit amet nullam dignissim</div>
+
+			<h3>Tincidunt.Sed.<span>Vestibulum</span></h3>
+			<p>
+				Quisque suscipit, quam vel aliquet tincidunt, eros nisi ultrices urna, a interdum est purus vitae leo.
+				Pellentesque a lectus et tortor tincidunt <a href="#">dignissim etiam</a>. Aliquam erat volutpat. Quisque
+				risus nunc, eleifend gravida, ullamcorper non, gravida ut, nulla.
+			</p-->
+
+		</div>
+	</div>
+
+</div>
+<div id="footer">
+	&copy; 2009 INSCREVE-TE.COM.PT. Todos os direitos reservados.
+</div>
+
+    <script>
+      if(isBrowserIE()){
+	document.getElementById("BrowserWarning").style.display = 'block';
+      } else {
+	document.getElementById("BrowserWarning").style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

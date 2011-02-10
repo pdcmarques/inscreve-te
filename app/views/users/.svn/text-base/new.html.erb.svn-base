@@ -1,0 +1,46 @@
+
+<h1>Novo<span> Utilizador</span></h1>
+<span id="slogan2">Preencha com os dados pretendidos</span>
+<br/><br/>
+
+<div id="container">
+
+<p>
+  Preencha este formulário para poder ter uma conta neste site. Após ter a sua conta activa poderá gerir as suas inscrições e pagamentos.
+</p>
+<br />
+  
+  <%= error_messages_for :user %>
+  <% form_for :user, :html=>{:class=>"niceform"}, :url => "/"+@entidade.sigla+"/register" do |f| -%>
+    <fieldset>
+          <!--legend>Login Info</legend-->
+          <dl>
+            <dt><label for="login">Email</label></dt>
+            <dd><%= f.text_field :email, :maxlength=>"100", :size=>"45"%></dd>
+          </dl>
+          <dl>
+            <dt><label for="email">Confirmação de Email</label></dt>
+            <dd><%= f.text_field :email_confirmation, :maxlength=>"100", :size=>"45" %></dd>
+          </dl>
+          <dl>
+            <dt><label for="password">Password</label></dt>
+            <dd><%= f.password_field :password, :maxlength=>"32", :size=>"45" %></dd>
+          </dl>
+          <dl>
+            <dt><label for="password_confirmation">Confirmação de Password</label></dt>
+            <dd><%= f.password_field :password_confirmation, :maxlength=>"32", :size=>"45" %></dd>
+          </dl>
+    </fieldset>
+    <fieldset class="action">
+      <%= submit_tag 'Registar' %>
+    </fieldset>
+  <% end -%>
+  
+  <div class="box">
+    <div class="box_inner">	
+      <h2>Confirmação de Registo</h2>
+      <p>Após o preenchimento deste formulário irá ser enviado um e-mail de confirmação para o endereço de correio electrónico que indicar. Neste e-mail será enviado um link que deverá seguir para confirmar a abertura de conta.</p>		
+    </div>
+  </div>
+
+</div>

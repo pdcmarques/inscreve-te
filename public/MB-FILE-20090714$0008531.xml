@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>14-07-2009 11:26</DATA_HORA>
+    <TERMINAL>0010041302-Porto</TERMINAL>
+    <REFERENCIA>853101808</REFERENCIA>
+    <VALOR>98</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>97.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

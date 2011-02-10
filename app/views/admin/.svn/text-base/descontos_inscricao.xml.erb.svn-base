@@ -1,0 +1,12 @@
+﻿<descontos totalCount="<%= @descontos.size %>">
+  <totalCount><%= @descontos.size %></totalCount>
+  <% @descontos.each do |desconto_insc| %>
+    <desconto>    
+      <id><%= desconto_insc.id %></id>
+      <desconto_id><%= desconto_insc.desconto.id %></desconto_id>
+      <desconto_descricao><%= desconto_insc.desconto.descricao %></desconto_descricao>
+      <valor><%= desconto_insc.valor %></valor>
+    </desconto>
+  <% end %>
+</descontos>
+

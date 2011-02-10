@@ -1,0 +1,24 @@
+<h1>Distribuição de <span>Consumos</span></h1>
+<br />
+Pode decidir quem quer que pague cada consumo relativo a esta inscrição. Para tal basta que altere, na coluna RECIBO, a entidade que vai pagar a despesa relativa ao consumo. Pode escolher entre a igreja ou o próprio.
+<br />
+<br />
+
+<table class="user_detail_table">
+  <tr class="header">
+      <!--th align="left">Produto</th-->
+      <th align="center">Descrição</th>
+      <th align="center">Recibo</th>
+      <th align="center">Preço</th>
+  </tr>
+  <%= render(:partial=>"consumo_listitem", :collection=>@inscricao.consumos) %>
+  <tr>
+    <td colspan="2" align="right">
+      <b>TOTAL</b>
+    </td>
+    <td align="right"
+      <b><%= number_to_currency(@inscricao.total_consumos, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b>
+    </td>
+  </tr>
+</table>
+<br /><br />

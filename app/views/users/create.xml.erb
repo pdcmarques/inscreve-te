@@ -1,0 +1,12 @@
+<% if(params[:callback] != nil && params[:callback] != '') %><%= params[:callback] %>('<message success="<%= @user.errors.length == 0 %>"><errors><% @user.errors.each do |error| %><field><id>user[<%= error[0] %>]</id><msg><%= error[1] %></msg></field><% end %></errors></message>');<% else %><?xml version="1.0" encoding="UTF-8"?>
+<message success="<%= @user.errors.length == 0 %>">
+    <errors>
+        <% @user.errors.each do |error| %>
+            <field>
+                <id>user[<%= error[0] %>]</id>
+                <msg><%= error[1] %></msg>
+            </field>
+        <% end %>
+    </errors>
+</message>
+<% end %>

@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>26-03-2009 22:15</DATA_HORA>
+    <TERMINAL>0000002607-BANCO BPI</TERMINAL>
+    <REFERENCIA>853002022</REFERENCIA>
+    <VALOR>195</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>194.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

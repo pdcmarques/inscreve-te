@@ -1,0 +1,80 @@
+﻿<table width="100%">
+  <tr>
+    <td align="left" valign="top">
+      <h1>Detalhe <span>Inscrição</span></h1>
+      <span id="slogan2"><%= @event.nome %></span>
+    </td>
+    <td align="right" valign="top">
+      <div class="noprint"><a href="/<%= @event.codigo %>/inscricoes/detalhe/<%=@inscricao.id%>.pdf"><img src="/images/page_white_acrobat.png">&nbsp;&nbsp;Exportar para PDF</a></div>
+    </td>
+  </tr>
+</table>
+
+<br/><br/>
+
+<% if(@inscricao.recomendacaos.count == 0) %>
+<%= form_tag "/"+@event.codigo+"/inscricoes/recomendar/"+@inscricao.id.to_s %>
+  Assinatura de recomendação:&nbsp;&nbsp;<%= text_field_tag :recomendacao, nil, :size=>"50"%> <%= submit_tag "Assinar Recomendação" %>
+<% else %>
+  Esta inscrição foi recomendada e assinada por <i><%= @inscricao.recomendacaos[0].assinatura %></i>
+<% end %>
+
+<br/><br/>
+
+<table width="100%">
+  <tr>
+    <td width="60%" valign="top">
+      <% grupos_campos = EventosGruposCampos.find_all_by_evento_id(@event.id, :order=>"`eventos_grupos_campos`.order") %>
+      <% grupos_campos.each do |evento_grupo| %>
+        <% grupo = evento_grupo.grupo_campos %>
+        <table width="100%" class="user_detail_table">
+          <tr class="header">
+            <th colspan="2" style="font-size:125%;" align="left"><%= grupo.label.upcase %></th>
+          </tr>
+        <% campos = Campo.find_all_by_grupo_campos_id(grupo.id, :order=>"`campos`.order") %>
+        <% campos.each do |campo| %>
+          <% if(campo.mostra_detalhe) %>
+            <tr>
+             <td width="30%" align="right"><b><%= campo.label %>:</td>
+             <td>
+              <% if campo.lista_valores_id == nil || campo.lista_valores_id == 0 %>
+                <%= @inscricao.valor_campo_string(campo.id) %>
+              <% else %>
+                  <% if campo.lista_valores.class_name != nil && campo.lista_valores.class_name != "" %>
+                    <% if(@inscricao.valor_campo_string(campo.id) != "") %>
+                      <%= eval(campo.lista_valores.class_name+".find_by_"+campo.lista_valores.value_field+"("+@inscricao.valor_campo_string(campo.id)+")."+campo.lista_valores.text_field)%>
+                    <% end %>
+                  <% else %>
+                    <% if(@inscricao.valor_campo_string(campo.id) != "") %>
+                      <%= Valor.find_by_lista_valores_id(campo.lista_valores.id, :conditions=>"valor = "+@inscricao.valor_campo_string(campo.id)).descricao %>
+                    <% end %>
+                  <% end %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %> 
+        <% end %>
+        </table>
+        <br/><br/>
+    <% end %>
+      <table width="100%" class="user_detail_table">
+            <tr class="header">
+            <th colspan="2" style="font-size:125%;" align="left">Informação de Controlo</th>
+        </tr>
+        <tr>
+          <td width="30%" align="right"><b>Identificador:</td>
+          <td><%= @inscricao.id %></td>
+        </tr>
+        <tr>
+          <td width="30%" align="right"><b>Data de inscrição:</td>
+          <td><%= @inscricao.created_at.strftime("%d-%m-%Y %H:%m")%></td>
+        </tr>
+      </table>
+      <br/><br/>
+    </td>
+    <td width="2%"></td>
+    <td width="38%" valign="top">
+      &nbsp;
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>29-09-2009 23:17</DATA_HORA>
+    <TERMINAL>0035014714-BEJA</TERMINAL>
+    <REFERENCIA>853105623</REFERENCIA>
+    <VALOR>8</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>7.15</VALORLIQUIDO>
+  </pagamentoMB>
+  <pagamentoMB>
+    <DATA_HORA>30-09-2009 12:50</DATA_HORA>
+    <TERMINAL>0045719402-Burgau</TERMINAL>
+    <REFERENCIA>853105130</REFERENCIA>
+    <VALOR>56</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>55.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

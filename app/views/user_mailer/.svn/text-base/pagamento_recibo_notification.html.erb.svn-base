@@ -1,0 +1,61 @@
+<body topmargin="0" leftmargin="0" rightmargin="0">
+<div  bgcolor="#FFFFFF" id="rootDiv" align="center" style="background-color:#FFFFFF;margin-top:0px;margin-bottom:0px;margin-right:0px;margin-left:0px;padding-top:3px;padding-bottom:3px;padding-right:3px;padding-left:3px;overflow:auto;" >
+<table  border="0" width="600" cellspacing="0" cellpadding="1" style="width:600px;" >
+<tr>
+  <td  bgcolor="#FFFFFF" rowspan="1" colspan="1" align="left" style="background-color:#FFFFFF;padding-top:1px;padding-bottom:1px;padding-right:1px;padding-left:1px;" >
+  <table  bgcolor="#FFFFFF" border="0" width="100%" cellspacing="0" cellpadding="0" style="background-color:#FFFFFF;padding-top:3px;padding-bottom:3px;padding-right:3px;padding-left:3px;" >
+    <tr>
+      <td width="100%" rowspan="1" colspan="2" align="left">
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content_LETTER.BLOCK1">
+          <tr>
+            <td valign="bottom" rowspan="1" align="center" colspan="1"><a href="http://www.inscreve-te.com.pt/<%=@recibo.evento.entidade.sigla%>" target="_blank"><img border="0" src="http://www.inscreve-te.com.pt/images/<%=@recibo.evento.entidade.sigla%>/email_logo.jpg" align="left" /></a></td>
+          </tr>
+        </table>
+        <table  id="content_LETTER.BLOCK2" width="100%" border="0" hidefocus="true" tabindex="0" cellspacing="0" cols="0" cellpadding="5" contenteditable="inherit" datapagesize="0" style="margin-bottom:5px;" >
+      </td>
+    </tr>
+    <tr>
+      <td  styleclass="style_MainText" align="left" style="color:#555555;font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;font-size:10pt;" ><font color="#555555" size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="color:#555555;font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;font-size:10pt;" ><font  size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="FONT-SIZE:10pt;FONT-FAMILY:Verdana,Geneva,Arial,Helvetica,sans-serif;" >
+        <p>
+          <font  size="3" style="FONT-WEIGHT:bold;COLOR:rgb(0,120,204);">
+            Pagamento Recebido
+          </font><br />
+        </p>
+        <p>
+          <font  size="1" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="FONT-SIZE:10pt;FONT-FAMILY:Verdana,Geneva,Arial,Helvetica,sans-serif;">
+            O presente e-mail serve para o informar que recebemos um pagamento no valor de <b><%= number_to_currency(@pagamento.valor, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b> com data de <b><%= @pagamento.data.strftime("%d-%m-%Y") %></b>. Este pagamento refere-se à factura Nº <b>R-<%= @recibo.evento.codigo%>-<%= @recibo.id.to_s.rjust(4, '0') %></b> emitida em nome de <b>'<%= @recibo.nome %>'</b>.
+            <br />
+            <br/>
+            <% if ((@recibo.total_recibo-@recibo.valor_desconto_antecipado-@recibo.total_pago) > 0) %>
+              A factura em causa tem agora um montante em dívida de <b><%= number_to_currency( @recibo.total_recibo-@recibo.valor_desconto_antecipado-@recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b>. Pode liquidar o montante em dívida através do sistema de pagamentos automáticos Multibanco, em qualquer terminal MB ou através do seu sistema de homebanking.
+            <% end %>
+            <% if ((@recibo.total_recibo-@recibo.valor_desconto_antecipado-@recibo.total_pago) == 0) %>
+              A factura em causa não tem, agora, nenhum montante em dívida.
+            <% end %>
+            <% if ((@recibo.total_recibo-@recibo.valor_desconto_antecipado-@recibo.total_pago) < 0) %>
+              A factura em causa tem agora um montante negativo em dívida. Agradecemos que nos contacte para regularizarmos a situação.
+            <% end %>
+            <br />
+            <br />
+            
+            Segue em anexo, em formato PDF, um detalhe com o estado actual da factura.<br /><br />
+          </font>
+        </p>
+        <p>
+          Pode ver mais detalhes desta factura em:<br/>
+          <a href="<%= @url %>"><%= @url %></a>
+        </p>
+        
+        <br />
+        Obrigado
+        <br/><br/>
+      </div>
+      </div>
+      <br/><br/>
+      
+      <font style="font-size:10px;color:#666666;" >Esta mensagem foi enviada para [<%= @email %>] como resultado de uma inscrição em <a href="http://www.inscreve-te.com.pt/<%=@recibo.evento.entidade.sigla%>" style="color:#666666;" >www.inscreve-te.com.pt/<%=@recibo.evento.entidade.sigla%></a>. <a href="http://www.inscreve-te.com.pt/<%=@recibo.evento.entidade.sigla%>" style="color:#666666;" >Cancele a conta aqui</a></font>
+      </font></font></td></tr></table>
+      </td>
+    </tr>
+  </table>
+</div>

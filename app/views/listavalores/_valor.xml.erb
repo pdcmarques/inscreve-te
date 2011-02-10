@@ -1,0 +1,9 @@
+<val>
+    <% @columns.each do |field| %>
+        <% if (field.kind_of? String) %>
+            <<%=field%>><%= eval("valor."+field) %></<%=field%>>
+        <% else %>
+            <<%=field.name%>><%= eval("valor."+field.name) %></<%=field.name%>>
+        <% end %>
+    <%end%>
+</val>

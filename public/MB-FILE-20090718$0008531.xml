@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>17-07-2009 20:33</DATA_HORA>
+    <TERMINAL>0033274301-Linda A Velha</TERMINAL>
+    <REFERENCIA>853114954</REFERENCIA>
+    <VALOR>91</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>90.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

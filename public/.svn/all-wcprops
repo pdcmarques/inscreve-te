@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/project/!svn/ver/224/trunk/public
+END
+dispatch.cgi
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/project/!svn/ver/2/trunk/public/dispatch.cgi
+END
+404.html
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/project/!svn/ver/66/trunk/public/404.html
+END
+dispatch.fcgi
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/project/!svn/ver/2/trunk/public/dispatch.fcgi
+END
+dispatch.rb
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/project/!svn/ver/2/trunk/public/dispatch.rb
+END
+500.html
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/project/!svn/ver/66/trunk/public/500.html
+END
+422.html
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/project/!svn/ver/66/trunk/public/422.html
+END
+robots.txt
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/project/!svn/ver/2/trunk/public/robots.txt
+END
+favicon.ico
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/project/!svn/ver/2/trunk/public/favicon.ico
+END

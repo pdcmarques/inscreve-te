@@ -1,0 +1,150 @@
+<h2>Estatísticas</h2>
+<h3>Totais de inscrições</h3>
+<table class="user_detail_table">
+  <tr class="header">
+      <td></td>
+      <th align="center">Delegados</th>
+      <th align="center">Acompanhantes</th>
+      <th align="center">Total</th>
+  </tr>
+  <tr>
+    <td>Inscritos</td>
+    <td align="center"><%= @total_delegados %></td>
+    <td align="center"><%= @total_acompanhantes %></td>
+    <td align="center"><%= @total_inscricoes %></td>
+  </tr>
+  <tr>
+    <td>Presentes</td>
+    <td align="center"><%= @total_delegados_presentes %></td>
+    <td align="center"><%= @total_acompanhantes_presentes %></td>
+    <td align="center"><%= @total_inscricoes_presentes %></td>
+  </tr>
+  <tr>
+    <td>Cancelados</td>
+    <td align="center"><%= @total_delegados_cancelados %></td>
+    <td align="center"><%= @total_acompanhantes_cancelados %></td>
+    <td align="center"><%= @total_inscricoes_canceladas %></td>
+  </tr>
+</table>
+<br/>
+<h3>Refeições</h3>
+<table class="user_detail_table">
+  <tr class="header">
+      <td colspan="3"></td>
+      <th align="center">Adultos</th>
+      <th align="center">Crianças</th>
+      <th colspan="2" align="center">Total</th>
+  </tr>
+  <tr>
+    <td rowspan="4"><b>5ª-Feira</b></td>
+    <td rowspan="2"><b>Almoço</b></td>
+    <td><b>Peixe 1</td>
+    <td align="center"><%= @refeicao1_carne_adultos %></td>
+    <td align="center"><%= @refeicao1_carne_criancas %></td>
+    <td align="center"><%= @refeicao1_carne_adultos+@refeicao1_carne_criancas %></td>
+    <td rowspan="2" align="center"><%= @refeicao1_carne_adultos+@refeicao1_carne_criancas+ @refeicao1_peixe_adultos+@refeicao1_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td><b>Peixe 2</b></td>
+    <td align="center"><%= @refeicao1_peixe_adultos %></td>
+    <td align="center"><%= @refeicao1_peixe_criancas %></td>
+    <td align="center"><%= @refeicao1_peixe_adultos+@refeicao1_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td rowspan="2"><b>Jantar</b></td>
+    <td><b>Carne</b></td>
+    <td align="center"><%= @refeicao2_carne_adultos %></td>
+    <td align="center"><%= @refeicao2_carne_criancas %></td>
+    <td align="center"><%= @refeicao2_carne_adultos+@refeicao1_carne_criancas %></td>
+    <td rowspan="2" align="center"><%= @refeicao2_carne_adultos+@refeicao2_carne_criancas+ @refeicao2_peixe_adultos+@refeicao2_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td><b>Peixe</b></td>
+    <td align="center"><%= @refeicao2_peixe_adultos %></td>
+    <td align="center"><%= @refeicao2_peixe_criancas %></td>
+    <td align="center"><%= @refeicao2_peixe_adultos+@refeicao2_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td rowspan="4"><b>6ª-Feira</b></td>
+    <td rowspan="2"><b>Almoço</b></td>
+    <td><b>Carne</td>
+    <td align="center"><%= @refeicao3_carne_adultos %></td>
+    <td align="center"><%= @refeicao3_carne_criancas %></td>
+    <td align="center"><%= @refeicao3_carne_adultos+@refeicao3_carne_criancas %></td>
+    <td rowspan="2" align="center"><%= @refeicao3_carne_adultos+@refeicao3_carne_criancas+@refeicao3_peixe_adultos+@refeicao3_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td><b>Peixe</b></td>
+    <td align="center"><%= @refeicao3_peixe_adultos %></td>
+    <td align="center"><%= @refeicao3_peixe_criancas %></td>
+    <td align="center"><%= @refeicao3_peixe_adultos+@refeicao3_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td rowspan="2"><b>Jantar</b></td>
+    <td><b>Carne</b></td>
+    <td align="center"><%= @refeicao4_carne_adultos %></td>
+    <td align="center"><%= @refeicao4_carne_criancas %></td>
+    <td align="center"><%= @refeicao4_carne_adultos+@refeicao1_carne_criancas %></td>
+    <td rowspan="2" align="center"><%= @refeicao4_carne_adultos+@refeicao4_carne_criancas+@refeicao4_peixe_adultos+@refeicao4_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td><b>Peixe</b></td>
+    <td align="center"><%= @refeicao4_peixe_adultos %></td>
+    <td align="center"><%= @refeicao4_peixe_criancas %></td>
+    <td align="center"><%= @refeicao4_peixe_adultos+@refeicao4_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td rowspan="2"><b>Sábado</b></td>
+    <td rowspan="2"><b>Almoço</b></td>
+    <td><b>Carne</td>
+    <td align="center"><%= @refeicao5_carne_adultos %></td>
+    <td align="center"><%= @refeicao5_carne_criancas %></td>
+    <td align="center"><%= @refeicao5_carne_adultos+@refeicao5_carne_criancas %></td>
+    <td rowspan="2" align="center"><%= @refeicao5_carne_adultos+@refeicao5_carne_criancas+@refeicao5_peixe_adultos+@refeicao5_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td><b>Peixe</b></td>
+    <td align="center"><%= @refeicao5_peixe_adultos %></td>
+    <td align="center"><%= @refeicao5_peixe_criancas %></td>
+    <td align="center"><%= @refeicao5_peixe_adultos+@refeicao5_peixe_criancas %></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="right">TOTAL:</td>
+    <td align="center"><%= @refeicao5_carne_adultos+@refeicao5_carne_criancas+@refeicao5_peixe_adultos+@refeicao5_peixe_criancas+@refeicao4_carne_adultos+@refeicao4_carne_criancas+@refeicao4_peixe_adultos+@refeicao4_peixe_criancas+@refeicao3_carne_adultos+@refeicao3_carne_criancas+@refeicao3_peixe_adultos+@refeicao3_peixe_criancas+@refeicao2_carne_adultos+@refeicao2_carne_criancas+ @refeicao2_peixe_adultos+@refeicao2_peixe_criancas+@refeicao1_carne_adultos+@refeicao1_carne_criancas+ @refeicao1_peixe_adultos+@refeicao1_peixe_criancas%></td>
+  </tr>
+</table>
+    
+<br/>
+
+<h3>Alojamento</h3>
+<table class="user_detail_table">
+  <tr class="header">
+      <td></td>
+      <th align="center">2 para 3/Abril</th>
+      <th align="center">3 para 4/Abril</th>
+      <th align="center">Total</th>
+  </tr>
+  <tr>
+      <td>Normal</td>
+      <td align="center"><%= @alojamento_normal_noite1 %></td>
+      <td align="center"><%= @alojamento_normal_noite2 %></td>
+      <td align="center"><%= @alojamento_normal_noite1+@alojamento_normal_noite2 %></td>
+  </tr>
+  <tr>
+      <td>Casa Branca Girassol</td>
+      <td align="center"><%= @alojamento_especial_noite1 %><br/>(<%= @alojamento_especial_quartos_noite1 %> quartos)</td>
+      <td align="center"><%= @alojamento_especial_noite2 %><br/>(<%= @alojamento_especial_quartos_noite2 %> quartos)</td>
+      <td align="center"><%= @alojamento_especial_noite1+@alojamento_especial_noite2 %></td>
+  </tr>
+  <tr>
+      <td>Fora do Acampamento</td>
+      <td align="center"><%= @alojamento_fora_noite1 %></td>
+      <td align="center"><%= @alojamento_fora_noite2 %></td>
+      <td align="center"><%= @alojamento_fora_noite1+@alojamento_fora_noite2 %></td>
+  </tr>
+  <tr>
+      <td colspan="3" align="right">TOTAL NO ACAMPAMENTO:</td>
+      <td align="center"><%= @alojamento_especial_noite1+@alojamento_especial_noite2+@alojamento_normal_noite1+@alojamento_normal_noite2 %></td>
+  </tr>
+</table>
+      

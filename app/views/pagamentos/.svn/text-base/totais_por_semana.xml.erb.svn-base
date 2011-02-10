@@ -1,0 +1,37 @@
+<semanas totalCount="<%= @totais.size %>">
+  <totalCount><%= @totais.size %></totalCount>
+  <% @totais.each do |total_semana| %>
+    <semana>    
+      <data_inicio><%= total_semana.data_inicio.strftime("%d-%m-%Y") %></data_inicio>
+      <data_fim><%= total_semana.data_fim.strftime("%d-%m-%Y") %></data_fim>
+      <total_pagamentos><%= total_semana.total_pagamentos %></total_pagamentos>
+      <totais_por_tipo>
+        <% total_semana.totais_por_tipo.each do |total_por_tipo| %>
+            <% if(total_por_tipo != nil) %>
+            <total_por_tipo>
+                <tipo_pagamento_id><%= total_por_tipo.tipo_pagamento_id %></tipo_pagamento_id>
+                <tipo_pagamento_nome><%= total_por_tipo.tipo_pagamento_nome %></tipo_pagamento_nome>
+                <total><%= total_por_tipo.total %></total>
+            </total_por_tipo>
+            <% end %>
+        <% end %>
+      </totais_por_tipo>
+    </semana>
+  <% end %>
+    <evento>
+        <data_inicio><%= @totais_no_evento.data_inicio.strftime("%d-%m-%Y") %></data_inicio>
+        <data_fim><%= @totais_no_evento.data_fim.strftime("%d-%m-%Y") %></data_fim>
+        <total_pagamentos><%= @totais_no_evento.total_pagamentos %></total_pagamentos>
+        <totais_por_tipo>
+        <% @totais_no_evento.totais_por_tipo.each do |total_por_tipo| %>
+            <% if(total_por_tipo != nil) %>
+            <total_por_tipo>
+                <tipo_pagamento_id><%= total_por_tipo.tipo_pagamento_id %></tipo_pagamento_id>
+                <tipo_pagamento_nome><%= total_por_tipo.tipo_pagamento_nome %></tipo_pagamento_nome>
+                <total><%= total_por_tipo.total %></total>
+            </total_por_tipo>
+            <% end %>
+        <% end %>
+        </totais_por_tipo>
+    </evento>
+</semanas>

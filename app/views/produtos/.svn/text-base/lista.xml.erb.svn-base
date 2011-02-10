@@ -1,0 +1,8 @@
+﻿<produtos>
+    <% @produtos.each do |produto| %>
+        <produto>
+            <id><%= produto.id %></id>
+            <descricao><%= produto.descricao %></descricao>
+        </produto>
+    <% end %>
+</produtos>

@@ -1,0 +1,299 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/project/!svn/ver/470/trunk/test/fixtures
+END
+inscricaos_campos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/146/trunk/test/fixtures/inscricaos_campos.yml
+END
+recomendacaos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/146/trunk/test/fixtures/recomendacaos.yml
+END
+entidades.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/146/trunk/test/fixtures/entidades.yml
+END
+eventos_grupos_campos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/146/trunk/test/fixtures/eventos_grupos_campos.yml
+END
+produtos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/14/trunk/test/fixtures/produtos.yml
+END
+empresa_facides.yml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/799/trunk/test/fixtures/empresa_facides.yml
+END
+grupo_inscricoes.yml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/246/trunk/test/fixtures/grupo_inscricoes.yml
+END
+igrejasummits.yml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/462/trunk/test/fixtures/igrejasummits.yml
+END
+translations.yml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/841/trunk/test/fixtures/translations.yml
+END
+campos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/146/trunk/test/fixtures/campos.yml
+END
+pagamento_mbs.yml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/102/trunk/test/fixtures/pagamento_mbs.yml
+END
+pacotes.yml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/276/trunk/test/fixtures/pacotes.yml
+END
+tipo_reservas.yml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/470/trunk/test/fixtures/tipo_reservas.yml
+END
+desconto_estatutos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/276/trunk/test/fixtures/desconto_estatutos.yml
+END
+descontos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/276/trunk/test/fixtures/descontos.yml
+END
+i18n_locals.yml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/842/trunk/test/fixtures/i18n_locals.yml
+END
+igrejas.yml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/14/trunk/test/fixtures/igrejas.yml
+END
+campo_produtos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/246/trunk/test/fixtures/campo_produtos.yml
+END
+pacote_produtos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/246/trunk/test/fixtures/pacote_produtos.yml
+END
+consumos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/14/trunk/test/fixtures/consumos.yml
+END
+inscricaos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/14/trunk/test/fixtures/inscricaos.yml
+END
+ip_ranges.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/842/trunk/test/fixtures/ip_ranges.yml
+END
+valors.yml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/146/trunk/test/fixtures/valors.yml
+END
+comunicacaos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/253/trunk/test/fixtures/comunicacaos.yml
+END
+estado_reservas.yml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/470/trunk/test/fixtures/estado_reservas.yml
+END
+lista_valores.yml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/146/trunk/test/fixtures/lista_valores.yml
+END
+gupo_campos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/146/trunk/test/fixtures/gupo_campos.yml
+END
+tipo_pagamentos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/799/trunk/test/fixtures/tipo_pagamentos.yml
+END
+refeicaos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/37/trunk/test/fixtures/refeicaos.yml
+END
+reservas.yml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/470/trunk/test/fixtures/reservas.yml
+END
+estatutos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/37/trunk/test/fixtures/estatutos.yml
+END
+roles.yml
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/236/trunk/test/fixtures/roles.yml
+END
+eventos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/146/trunk/test/fixtures/eventos.yml
+END
+documentos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/323/trunk/test/fixtures/documentos.yml
+END
+campo_valors.yml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/146/trunk/test/fixtures/campo_valors.yml
+END
+reserva_produtos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/470/trunk/test/fixtures/reserva_produtos.yml
+END
+desconto_inscricaos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/276/trunk/test/fixtures/desconto_inscricaos.yml
+END
+codigo_descontos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/837/trunk/test/fixtures/codigo_descontos.yml
+END
+precos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/246/trunk/test/fixtures/precos.yml
+END
+reserva_estados.yml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/470/trunk/test/fixtures/reserva_estados.yml
+END
+users.yml
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/project/!svn/ver/3/trunk/test/fixtures/users.yml
+END
+refeicao_servidas.yml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/125/trunk/test/fixtures/refeicao_servidas.yml
+END
+recibos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/14/trunk/test/fixtures/recibos.yml
+END
+pagamentos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/41/trunk/test/fixtures/pagamentos.yml
+END
+evento_campos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/146/trunk/test/fixtures/evento_campos.yml
+END
+desconto_facturas.yml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/276/trunk/test/fixtures/desconto_facturas.yml
+END
+igrejamgs.yml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/401/trunk/test/fixtures/igrejamgs.yml
+END
+dormidas.yml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/37/trunk/test/fixtures/dormidas.yml
+END
+inscricao_reservas.yml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/470/trunk/test/fixtures/inscricao_reservas.yml
+END

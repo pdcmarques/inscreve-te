@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>07-08-2009 11:32</DATA_HORA>
+    <TERMINAL>0007038403-Cacem</TERMINAL>
+    <REFERENCIA>853117405</REFERENCIA>
+    <VALOR>25</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>24.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

@@ -1,0 +1,14 @@
+<h1><%= @igreja.full_name %></h1>
+<br /><br />
+<h2>Lista de <span>Inscrições</span></h2>
+<br />
+
+<table class="user_detail_table">
+  <tr class="header">
+      <th align="left">Nome</th>
+      <th align="left">Evento</th>
+      <th align="center">Data de Inscrição</th>
+      <th></th>
+  </tr>
+  <%= render(:partial=>"inscricao_listitem", :collection=>@inscricoes ) %>
+</table>

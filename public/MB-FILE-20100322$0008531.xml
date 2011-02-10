@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>22-03-2010 13:16</DATA_HORA>
+    <TERMINAL>0038071002-Ponta Delgada</TERMINAL>
+    <REFERENCIA>853102232</REFERENCIA>
+    <VALOR>52</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>51.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

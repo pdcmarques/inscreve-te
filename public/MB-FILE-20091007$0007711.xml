@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>07-10-2009 12:35</DATA_HORA>
+    <TERMINAL>0000003416-BANCO ESPIRITO</TERMINAL>
+    <REFERENCIA>771100632</REFERENCIA>
+    <VALOR>40</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>39.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>06-09-2009 20:47</DATA_HORA>
+    <TERMINAL>0000003251-BBVA</TERMINAL>
+    <REFERENCIA>853150686</REFERENCIA>
+    <VALOR>170</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>169.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/52/trunk/vendor/plugins/barcode_generator
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/42/trunk/vendor/plugins/barcode_generator/install.rb
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/42/trunk/vendor/plugins/barcode_generator/Rakefile
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/42/trunk/vendor/plugins/barcode_generator/init.rb
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/42/trunk/vendor/plugins/barcode_generator/README
+END

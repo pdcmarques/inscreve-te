@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/project/!svn/ver/534/trunk/app/helpers
+END
+admin_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/71/trunk/app/helpers/admin_helper.rb
+END
+listavalores_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/149/trunk/app/helpers/listavalores_helper.rb
+END
+application_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/838/trunk/app/helpers/application_helper.rb
+END
+refeicoes_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/121/trunk/app/helpers/refeicoes_helper.rb
+END
+imprimir_recibo_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/55/trunk/app/helpers/imprimir_recibo_helper.rb
+END
+etiqueta_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/55/trunk/app/helpers/etiqueta_helper.rb
+END
+recepcao_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/131/trunk/app/helpers/recepcao_helper.rb
+END
+lista_valores_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/149/trunk/app/helpers/lista_valores_helper.rb
+END
+produtos_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/471/trunk/app/helpers/produtos_helper.rb
+END
+sessions_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/3/trunk/app/helpers/sessions_helper.rb
+END
+eventos_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/431/trunk/app/helpers/eventos_helper.rb
+END
+home_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/25/trunk/app/helpers/home_helper.rb
+END
+barcode_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/38/trunk/app/helpers/barcode_helper.rb
+END
+inscricoes_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/838/trunk/app/helpers/inscricoes_helper.rb
+END
+error_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/55/trunk/app/helpers/error_helper.rb
+END
+igreja_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/67/trunk/app/helpers/igreja_helper.rb
+END
+users_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/3/trunk/app/helpers/users_helper.rb
+END
+descontos_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/521/trunk/app/helpers/descontos_helper.rb
+END
+recibos_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/38/trunk/app/helpers/recibos_helper.rb
+END
+consumos_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/534/trunk/app/helpers/consumos_helper.rb
+END
+pagamentos_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/804/trunk/app/helpers/pagamentos_helper.rb
+END

@@ -1,0 +1,42 @@
+﻿<recibos totalCount="<%= @totalCount %>">
+  <totalCount><%= @totalCount %></totalCount>
+  <% @recibos.each do |recibo| %>
+    <recibo>
+      <id><%= recibo.id %></id>
+      <nome><%= recibo.nome %></nome>
+      <nif><%= recibo.nif %></nif>
+      <data><%= recibo.data.strftime("%d-%m-%Y") %></data>
+      <fechado><%= recibo.fechado %></fechado>
+      <pago><%= recibo.pago %></pago>
+      <taxa_inscricao><%= recibo.taxa_inscricao %></taxa_inscricao>
+      <referencia_mb><%= recibo.referencia_multibanco %></referencia_mb>
+      <referencia_mb_taxa><%= recibo.referencia_multibanco_taxa_inscricao %></referencia_mb_taxa>
+      <total_recibo><%= recibo.total_recibo %></total_recibo>
+      <total_pago><%= recibo.total_pago %></total_pago>
+      <total_desconto><%= recibo.valor_desconto_antecipado %></total_desconto>
+      <total_divida><%= recibo.total_recibo - recibo.valor_desconto_antecipado - recibo.total_pago %></total_divida>
+      <nivel_alerta><%= recibo.nivel_alerta %></nivel_alerta>
+      <pagamentos>
+      <% recibo.pagamentos.each do |pagamento| %>
+        <pagamento reciboId="<%= recibo.id %>">
+          <id><%= pagamento.id %></id>
+          <observacoes><%= pagamento.observacoes %></observacoes>
+          <data><%= pagamento.data %></data>
+          <valor><%= pagamento.valor %></valor>
+        </pagamento>
+      <% end %>
+      </pagamentos>
+      <consumos>
+      <% recibo.consumos.each do |consumo| %>
+        <consumo reciboId="<%= recibo.id %>">
+          <id><%= consumo.id %></id>
+          <produto_id><%= consumo.produto_id %></produto_id>
+          <produto_descricao><%= consumo.produto.descricao %></produto_descricao>
+          <preco><%= consumo.preco %></preco>
+        </consumo>
+      <% end %>
+      </consumos>
+    </recibo>
+  <% end %>
+</recibos>
+      

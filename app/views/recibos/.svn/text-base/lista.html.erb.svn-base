@@ -1,0 +1,14 @@
+<h1>Lista dos <span>recibos</span> das suas inscrições</h1>
+<br />
+<br />
+<table class="user_detail_table">
+  <tr class="header">
+      <th align="left">Nome</th>
+      <th align="left">Evento</th>
+      <th align="center">Total</th>
+      <th align="center">Recebido</th>
+      <th align="center">Dívida</th>
+      <th></th>
+  </tr>
+  <%= render(:partial=>"recibo_listitem", :collection=>@recibos) %>
+</table>

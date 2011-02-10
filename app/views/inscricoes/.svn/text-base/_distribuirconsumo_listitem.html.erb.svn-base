@@ -1,0 +1,21 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+  <!--td align="left">
+    <%= distribuirconsumo_listitem.produto.descricao %>
+  </td-->
+  <td align="left">
+    <%= distribuirconsumo_listitem.observacoes %>
+  </td>
+  <td>
+    <select size="1"  id="consumo_recibo_id" name="consumo[<%= distribuirconsumo_listitem.id %>]" style="width:100%" >
+      <option value="1" <%if distribuirconsumo_listitem.recibo.igreja_id != nil%>selected="true"<%end%>><%=distribuirconsumo_listitem.inscricao.igreja.full_name %></option>
+      <option value="2" <%if distribuirconsumo_listitem.recibo.inscricao_id != nil%>selected="true"<%end%>><%=distribuirconsumo_listitem.inscricao.nome %></option>
+      <% if @current_user != nil && @current_user != false && @current_user.profile == "ADMIN" %>
+        <option value="3" <%if distribuirconsumo_listitem.recibo_id == 31%>selected="true"<%end%>>Convenção Baptista portuguesa</option>
+        <option value="4" <%if distribuirconsumo_listitem.recibo_id == 32%>selected="true"<%end%>>Acampamento Baptista</option>
+      <% end %>
+    </select>
+  </td>
+  <td align="right">
+    <%= number_to_currency(distribuirconsumo_listitem.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> 
+  </td>
+</tr>

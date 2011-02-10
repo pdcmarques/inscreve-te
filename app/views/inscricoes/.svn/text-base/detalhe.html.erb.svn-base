@@ -1,0 +1,277 @@
+﻿<table width="100%">
+  <tr>
+    <td align="left" valign="top">
+      <h1>Detalhe <span>Inscrição</span></h1>
+      <span id="slogan2"><%= @event.nome %></span>
+    </td>
+    <td align="right" valign="top">
+      <div class="noprint"><a href="/<%= @entidade.sigla %>/<%= @event.codigo %>/inscricoes/detalhe/<%=@inscricao.id%>.pdf"><img src="/images/page_white_acrobat.png">&nbsp;&nbsp;Exportar para PDF</a></div>
+    </td>
+  </tr>
+</table>
+
+<br/><br/>
+
+<table width="100%">
+  <tr>
+    <td width="60%" valign="top">
+      <% grupos_campos = EventosGruposCampos.find_all_by_evento_id(@event.id, :order=>"`eventos_grupos_campos`.order") %>
+      <% grupos_campos.each do |evento_grupo| %>
+        <% grupo = evento_grupo.grupo_campos %>
+        <table width="100%" class="user_detail_table">
+          <tr class="header">
+            <th colspan="2" style="font-size:125%;" align="left"><%= grupo.label.upcase %></th>
+          </tr>
+        <% campos = Campo.find_all_by_grupo_campos_id(grupo.id, :order=>"`campos`.order") %>
+        <% campos.each do |campo| %>
+          <% if(campo.mostra_detalhe) %>
+            <tr>
+             <td width="30%" align="right"><b><%= campo.label %>:</td>
+             <td>
+              <% if campo.lista_valores_id == nil || campo.lista_valores_id == 0 %>
+                <%= @inscricao.valor_campo_string(campo.id) %>
+              <% else %>
+                  <% if campo.lista_valores.class_name != nil && campo.lista_valores.class_name != "" %>
+                    <% if(@inscricao.valor_campo_string(campo.id) != "") %>
+                      <%= eval(campo.lista_valores.class_name+".find_by_"+campo.lista_valores.value_field+"("+@inscricao.valor_campo_string(campo.id)+")."+campo.lista_valores.text_field)%>
+                    <% end %>
+                  <% else %>
+                    <% if(@inscricao.valor_campo_string(campo.id) != "") %>
+                      <%= Valor.find_by_lista_valores_id(campo.lista_valores.id, :conditions=>"valor = "+@inscricao.valor_campo_string(campo.id)).descricao %>
+                    <% end %>
+                  <% end %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %> 
+        <% end %>
+        </table>
+        <br/><br/>
+    <% end %>
+      <table width="100%" class="user_detail_table">
+            <tr class="header">
+            <th colspan="2" style="font-size:125%;" align="left">Informação de Controlo</th>
+        </tr>
+        <tr>
+          <td width="30%" align="right"><b>Identificador:</td>
+          <td><%= @inscricao.id %></td>
+        </tr>
+        <tr>
+          <td width="30%" align="right"><b>Data de inscrição:</td>
+          <td><%= @inscricao.created_at.strftime("%d-%m-%Y %H:%m")%></td>
+        </tr>
+        <tr>
+          <td width="30%" align="right"><b>Inscrito por:</td>
+          <td><%= @inscricao.user.login %> (<%= @inscricao.user.email %>)</td>
+        </tr>
+      </table>
+      <br/><br/>
+    </td>
+    <td width="2%"></td>
+    <td width="38%" valign="top">
+      <% if(@inscricao.evento.preco_consumos) %>
+        <table width="100%" class="user_detail_table">
+          <tr class="header">
+              <th colspan="3" style="font-size:125%;" align="left">Consumos desta inscrição</th>
+          </tr>
+          <tr class="header">
+            <th align="left">Descrição</th>
+            <th align="center">Preço</th>
+          </tr>
+          <% @inscricao.consumos.each do |consumo| %>
+            <% preco = consumo.preco %>
+            <% if(preco > 0) %>
+              <tr>
+                <td><%= consumo.produto.descricao %></td>
+                <td align="right"><%= number_to_currency(preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+        <br/><br/>
+        <% if @inscricao.inscricao_reservas.count > 0 %>
+          <table width="100%" class="user_detail_table">
+            <tr class="header">
+                <th colspan="3" style="font-size:125%;" align="left">Reservas</th>
+            </tr>
+            <tr class="header">
+              <th colspan="2" align="left">Descrição</th>
+              <th align="center">Estado</th>
+            </tr>
+            <% @inscricao.inscricao_reservas.each do |inscricaoreserva| %>
+              <% reserva = inscricaoreserva.reserva %>
+                <tr>
+                  <td><img src="/images/<%=reserva.tipo_reserva.icone%>" /></td>
+                  <td><%= reserva.nome_curto %></td>
+                  <td>
+                      <% if(inscricaoreserva.reserva_estados != nil && inscricaoreserva.reserva_estados.count > 0) %>
+                        <%= inscricaoreserva.reserva_estados[inscricaoreserva.reserva_estados.count-1].estado_reserva.nome %>
+                      <% end %>
+                  </td>
+                </tr>
+            <% end %>
+          </table>
+        <% end %>
+      <% else %>
+        <% if(@current_user.profile == "ADMIN" || @current_user.id == @inscricao.user_id) %>
+          <% if(@inscricao.efectiva)%>
+            <h2>INSCRIÇÃO VÁLIDA E CONFIRMADA</h2>
+          <% end %>
+          <% if(!@inscricao.efectiva)%>
+            <h2>ATENÇÃO:</h2>
+            A sua inscrição é apenas PROVISÓRIA até que se cumpram as seguintes condições:<br/><br/>
+            <ul>
+              <% if(@inscricao.evento.precisa_recomendacao && @inscricao.recomendacaos.count == 0)%>
+                <li>Recebamos recomendação do pastor da igreja pela qual se inscreve<br/><br/></li>
+              <% end %>
+              <% if (@inscricao.evento.taxa_inscricao > 0 && @inscricao.total_pago < @inscricao.evento.taxa_inscricao)%>
+                <li>Recebamos pagamento de, pelo menos, a taxa de inscrição no valor de 25€ (ver em baixo como pagar através de Multibanco)</li>
+              <% end %>
+          <% end %>
+          </ul>
+          <br/><br/>
+          <table width="100%" class="user_detail_table">
+              <tr class="header">
+                <th colspan="2" style="font-size:125%;" align="left">ESTADO DO PAGAMENTO</th>
+              </tr>
+            <tr>
+              <td width="25%" align="right"><b>Valor:</td>
+              <td align="right"><%= number_to_currency(@inscricao.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+            </tr>
+            <tr>
+              <td width="25%" align="right" valign="top"><b>Pago:</td>
+              <td align="right">
+                <table width="100%">
+                  <% @inscricao.pagamentos.each do |pagamento| %>
+                  <tr>
+                    <td><%= pagamento.observacoes %></td><td>&nbsp;</td><td align="right"><%= number_to_currency(pagamento.valor, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+                  </tr>
+                <% end %>
+                </table>
+            </tr>
+            <tr>
+              <td width="25%" align="right"><b>Dívida:</td>
+              <td align="right"><%= number_to_currency(@inscricao.preco-@inscricao.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+            </tr>
+          </table>
+          
+          <table width="100%" class="user_detail_table">
+            <% if ((@inscricao.preco-@inscricao.total_pago) >= 1) %>
+            <tr class="header">
+                <th colspan="2" style="font-size:125%;" align="left">PAGAMENTO MULTIBANCO</th>
+            </tr>
+            <tr>
+              <td>
+                  <h3 style="height:20px; margin-top:5px">Pagamento Completo</h3>
+                  <div id="pagamento_mb_completo" style="display:block; border:1px solid #50514D; padding:10px; width:94%;  height:75px; font-family:monospace; text-align:center; vertical-align:middle; font-size:85%">
+                      <table class="multibanco" width="100%" cellpadding="0px" cellspacing="0px">
+                        <tr>
+                          <td rowspan="5">
+                            <img align="left" class="mbimage" src="/images/brand.jpg" >
+                          </td>
+                          <td colspan="2" align="center">
+                            <b>PAGAMENTO AUTOMÁTICO MB</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td align="left" >Entidade: </td>
+                          <td align="right"><b>10559</b></td>
+                        </tr>
+                        <tr>
+                          <td align="left" >Referência: </td>
+                          <td align="right"><b><%= @inscricao.referencia_multibanco %></b></td>
+                        </tr>
+                        <tr>
+                          <td align="left" >Montante: </td>
+                          <td align="right"><b><%= number_to_currency(@inscricao.preco-@inscricao.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b></td>
+                        </tr>
+                        <tr>
+                          <td align="left" >Data Limite: </td>
+                          <td align="right">
+                            <b>
+                              <% if(Date.today+30.days <= @event.data_inicio.to_date) and !(@inscricao.created_at+8.days >= Date.today and !(@inscricao.created_at > @event.data_inicio.to_date-30.days)) %>
+                                <%= (@event.data_inicio-30.days).strftime("%d-%m-%Y") %>
+                              <% end %>
+                              <% if(Date.today+30.days > @event.data_inicio.to_date)  and !(@inscricao.created_at+8.days >= Date.today and !(@inscricao.created_at > @event.data_inicio.to_date-30.days))%>
+                                <%= (@event.data_inicio-3.days).strftime("%d-%m-%Y") %>
+                              <% end %>
+                              <% if(@inscricao.created_at+8.days >= Date.today and !(@inscricao.created_at > @event.data_inicio.to_date-30.days)) %>
+                                <%= (@inscricao.created_at+8.days).strftime("%d-%m-%Y") %>
+                              <% end %>
+                            </b>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <% if(@inscricao.created_at+8.days >= Date.today && Date.today+30.days <= @event.data_inicio.to_date && @inscricao.total_pago == 0) %>
+                      <div align="center">
+                        Desconto válido apenas nos primeiros 8 dias de inscrição
+                      </div>
+                    <% end %>
+                    <script>
+                      new Tip('pagamento_mb_completo', '<div style="line-heigth:11px">Ao pagar este montante, não terá que fazer mais nenhum pagamento. Fica já com a inscrição confirmada e com o acampamento totalmente pago. <% if(@inscricao.created_at+8.days >= Date.today && Date.today+30.days <= @event.data_inicio.to_date && @inscricao.total_pago == 0) %><br/><br/>Este <b>preço especial</b> de pagamento integral atencipado só está disponível nos <b>8 dias seguintes à inscrição</b>, ou seja, até <%= (@inscricao.created_at + 8.days).strftime("%d-%m-%Y") %><%end%></div>',
+                              {
+                                title: 'PAGAMENTO COMPLETO',
+                                style: 'protogrey',
+                                stem: 'rightMiddle',
+                                hook: { tip: 'rightMiddle', target: 'leftMiddle'},
+                                offset: { x: 10, y: 10 },
+                                width:'370px'
+                              });
+                    </script>
+                </td>
+              </tr>
+              <% end %>
+              <% if (@inscricao.total_pago < @event.taxa_inscricao) %>
+              <tr>
+                <td>
+                  <h3 style="height:20px; margin-top:5px">Apenas Taxa de Inscrição</h3>
+                  <div id="pagamento_mb_taxa" style="display:block; border:1px solid #50514D; padding:10px; width:94%;  height:75px; font-family:monospace; text-align:center; vertical-align:middle; font-size:85%">
+                    <table class="multibanco" width="100%" cellpadding="0px" cellspacing="0px">
+                      <tr>
+                        <td rowspan="5">
+                          <img align="left" class="mbimage" src="/images/brand.jpg">
+                        </td>
+                        <td colspan="2" align="center">
+                          <b>PAGAMENTO AUTOMÁTICO MB</b>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left" >Entidade: </td>
+                        <td align="right"><b>10559</b></td>
+                      </tr>
+                      <tr>
+                        <td align="left" >Referência: </td>
+                        <td align="right"><b><%= @inscricao.referencia_multibanco_taxa_insc %></b></td>
+                      </tr>
+                      <tr>
+                        <td align="left" >Montante: </td>
+                        <td align="right"><b><%= number_to_currency(@event.taxa_inscricao, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b></td>
+                      </tr>
+                      <tr>
+                        <td align="left" >Data Limite: </td>
+                        <td align="right"><b><%= [@event.data_inicio-3.days, @inscricao.created_at+8.days].sort.first.strftime("%d-%m-%Y") %></b></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <script>
+                      new Tip('pagamento_mb_taxa',
+                              '<div style="line-heigth:11px">Ao pagar apenas a taxa de inscrição confirma a inscrição, mas terá que fazer pagamento posterior para pagar o resto do acampamento. <% if(@inscricao.created_at+8.days >= Date.today && Date.today+30.days <= @event.data_inicio.to_date && @inscricao.total_pago == 0) %><br/><br/>O acampamento fica <b>mais barato</b> se o pagar integralmente nos primeiros 8 dias de inscrição. Caso pague a taxa de inscrição, já não poderá usufruir deste desconto de pagamento total antecipado<%end%></div>',
+                              {
+                                title: 'APENAS TAXA DE INSCRIÇÃO',
+                                style: 'protogrey',
+                                stem: 'rightMiddle',
+                                hook: { tip: 'rightMiddle', target: 'leftMiddle'},
+                                offset: { x: 10, y: 10 },
+                                width:'370px'
+                              });
+                    </script>
+                </td>
+              </tr>
+              <% end %>
+            </table>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+</table>

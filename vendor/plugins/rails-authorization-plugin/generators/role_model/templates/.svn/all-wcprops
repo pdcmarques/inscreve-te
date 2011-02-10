@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/generators/role_model/templates
+END
+role_user_model.rb
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/generators/role_model/templates/role_user_model.rb
+END
+migration.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/generators/role_model/templates/migration.rb
+END
+unit_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/generators/role_model/templates/unit_test.rb
+END
+fixtures.yml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/generators/role_model/templates/fixtures.yml
+END
+role_model.rb
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/project/!svn/ver/235/trunk/vendor/plugins/rails-authorization-plugin/generators/role_model/templates/role_model.rb
+END

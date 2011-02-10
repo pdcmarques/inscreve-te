@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>29-09-2009 00:26</DATA_HORA>
+    <TERMINAL>0033025602-Alv do Ribatejo</TERMINAL>
+    <REFERENCIA>853106271</REFERENCIA>
+    <VALOR>42.75</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>41.9</VALORLIQUIDO>
+  </pagamentoMB>
+  <pagamentoMB>
+    <DATA_HORA>29-09-2009 12:10</DATA_HORA>
+    <TERMINAL>0000001630-CX GERAL DEPOSI</TERMINAL>
+    <REFERENCIA>853105779</REFERENCIA>
+    <VALOR>51.3</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>50.45</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

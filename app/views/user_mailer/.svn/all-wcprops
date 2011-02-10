@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/project/!svn/ver/715/trunk/app/views/user_mailer
+END
+novo_recibo_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/project/!svn/ver/715/trunk/app/views/user_mailer/novo_recibo_notification.html.erb
+END
+access_reminder.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/708/trunk/app/views/user_mailer/access_reminder.html.erb
+END
+recibo_reminder.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/715/trunk/app/views/user_mailer/recibo_reminder.html.erb
+END
+recibo_alterado_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/project/!svn/ver/715/trunk/app/views/user_mailer/recibo_alterado_notification.html.erb
+END
+pagamento_recibo_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/project/!svn/ver/715/trunk/app/views/user_mailer/pagamento_recibo_notification.html.erb
+END
+generic_email_inscricao.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/project/!svn/ver/377/trunk/app/views/user_mailer/generic_email_inscricao.html.erb
+END
+activation.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/708/trunk/app/views/user_mailer/activation.html.erb
+END
+precisa_recomendacao_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/project/!svn/ver/185/trunk/app/views/user_mailer/precisa_recomendacao_notification.html.erb
+END
+inscricao_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/project/!svn/ver/419/trunk/app/views/user_mailer/inscricao_notification.html.erb
+END
+pagamento_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/project/!svn/ver/368/trunk/app/views/user_mailer/pagamento_notification.html.erb
+END
+generic_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/377/trunk/app/views/user_mailer/generic_email.html.erb
+END
+signup_notification.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/project/!svn/ver/708/trunk/app/views/user_mailer/signup_notification.html.erb
+END
+inscricao_notification_sem_precos.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/project/!svn/ver/419/trunk/app/views/user_mailer/inscricao_notification_sem_precos.html.erb
+END
+maquina_sonhos_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/817/trunk/app/views/user_mailer/maquina_sonhos_email.html.erb
+END

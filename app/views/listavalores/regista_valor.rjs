@@ -1,0 +1,5 @@
+page.replace_html("campo"+@campo.id.to_s, :partial=>"/inscricoes/campo", :object=>@campo)
+page.replace_html("msg", "<h3>Igreja criada e seleccionada. Pode fechar esta caixa</h3>")
+page.replace_html("errors", "")
+page << "selectValueSet(\"campo["+@campo.id.to_s+"]\", "+@objecto.id.to_s+");"
+page << "el = document.getElementById(\"campo["+@campo.id.to_s+"]\"); selects(el); el.init();"

@@ -1,0 +1,323 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/project/!svn/ver/766/trunk/app/models
+END
+inscricao_reserva.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/593/trunk/app/models/inscricao_reserva.rb
+END
+recomendacao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/140/trunk/app/models/recomendacao.rb
+END
+entidade.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/project/!svn/ver/471/trunk/app/models/entidade.rb
+END
+grupo_inscricoes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/243/trunk/app/models/grupo_inscricoes.rb
+END
+grupo_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/140/trunk/app/models/grupo_campos.rb
+END
+produto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/project/!svn/ver/797/trunk/app/models/produto.rb
+END
+user_mailer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/817/trunk/app/models/user_mailer.rb
+END
+inscricaos_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/140/trunk/app/models/inscricaos_campos.rb
+END
+igrejasummit.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/463/trunk/app/models/igrejasummit.rb
+END
+translation.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/838/trunk/app/models/translation.rb
+END
+pagamento_mb.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/100/trunk/app/models/pagamento_mb.rb
+END
+campo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/project/!svn/ver/844/trunk/app/models/campo.rb
+END
+pacote.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/project/!svn/ver/501/trunk/app/models/pacote.rb
+END
+tipo_reserva.rb
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/project/!svn/ver/488/trunk/app/models/tipo_reserva.rb
+END
+pacote_produtos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/273/trunk/app/models/pacote_produtos.rb
+END
+desconto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/project/!svn/ver/521/trunk/app/models/desconto.rb
+END
+desconto_estatuto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/273/trunk/app/models/desconto_estatuto.rb
+END
+empresafacide.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/796/trunk/app/models/empresafacide.rb
+END
+user_observer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/347/trunk/app/models/user_observer.rb
+END
+igreja.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/project/!svn/ver/422/trunk/app/models/igreja.rb
+END
+campo_produto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/767/trunk/app/models/campo_produto.rb
+END
+consumo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/project/!svn/ver/593/trunk/app/models/consumo.rb
+END
+inscricao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/570/trunk/app/models/inscricao.rb
+END
+ip_range.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/project/!svn/ver/838/trunk/app/models/ip_range.rb
+END
+valor.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/project/!svn/ver/140/trunk/app/models/valor.rb
+END
+comunicacao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/252/trunk/app/models/comunicacao.rb
+END
+estado_reserva.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/469/trunk/app/models/estado_reserva.rb
+END
+pacote_ignore_produto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/576/trunk/app/models/pacote_ignore_produto.rb
+END
+tipo_pagamento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/797/trunk/app/models/tipo_pagamento.rb
+END
+i18n_locale.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/project/!svn/ver/838/trunk/app/models/i18n_locale.rb
+END
+refeicao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/project/!svn/ver/121/trunk/app/models/refeicao.rb
+END
+eventos_grupos_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/140/trunk/app/models/eventos_grupos_campos.rb
+END
+reserva.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/project/!svn/ver/488/trunk/app/models/reserva.rb
+END
+estatuto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/project/!svn/ver/273/trunk/app/models/estatuto.rb
+END
+role.rb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/project/!svn/ver/232/trunk/app/models/role.rb
+END
+lista_valores.rb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/140/trunk/app/models/lista_valores.rb
+END
+evento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/project/!svn/ver/521/trunk/app/models/evento.rb
+END
+documento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/321/trunk/app/models/documento.rb
+END
+reserva_produto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/501/trunk/app/models/reserva_produto.rb
+END
+desconto_inscricao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/832/trunk/app/models/desconto_inscricao.rb
+END
+codigo_desconto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/835/trunk/app/models/codigo_desconto.rb
+END
+inscricao_observer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/521/trunk/app/models/inscricao_observer.rb
+END
+preco.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/project/!svn/ver/243/trunk/app/models/preco.rb
+END
+recibo_observer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/project/!svn/ver/720/trunk/app/models/recibo_observer.rb
+END
+roles_user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/project/!svn/ver/232/trunk/app/models/roles_user.rb
+END
+reserva_estado.rb
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/project/!svn/ver/488/trunk/app/models/reserva_estado.rb
+END
+user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/project/!svn/ver/640/trunk/app/models/user.rb
+END
+refeicao_servida.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/121/trunk/app/models/refeicao_servida.rb
+END
+recibo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/project/!svn/ver/832/trunk/app/models/recibo.rb
+END
+pagamento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/project/!svn/ver/804/trunk/app/models/pagamento.rb
+END
+desconto_factura.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/273/trunk/app/models/desconto_factura.rb
+END
+igrejamg.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/project/!svn/ver/418/trunk/app/models/igrejamg.rb
+END
+dormida.rb
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/project/!svn/ver/33/trunk/app/models/dormida.rb
+END

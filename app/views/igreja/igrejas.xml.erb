@@ -1,0 +1,13 @@
+﻿<% if(params[:callback] != nil && params[:callback] != '') %>
+<%= params[:callback] %>('<igrejas><% @igrejas.each do |igreja| %><igreja><id><%= igreja.id %></id><nome><%= igreja.nome %></nome><localidade><%= igreja.localidade %></localidade></igreja><% end %>');
+<% else %>
+<igrejas>
+<% @igrejas.each do |igreja| %>
+    <igreja>
+        <id><%= igreja.id %></id>
+        <nome><%= igreja.nome %></nome>
+        <localidade><%= igreja.localidade %></localidade>
+    </igreja>
+<% end %>
+</igrejas>
+<% end %>

@@ -1,0 +1,17 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+  <td>
+    <%= recibo_listitem.nome %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(recibo_listitem.total_recibo, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(recibo_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(recibo_listitem.total_recibo-recibo_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td align="center">
+    <%= link_to "Detalhe", :controller=>:recibos, :action=>:detalhe, :id=>recibo_listitem.id %>
+  </td>
+</tr>

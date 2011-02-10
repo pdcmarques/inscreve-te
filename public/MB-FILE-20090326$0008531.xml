@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>26-03-2009 08:48</DATA_HORA>
+    <TERMINAL>0000001629-CX GERAL DEPOSI</TERMINAL>
+    <REFERENCIA>853000616</REFERENCIA>
+    <VALOR>24</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>23.15</VALORLIQUIDO>
+  </pagamentoMB>
+  <pagamentoMB>
+    <DATA_HORA>26-03-2009 11:35</DATA_HORA>
+    <TERMINAL>0035081704-Coimbra</TERMINAL>
+    <REFERENCIA>853009337</REFERENCIA>
+    <VALOR>33</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>32.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

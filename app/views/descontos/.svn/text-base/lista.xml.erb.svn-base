@@ -1,0 +1,8 @@
+﻿<descontos>
+    <% @descontos.each do |desconto| %>
+        <desconto>
+            <id><%= desconto.id %></id>
+            <descricao><%= desconto.descricao %></descricao>
+        </desconto>
+    <% end %>
+</descontos>

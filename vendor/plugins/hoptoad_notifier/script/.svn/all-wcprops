@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier/script
+END
+integration_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier/script/integration_test.rb
+END

@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>03-08-2009 21:10</DATA_HORA>
+    <TERMINAL>0033127101-Santa Cruz</TERMINAL>
+    <REFERENCIA>853120059</REFERENCIA>
+    <VALOR>93</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>92.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

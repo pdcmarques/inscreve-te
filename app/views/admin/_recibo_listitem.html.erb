@@ -1,0 +1,21 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+  <td>
+    <%= recibo_listitem.nome %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(recibo_listitem.total_recibo, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(recibo_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(recibo_listitem.total_recibo-recibo_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td align="center">
+    <a href="/recibos/detalhe/<%=recibo_listitem.id%>"><img src="/images/page_green.png" alt="Detalhe" /></a>&nbsp;&nbsp;
+    <a href="/imprimir_recibo/recibo/<%=recibo_listitem.id%>" target="_blank"><img src="/images/printer.png" alt="Imprimir" /></a>&nbsp;&nbsp;
+    <a href="/admin/envia_email_recibo/<%=recibo_listitem.id%>"><img src="/images/email_go.png" alt="Enviar" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="/admin/elimina_recibo/<%=recibo_listitem.id%>"><img src="/images/delete.png" alt="Apagar" /></a>
+    
+  </td>
+</tr>

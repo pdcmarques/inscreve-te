@@ -1,0 +1,41 @@
+<h1>Iniciar <span>Sessão</span></h1>
+<br/>
+<div id="container">
+
+  <% if flash[:error] != nil %>
+    <p style="color:red">
+      <%=flash[:error]%>
+    <p>
+  <% end %>
+  <% if flash[:notice] != nil %>
+    <div class="box">
+      <div class="box_inner">
+        <%=flash[:notice]%>
+      </div>
+    </div>
+    <br /><br />
+  <% end %>
+  Preencha com os seus dados de acesso. <br /> Ainda não tem uma conta? <a href="/<%= @entidade.sigla %>/signup">Registe-se aqui</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Esqueceu-se da sua password? <a href="/<%= @entidade.sigla %>/resetpassword">Peça aqui uma nova</a><br />
+  <br />
+  <% form_tag "/"+@entidade.sigla+"/sessions/create", :class=>"niceform" do -%>
+    <fieldset>
+          <!--legend>Login Info</legend-->
+          <dl>
+            <dt><label for="login">E-Mail</label></dt>
+            <dd><%= text_field_tag :login, '',:maxlength=>"32", :size=>"45"%></dd>
+          </dl>
+          <dl>
+            <dt><label for="password">Password</label></dt>
+            <dd><%= password_field_tag :password, '',:maxlength=>"32", :size=>"45" %></dd>
+          </dl>
+          <dl>
+            <dt><label for="remember_me" class="opt">Lembrar-me:</label></dt>
+            <dd><%= check_box_tag 'remember_me', '1', true %></dd>
+          </dl>
+    </fieldset>
+    <fieldset class="action">
+      <%= submit_tag 'Iniciar Sessão' %>
+    </fieldset>
+  <% end -%>
+  
+</div>

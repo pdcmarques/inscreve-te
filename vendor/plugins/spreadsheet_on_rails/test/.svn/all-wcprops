@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/test
+END
+spreadsheet_on_rails_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/test/spreadsheet_on_rails_test.rb
+END
+test_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/project/!svn/ver/256/trunk/vendor/plugins/spreadsheet_on_rails/test/test_helper.rb
+END

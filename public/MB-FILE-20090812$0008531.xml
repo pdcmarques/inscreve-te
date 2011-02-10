@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>11-08-2009 21:28</DATA_HORA>
+    <TERMINAL>0010149509-Torres Vedras</TERMINAL>
+    <REFERENCIA>853120538</REFERENCIA>
+    <VALOR>25</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>24.15</VALORLIQUIDO>
+  </pagamentoMB>
+  <pagamentoMB>
+    <DATA_HORA>12-08-2009 13:23</DATA_HORA>
+    <TERMINAL>0033613902-Nogueira</TERMINAL>
+    <REFERENCIA>853122676</REFERENCIA>
+    <VALOR>25</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>24.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

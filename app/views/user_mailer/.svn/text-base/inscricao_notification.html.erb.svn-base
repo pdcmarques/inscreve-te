@@ -1,0 +1,54 @@
+<body topmargin="0" leftmargin="0" rightmargin="0">
+<div  bgcolor="#FFFFFF" id="rootDiv" align="center" style="background-color:#FFFFFF;margin-top:0px;margin-bottom:0px;margin-right:0px;margin-left:0px;padding-top:3px;padding-bottom:3px;padding-right:3px;padding-left:3px;overflow:auto;" >
+<table  border="0" width="600" cellspacing="0" cellpadding="1" style="width:600px;" >
+<tr>
+  <td  bgcolor="#FFFFFF" rowspan="1" colspan="1" align="left" style="background-color:#FFFFFF;padding-top:1px;padding-bottom:1px;padding-right:1px;padding-left:1px;" >
+  <table  bgcolor="#FFFFFF" border="0" width="100%" cellspacing="0" cellpadding="0" style="background-color:#FFFFFF;padding-top:3px;padding-bottom:3px;padding-right:3px;padding-left:3px;" >
+    <tr>
+      <td width="100%" rowspan="1" colspan="2" align="left">
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content_LETTER.BLOCK1">
+          <tr>
+            <td valign="bottom" rowspan="1" align="center" colspan="1"><a href="http://www.inscreve-te.com.pt/<%=@inscricao.evento.entidade.sigla%>" target="_blank"><img border="0" src="http://www.inscreve-te.com.pt/images/<%=@inscricao.evento.entidade.sigla%>/email_logo.jpg" align="left" /></a></td>
+          </tr>
+        </table>
+        <table  id="content_LETTER.BLOCK2" width="100%" border="0" hidefocus="true" tabindex="0" cellspacing="0" cols="0" cellpadding="5" contenteditable="inherit" datapagesize="0" style="margin-bottom:5px;" >
+      </td>
+    </tr>
+    <tr>
+      <td  styleclass="style_MainText" align="left" style="color:#555555;font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;font-size:10pt;" ><font color="#555555" size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="color:#555555;font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;font-size:10pt;" ><font  size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="FONT-SIZE:10pt;FONT-FAMILY:Verdana,Geneva,Arial,Helvetica,sans-serif;" >
+        <p>
+          <font  size="3" style="FONT-WEIGHT:bold;COLOR:rgb(0,120,204);">
+            Confirmação de Registo de Inscrição
+          </font><br />
+        </p>
+        <p>
+          <font  size="1" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="FONT-SIZE:10pt;FONT-FAMILY:Verdana,Geneva,Arial,Helvetica,sans-serif;">
+            O presente e-mail serve para confirmar a inscrição registada em nome de <b>'<%= @inscricao.nome %>'</b> no evento <b>'<%= @inscricao.evento.nome %>'</b> que irá decorrer entre <b><%= @inscricao.evento.data_inicio.strftime("%d-%m-%Y") %></b> e <b><%= @inscricao.evento.data_fim.strftime("%d-%m-%Y") %></b><br/><br/>
+            
+            Pedimos que possa confirmar se todos os dados da inscrição estão correctamente registados. Para isso enviamos em anexo um PDF com o detalhe da inscrição.<br/><br/>
+            
+            <% if(Inscricao.count(:all, :conditions=>("evento_id = "+@inscricao.evento_id.to_s)) >= @inscricao.evento.limite_inscricoes_aviso)%>
+              <b><font color="red">Devido ao número de inscrições já registadas para este evento, a sua inscrição encontra-se numa lista de espera. Iremos confirmar a sua inscrição dentro de 72 horas. Caso não receba um contacto nosso neste periodo, por favor entre em contacto connosco.</font></b><br/><br/>
+            <% end %>
+            
+            Lembramos que a sua inscrição só sairá do estado <b>provisório</b> quando obtivermos recomendação do pastor da igreja pela qual se está a inscrever e quando recebermos, pelo menos, o valor de 25€ relativos à taxa de inscrição. Sem estes requisitos <b>não podemos</b> incluir o seu registo na lista efectiva de inscrições<br/><br/>
+            
+            O custo total desta inscrição é de: <b><%= number_to_currency(@inscricao.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></b><br/><br/>
+            Para pagar pode recorrer ao sistema Multibanco (as referências MB estão no PDF em anexo). <% if(@inscricao.evento.data_inicio-30.days >= @inscricao.created_at) %>Se optar por pagar integralmente a inscrição nos próximos 8 dias (até <%= (@inscricao.created_at+8.days).strftime("%d-%m-%Y") %>), terá acesso ao preço indicado neste e-mail, caso contrário pagará o valor total do acampamento que é de <%= number_to_currency(@inscricao.evento.preco_base, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u")  %>. Recomendamos que opte por essa opção de pagamento.<% else %> Se optar por pagar integralmente a inscrição não terá que fazer mais nenhum pagamento. <% end %> Se pagar apenas a taxa de inscrição terá que pagar o resto no dia de inicio do acampamento. <br/><br/>
+            
+            Pode ver os detalhes e o estado dos pagamentos desta inscrição on-line em: <a href="<%= @url %>"><%= @url %></a>
+          </font>
+        </p>
+        
+        <br />
+        Obrigado
+        <br/><br/>
+      </div>
+      </div>
+      <br/><br/>
+      <font style="font-size:10px;color:#666666;" >Esta mensagem foi enviada para [<%= @email %>] como resultado de uma inscrição em <a href="http://www.inscreve-te.com.pt/<%= @inscricao.evento.entidade.sigla %>" style="color:#666666;" >www.acampamentobaptista.com.pt/<%=@inscricao.evento.entidade.sigla %></a>. <a href="http://www.inscreve-te.com.pt/<%=@inscricao.evento.entidade.sigla %>" style="color:#666666;" >Cancele a conta aqui</a></font>
+      </font></font></td></tr></table>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,43 @@
+<br/>
+<h2>Lista de Pagamentos Multibanco</h2>
+<br/>
+<div style="text-align:right"><a href="/<%= @entidade.sigla %>/<%= @event.codigo %>/admin/load_pagamentos_mb">Actualizar Pagamentos MB</a></div>
+<br/>
+<table class="user_detail_table">
+  <tr class="header">
+    <th align="left">Data</th>
+    <th align="left">Referência</th>
+    <th align="left">Valor</th>
+    <th align="left">Tarifa</th>
+    <th align="left">Valor Líquido</th>
+    <!--<th align="left">Terminal</th>-->
+    <th align="left">Inscrição</th>
+    <th align="left"></th>
+  </tr>
+  <% @pagamentos.each do |pagamento| %>
+    <tr>
+        <td><%= pagamento.data.strftime("%d-%m-%Y") %></td>
+        <td><%= pagamento.referencia %></td>
+        <td align="right"><%= number_to_currency(pagamento.valor, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+        <td align="right"><%= number_to_currency(pagamento.tarifa, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+        <td align="right"><%= number_to_currency(pagamento.valorliquido, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+        <!--<td><%= pagamento.terminal %></td>-->
+        <td>
+          <% if pagamento.pagamento_id != nil && pagamento.pagamento != nil && pagamento.pagamento.recibo != nil %>
+            Recibo Nr. <%= pagamento.pagamento.recibo_id %> (<%= pagamento.pagamento.recibo.nome %>)
+          <% end %>
+          <% if pagamento.pagamento_id != nil && pagamento.pagamento != nil && pagamento.pagamento.inscricao != nil %>
+            <%= pagamento.pagamento.inscricao.nome %> <% if(pagamento.pagamento.inscricao.evento != nil) %><br/><%= pagamento.pagamento.inscricao.evento.nome %><% end %>
+          <% end %>
+        </td>
+        <td>
+          <% if pagamento.pagamento_id != nil && pagamento.pagamento != nil && pagamento.pagamento.recibo != nil %>
+            <a href="/<%= @entidade.sigla %>/recibos/detalhe/<%=pagamento.pagamento.recibo_id%>"><img src="/images/page_green.png" alt="Detalhe" /></a>
+          <% end %>
+          <% if pagamento.pagamento_id != nil && pagamento.pagamento != nil && pagamento.pagamento.inscricao != nil %>
+            <a href="/<%= @entidade.sigla %>/inscricoes/detalhe/<%=pagamento.pagamento.inscricao_id%>"><img src="/images/user_go.png" alt="Detalhe" /></a>
+          <% end %>
+        </td>
+    </tr>
+  <% end %>
+</table>

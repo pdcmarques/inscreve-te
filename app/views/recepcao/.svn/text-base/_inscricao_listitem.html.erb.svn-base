@@ -1,0 +1,15 @@
+<% if(inscricao_listitem != nil) %>
+  <tr class="<%= cycle('odd', 'even') -%>">
+    <td><b><font size="3"><%= inscricao_listitem.numero %></b></font></td>
+    <td><a href="/<%= inscricao_listitem.evento.codigo %>/inscricoes/detalhe/<%= inscricao_listitem.id %>"><b><font size="3"><%= inscricao_listitem.nome.upcase %></font></b></a></td>
+    <td><b><font size="3"><%= inscricao_listitem.idade %></b></font></td>
+    <td><b><font size="3"><%= inscricao_listitem.resolve_lov(6) %></b></font></td>
+    <!--td width="50px" align="right"><%= number_to_currency(inscricao_listitem.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td width="50px" align="right"><%= number_to_currency(inscricao_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td width="50px" align="right"><%= number_to_currency(inscricao_listitem.preco-inscricao_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td-->
+    <td width="25px" align="center">
+      <!--div style="display:block; border:1px solid #50514D; padding:10px; width:270px; height:90px; font-family:monospace; text-align:center; vertical-align:middle"-->
+        <%= barcode inscricao_listitem.id.to_s.rjust(4, '0'), :height=>50 %>
+      <!--/div-->
+    </tr>
+<% end %>

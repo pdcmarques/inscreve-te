@@ -1,0 +1,12 @@
+<% if(inscricao_listitem != nil) %>
+  <tr class="<%= cycle('odd', 'even') -%>">
+    <td><%= inscricao_listitem.nome %></td>
+    <td><%= inscricao_listitem.evento.nome %></td>
+    <td width="80px" align="center"><%= inscricao_listitem.created_at.strftime("%d-%m-%Y") %></td>
+    <td width="50px" align="right"><%= number_to_currency(inscricao_listitem.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td width="50px" align="right"><%= number_to_currency(inscricao_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td>
+      <a href="/<%= inscricao_listitem.evento.codigo %>/inscricoes/detalhe/<%= inscricao_listitem.id %>"><img src="/images/information.png" /></a>
+    </td>
+  </tr>
+<% end %>

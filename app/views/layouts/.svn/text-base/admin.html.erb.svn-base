@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="pt-pt" xml:lang="pt-pt" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= @entidade.nome_curto %> - Administração de Eventos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+	var pageTracker = _gat._getTracker("UA-81402-4");
+	pageTracker._trackPageview();
+      } catch(err) {}</script>
+    
+    <%= javascript_include_tag :defaults %>
+    <!--%= javascript_include_tag "niceforms" %-->
+    <%= javascript_include_tag "calendarview" %>
+    <%= javascript_include_tag "prototip" %>
+    <!--%= stylesheet_link_tag "niceforms-default" %-->
+    <%= stylesheet_link_tag "calendarview" %>
+    <%= stylesheet_link_tag "prototip" %>
+    <%= stylesheet_link_tag "print", :media=>"print" %>
+    <%= stylesheet_link_tag "tabs" %>
+    <%= stylesheet_link_tag @entidade.sigla+"/default" %>
+    <%= javascript_include_tag "proto.menu" %>
+    <%= stylesheet_link_tag "proto.menu" %>
+  </head>
+  <body>
+<div id="header" class="noprint">
+	<div id="header_inner">
+		<!--h1><span>Inscri&ccedil;&otilde;es.</span>Acampamento Baptista</h1-->
+		<% if @current_user != nil && @current_user != false  %>
+		  <div id="slogan">Ligado como <b><%= @current_user.login %></b> (<%= @current_user.profile %>) - <a href="/<%= @entidade.sigla %>/logout">Sair</a></div>
+		<% else %>
+		  <div id="slogan"><a href="/<%= @entidade.sigla %>/login">Iniciar Sessão</a></div>
+		<% end %>
+	</div>
+	<div id="spinner" align="center" style="width:110px; text-align:center; margin: 3px; border:1px solid #CCCCCC; background-color: #B7D1FF; display:block;" class="x-mask-loading">
+	  <div align="center" class="loading-indicator" style="color:#333333"><b>A Carregar...</b></div>
+	</div>
+</div>
+
+<div id="main">
+  <%= yield %>
+</div>
+</body>
+</html>

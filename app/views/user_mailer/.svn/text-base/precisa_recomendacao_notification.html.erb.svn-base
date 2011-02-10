@@ -1,0 +1,54 @@
+<body topmargin="0" leftmargin="0" rightmargin="0">
+<div  bgcolor="#FFFFFF" id="rootDiv" align="center" style="background-color:#FFFFFF;margin-top:0px;margin-bottom:0px;margin-right:0px;margin-left:0px;padding-top:3px;padding-bottom:3px;padding-right:3px;padding-left:3px;overflow:auto;" >
+<table  border="0" width="600" cellspacing="0" cellpadding="1" style="width:600px;" >
+<tr>
+  <td  bgcolor="#FFFFFF" rowspan="1" colspan="1" align="left" style="background-color:#FFFFFF;padding-top:1px;padding-bottom:1px;padding-right:1px;padding-left:1px;" >
+  <table  bgcolor="#FFFFFF" border="0" width="100%" cellspacing="0" cellpadding="0" style="background-color:#FFFFFF;padding-top:3px;padding-bottom:3px;padding-right:3px;padding-left:3px;" >
+    <tr>
+      <td width="100%" rowspan="1" colspan="2" align="left">
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content_LETTER.BLOCK1">
+          <tr>
+                  <td valign="bottom" rowspan="1" align="center" colspan="1"><a href="http://www.acampamentobaptista.com.pt" target="_blank"><img border="0" alt="Acampamento Baptista" src="http://www.acampamentobaptista.com.pt/var/ezwebin_site/storage/images/design/acampamento-baptista/172-5-por-PT/Acampamento-Baptista.jpg" align="left" /></a></td>
+  
+          </tr>
+        </table>
+        <table  id="content_LETTER.BLOCK2" width="100%" border="0" hidefocus="true" tabindex="0" cellspacing="0" cols="0" cellpadding="5" contenteditable="inherit" datapagesize="0" style="margin-bottom:5px;" >
+      </td>
+    </tr>
+    <tr>
+      <td  styleclass="style_MainText" align="left" style="color:#555555;font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;font-size:10pt;" ><font color="#555555" size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="color:#555555;font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;font-size:10pt;" ><font  size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="FONT-SIZE:10pt;FONT-FAMILY:Verdana,Geneva,Arial,Helvetica,sans-serif;" >
+        <p>
+          <font  size="3" style="FONT-WEIGHT:bold;COLOR:rgb(0,120,204);">
+            Pedido de Recomendação
+          </font><br />
+        </p>
+        <p>
+          <font  size="1" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="FONT-SIZE:10pt;FONT-FAMILY:Verdana,Geneva,Arial,Helvetica,sans-serif;">
+            O presente e-mail serve para o informar que recebemos uma inscrição que necessita da sua recomendação. A inscrição é em nome de <b>'<%= @inscricao.nome %>'</b> e é para o evento <b>'<%= @inscricao.evento.nome %>'</b> que irá decorrer entre <b><%= @inscricao.evento.data_inicio.strftime("%d-%m-%Y") %></b> e <b><%= @inscricao.evento.data_fim.strftime("%d-%m-%Y") %></b> no Acampamento Baptista em Água de Madeiros.<br/><br/>
+            
+            A recomendação de um participante num Acampamento implica o reconhecimento, por parte do pastor ou líder da igreja, da capacidade do campista para participar no acampamento, bem como a certificação da correcção dos dados da inscrição.<br/><br/>
+            
+            Pedimos-lhe para verificar se todos os dados fornecidos na inscrição são correctos. Para isso enviamos em anexo os detalhes da inscrição.<br/><br/>
+            
+            Caso haja alguma informação que os líderes do acampamento devam saber acerca deste campista, a mesma deve ser enviada directamente para os líderes deste acampamento, ou para a direcção do AB. <br /><br/>
+            
+            Para recomendar esta inscrição vá a <a href="<%= @url %>"><%= @url %></a> e escreva o seu nome onde lhe for solicitado.
+          </font>
+        </p>
+        
+        <br />
+        Obrigado
+        <br />
+      </div>
+      </div>
+      <div><br />
+      </div><span>O Acampamento Baptista</span>
+      <br />
+      <br>
+      
+      <font style="font-size:10px;color:#666666;" >Esta mensagem foi enviada para [<%= @email %>] como resultado de uma inscrição em <a href="http://eventos.acampamentobaptista.com.pt" style="color:#666666;" >www.acampamentobaptista.com.pt</a>. <a href="http://eventos.acampamentobaptista.com.pt/" style="color:#666666;" >Cancele a conta aqui</a></font>
+      </font></font></td></tr></table>
+      </td>
+    </tr>
+  </table>
+</div>

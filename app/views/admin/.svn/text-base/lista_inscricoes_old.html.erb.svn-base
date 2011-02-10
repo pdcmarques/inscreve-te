@@ -1,0 +1,25 @@
+﻿<table width="100%">
+  <td align="left"><h2>Lista de Inscrições</h2></td>
+  <td align="right" class="noprint" style="vertical-align:middle; text-decoration:none"><a href="/<%=@event.codigo%>/admin/lista_inscricoes/lista_inscricoes.pdf"><img src="/images/page_white_acrobat.png" alt="PDF" />Exportar PDF</a></td>
+</table>
+
+<table class="user_detail_table">
+  <!--tr class="header">
+    <% @event.grupo_camposs.each do |grupo| %>
+      <th colspan="<%= grupo.campos.count%>"><%= grupo.label %></td>
+    <% end %>
+  </tr-->
+  <tr class="header">
+    <% @event.grupo_camposs.each do |grupo| %>
+      <% grupo.campos.each do |campo| %>
+        <% if(campo.mostra_tabela) %>
+          <th><%= campo.label %></th>
+        <% end %> 
+      <% end %>
+    <% end %>
+    <th align="center">Total</th>
+    <th align="center">Recebido</th>
+    <th align="center" colspan="2"></th>
+  </tr>
+  <%= render(:partial=>"inscricao_listitem", :collection=>@inscricoes ) %>
+</table>

@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>05-10-2009 07:13</DATA_HORA>
+    <TERMINAL>0000001434-B.SANTANDER TOT</TERMINAL>
+    <REFERENCIA>853152174</REFERENCIA>
+    <VALOR>25</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>24.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

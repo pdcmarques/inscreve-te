@@ -1,0 +1,28 @@
+<tr>
+  <td>
+    <%= inscricao_listitem_counter+1 %> 
+  </td>  
+  <td>
+  </td>
+  <td>
+    <div context="inscricao" idInsc="<%= inscricao_listitem.id %>"><%= inscricao_listitem.nome %></div>
+  </td>
+  <td>
+    <%= inscricao_listitem.igreja.nome %>
+  </td>
+  <td align="center" style="text-size:20">
+    <%= inscricao_listitem.estatuto.nome %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(inscricao_listitem.total_consumos, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(inscricao_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td>
+  </td>
+  <td align="center">
+  </td>
+
+</script>
+</tr>

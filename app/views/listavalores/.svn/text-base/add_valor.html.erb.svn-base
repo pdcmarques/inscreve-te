@@ -1,0 +1,17 @@
+<div id="errors"></div>
+<div id="msg"></div>
+<% form_remote_tag :url=>{:controller => :listavalores, :action => :regista_valor, :id => @campo.id } do |form| -%>
+  <table width="100%" cellpadding="5px" cellspacing="10px">
+  <% @columns.each do |column| %>
+    <% if ((column.name.upcase != "ID") && (column.name.upcase != "CREATED_AT") && (column.name.upcase != "UPDATED_AT") && (column.name.upcase != "FULL_NAME")) %>
+    <tr>
+      <td align="right"><%= column.name.sub("_"," ").upcase %>:</td>
+      <td>&nbsp;&nbsp;<%= text_field_tag "campo["+column.name+"]", nil, :size=>"30"%></td>
+    </tr>
+    <% end %>
+  <% end %>
+  <tr>
+    <td colspan="2" align="center"><%= submit_tag 'Adicionar' %></td>
+  </tr>
+  </table>
+  <% end %> 

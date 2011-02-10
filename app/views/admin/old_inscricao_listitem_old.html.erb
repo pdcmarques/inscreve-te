@@ -1,0 +1,139 @@
+<tr class="<%= cycle('odd', 'even') -%>" id="insc<%= inscricao_listitem_counter+1 %>">
+  <td>
+    <%= inscricao_listitem_counter+1 %> 
+  </td>  
+  <td>
+    <% if inscricao_listitem.cancelado %>
+      <img valign="middle" src="/images/flag_red.png" />
+    <% end %>
+    <% if inscricao_listitem.presente %>
+      <img valign="middle" src="/images/flag_green.png" />
+    <% end %>
+  </td>
+  <td>
+    <div context="inscricao" idInsc="<%= inscricao_listitem.id %>"><%= inscricao_listitem.nome %></div>
+  </td>
+  <td>
+    <%= inscricao_listitem.igreja.nome %>
+  </td>
+  <td align="center">
+    <%= inscricao_listitem.estatuto.nome[0,1] %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(inscricao_listitem.total_consumos, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(inscricao_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+  </td>
+  <td>
+    <% if inscricao_listitem.total_pago == 0 && inscricao_listitem.total_consumos > 0%>
+      <img valign="middle" src="/images/bullet_red.png" />
+    <% end %>
+    <% if inscricao_listitem.total_pago > 0 &&  inscricao_listitem.total_pago < inscricao_listitem.total_consumos %>
+      <img valign="middle" src="/images/bullet_yellow.png" />
+    <% end %>
+    <% if inscricao_listitem.total_pago >= inscricao_listitem.total_consumos %>
+      <img valign="middle" src="/images/bullet_green.png" />
+    <% end %>
+  </td>
+  <td align="center">
+    <%
+        codigo = "I-AGCBP-"+inscricao_listitem.id.to_s.rjust(3, '0')
+        igreja = inscricao_listitem.igreja.full_name
+        estatuto = ""
+        if inscricao_listitem.estatuto.id == 2
+          estatuto = "A"
+        else
+          estatuto = "D"
+        end
+        if inscricao_listitem.tipo_alojamento != nil
+          casa = "CASA "+inscricao_listitem.tipo_alojamento.upcase
+        else
+          casa = "FORA DO AB"
+          quarto = "-"
+        end
+        if inscricao_listitem.local_alojamento != nil
+          quarto = "QUARTO "+inscricao_listitem.local_alojamento
+        end
+    %>
+  </td>
+  
+  <script type="text/javascript">
+  
+  var menuItems = [
+  {
+    name: 'Detalhe',
+    className: 'insc_detalhe', 
+    callback: function() {
+      window.location="/inscricoes/detalhe/<%=inscricao_listitem.id%>"
+    }
+  },{
+    name: 'Modificar',
+    className: 'insc_update', 
+    callback: function() {
+      window.location="/inscricoes/editar/<%=inscricao_listitem.id%>"
+    }
+  },{
+    name: 'Distribuir Consumos',
+    className: 'insc_distribuir_consumos', 
+    callback: function() {
+      window.location="/inscricoes/distribuir_consumos/<%=inscricao_listitem.id%>"
+    }
+  },{
+    separator: true
+  },{
+    name: 'Imprimir Crachá',
+    className: 'insc_print_badge_nome', 
+    callback: function() {
+      window.location="badgeprint://?badge=nome&nome=<%=inscricao_listitem.nome_cracha.upcase %>&igreja=<%=igreja%>&estatuto=<%= inscricao_listitem.estatuto.nome.upcase %>&ref1=<%= inscricao_listitem.refeicao1.tipo_refeicao.to_s %>&ref2=<%= inscricao_listitem.refeicao2.tipo_refeicao.to_s %>&ref3=<%= inscricao_listitem.refeicao3.tipo_refeicao.to_s %>&ref4=<%= inscricao_listitem.refeicao4.tipo_refeicao.to_s %>&ref5=<%= inscricao_listitem.refeicao5.tipo_refeicao.to_s %>&codigobarras=<%=codigo%>&casa=<%=casa%>&quarto=<%=quarto%>"
+    }
+  },{
+    name: 'Imprimir Refeições',
+    className: 'insc_print_badge_refeicoes', 
+    callback: function() {
+      window.location="badgeprint://?badge=refeicoes&nome=<%=inscricao_listitem.nome_cracha.upcase %>&igreja=<%=igreja%>&estatuto=<%= inscricao_listitem.estatuto.nome.upcase %>&ref1=<%= inscricao_listitem.refeicao1.tipo_refeicao.to_s %>&ref2=<%= inscricao_listitem.refeicao2.tipo_refeicao.to_s %>&ref3=<%= inscricao_listitem.refeicao3.tipo_refeicao.to_s %>&ref4=<%= inscricao_listitem.refeicao4.tipo_refeicao.to_s %>&ref5=<%= inscricao_listitem.refeicao5.tipo_refeicao.to_s %>&codigobarras=<%=codigo%>&casa=<%=casa%>&quarto=<%=quarto%>"
+    }
+  },{
+    separator: true
+  },{
+    name: 'Marcar Presente',
+    className: 'insc_flag_presente',
+    callback: function() {
+      window.location="/admin/marcarpresente/<%=inscricao_listitem.id%>"
+    }
+  },{
+    name: 'Marcar Ausente',
+    className: 'insc_flag_normal',
+    callback: function() {
+      window.location="/admin/marcarausente/<%=inscricao_listitem.id%>"
+    }
+  },{
+    name: 'Marcar Cancelado',
+    className: 'insc_flag_cancelado',
+    callback: function() {
+      window.location="/admin/marcarcancelado/<%=inscricao_listitem.id%>"
+    }
+  },{
+    name: 'Marcar Não Cancelado',
+    className: 'insc_flag_normal',
+    callback: function() {
+      window.location="/admin/marcardescancelado/<%=inscricao_listitem.id%>"
+    }
+  },{
+    separator: true
+  },{
+    name: 'Eliminar',
+    className: 'eliminar',
+    callback: function() {
+      window.location="/admin/elimina_inscricao/<%=inscricao_listitem.id%>"
+    }
+  }
+  ]
+  
+  new Proto.Menu({
+    selector: '#insc<%= inscricao_listitem_counter+1 %> ', // context menu will be shown when element with id of "contextArea" is clicked
+    className: 'menu desktop', // this is a class which will be attached to menu container (used for css styling)
+    menuItems: menuItems // array of menu items
+  })
+</script>
+</tr>

@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/project/!svn/ver/537/trunk/test/functional
+END
+igreja_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/68/trunk/test/functional/igreja_controller_test.rb
+END
+users_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/3/trunk/test/functional/users_controller_test.rb
+END
+error_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/58/trunk/test/functional/error_controller_test.rb
+END
+descontos_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/523/trunk/test/functional/descontos_controller_test.rb
+END
+inscricoes_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/15/trunk/test/functional/inscricoes_controller_test.rb
+END
+barcode_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/41/trunk/test/functional/barcode_controller_test.rb
+END
+home_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/28/trunk/test/functional/home_controller_test.rb
+END
+eventos_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/434/trunk/test/functional/eventos_controller_test.rb
+END
+sessions_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/3/trunk/test/functional/sessions_controller_test.rb
+END
+produtos_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/473/trunk/test/functional/produtos_controller_test.rb
+END
+recepcao_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/132/trunk/test/functional/recepcao_controller_test.rb
+END
+lista_valores_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/152/trunk/test/functional/lista_valores_controller_test.rb
+END
+etiqueta_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/58/trunk/test/functional/etiqueta_controller_test.rb
+END
+imprimir_recibo_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/58/trunk/test/functional/imprimir_recibo_controller_test.rb
+END
+refeicoes_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/125/trunk/test/functional/refeicoes_controller_test.rb
+END
+admin_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/73/trunk/test/functional/admin_controller_test.rb
+END
+listavalores_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/project/!svn/ver/152/trunk/test/functional/listavalores_controller_test.rb
+END
+recibos_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/41/trunk/test/functional/recibos_controller_test.rb
+END
+consumos_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/537/trunk/test/functional/consumos_controller_test.rb
+END
+pagamentos_controller_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/806/trunk/test/functional/pagamentos_controller_test.rb
+END

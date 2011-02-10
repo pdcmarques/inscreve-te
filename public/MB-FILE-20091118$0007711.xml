@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>17-11-2009 23:04</DATA_HORA>
+    <TERMINAL>0000001630-CX GERAL DEPOSI</TERMINAL>
+    <REFERENCIA>771100461</REFERENCIA>
+    <VALOR>80</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>79.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

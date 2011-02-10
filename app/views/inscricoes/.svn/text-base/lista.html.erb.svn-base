@@ -1,0 +1,14 @@
+<h1>Lista de <span>inscrições</span> feitas por si</h1>
+<br />
+<br />
+<table class="user_detail_table">
+  <tr class="header">
+      <th align="left">Nome</th>
+      <th align="center">Evento</th>
+      <th align="center">Data Inscrição</th>
+      <th align="center">Total</th>
+      <th align="center">Pago</th>
+      <th align="center"></th>
+  </tr>
+  <%= render(:partial=>"inscricao_listitem", :collection=>@inscricoes) %>
+</table>

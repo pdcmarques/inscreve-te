@@ -1,0 +1,773 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/project/!svn/ver/719/trunk/db/migrate
+END
+20110110201651_codigo_desconto_campo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/project/!svn/ver/836/trunk/db/migrate/20110110201651_codigo_desconto_campo.rb
+END
+20090611173045_semantica_campos2.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/245/trunk/db/migrate/20090611173045_semantica_campos2.rb
+END
+20090205184912_create_refeicaos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/35/trunk/db/migrate/20090205184912_create_refeicaos.rb
+END
+20090602181228_limite_inscricoes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/234/trunk/db/migrate/20090602181228_limite_inscricoes.rb
+END
+20100606213356_descontos_idades.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/705/trunk/db/migrate/20100606213356_descontos_idades.rb
+END
+20090414190002_create_grupo_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/142/trunk/db/migrate/20090414190002_create_grupo_campos.rb
+END
+20090124154531_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/3/trunk/db/migrate/20090124154531_create_users.rb
+END
+20090124191721_create_igrejas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/13/trunk/db/migrate/20090124191721_create_igrejas.rb
+END
+20090506204916_campo_long_description.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/155/trunk/db/migrate/20090506204916_campo_long_description.rb
+END
+20090712214532_taxa_inscricao_percentage.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/project/!svn/ver/281/trunk/db/migrate/20090712214532_taxa_inscricao_percentage.rb
+END
+20090124192324_create_consumos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/13/trunk/db/migrate/20090124192324_create_consumos.rb
+END
+20091202171940_desconto_entidade.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/522/trunk/db/migrate/20091202171940_desconto_entidade.rb
+END
+20090212221859_igrejas_full_name.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/56/trunk/db/migrate/20090212221859_igrejas_full_name.rb
+END
+20090916212606_create_igrejasummits.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/463/trunk/db/migrate/20090916212606_create_igrejasummits.rb
+END
+20091003145616_data_limite_desconto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/500/trunk/db/migrate/20091003145616_data_limite_desconto.rb
+END
+20090415170854_create_inscricaos_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/project/!svn/ver/142/trunk/db/migrate/20090415170854_create_inscricaos_campos.rb
+END
+20101108190856_tipo_pagamento_icon.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/805/trunk/db/migrate/20101108190856_tipo_pagamento_icon.rb
+END
+20090630223646_limpa_tabela_inscricoes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/project/!svn/ver/274/trunk/db/migrate/20090630223646_limpa_tabela_inscricoes.rb
+END
+20100813085007_mailchimp_users_list.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/754/trunk/db/migrate/20100813085007_mailchimp_users_list.rb
+END
+20110111230405_create_translations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/840/trunk/db/migrate/20110111230405_create_translations.rb
+END
+20091005204148_refeicao_reservas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/502/trunk/db/migrate/20091005204148_refeicao_reservas.rb
+END
+20101101191335_create_tipo_pagamentos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/798/trunk/db/migrate/20101101191335_create_tipo_pagamentos.rb
+END
+20090921202054_create_reservas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/468/trunk/db/migrate/20090921202054_create_reservas.rb
+END
+20090326174925_create_refeicao_servidas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/project/!svn/ver/124/trunk/db/migrate/20090326174925_create_refeicao_servidas.rb
+END
+20090416162541_lista_valores_class.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/142/trunk/db/migrate/20090416162541_lista_valores_class.rb
+END
+20090921203112_create_inscricao_reservas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/project/!svn/ver/468/trunk/db/migrate/20090921203112_create_inscricao_reservas.rb
+END
+20090701174408_create_pacotes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/274/trunk/db/migrate/20090701174408_create_pacotes.rb
+END
+20090427170434_inscricaos_preco.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/142/trunk/db/migrate/20090427170434_inscricaos_preco.rb
+END
+20090715081735_campo_is_estatuto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/302/trunk/db/migrate/20090715081735_campo_is_estatuto.rb
+END
+20091001220747_inscricao_reserva_estados.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/project/!svn/ver/493/trunk/db/migrate/20091001220747_inscricao_reserva_estados.rb
+END
+20090212193944_user_profile.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/56/trunk/db/migrate/20090212193944_user_profile.rb
+END
+20090415170555_create_eventos_grupos_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/project/!svn/ver/142/trunk/db/migrate/20090415170555_create_eventos_grupos_campos.rb
+END
+20090803215627_create_documentos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/322/trunk/db/migrate/20090803215627_create_documentos.rb
+END
+20090921202647_create_reserva_produtos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/project/!svn/ver/468/trunk/db/migrate/20090921202647_create_reserva_produtos.rb
+END
+20090611192745_campos_order.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/245/trunk/db/migrate/20090611192745_campos_order.rb
+END
+20090820220614_create_igrejamgs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/400/trunk/db/migrate/20090820220614_create_igrejamgs.rb
+END
+20090205184938_create_dormidas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/35/trunk/db/migrate/20090205184938_create_dormidas.rb
+END
+20090124192910_create_produtos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/13/trunk/db/migrate/20090124192910_create_produtos.rb
+END
+20100812224900_info_facturacao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/754/trunk/db/migrate/20100812224900_info_facturacao.rb
+END
+20090610135730_create_precos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/245/trunk/db/migrate/20090610135730_create_precos.rb
+END
+20090205182638_dormidas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/35/trunk/db/migrate/20090205182638_dormidas.rb
+END
+20090610141159_tipo_custeamento_evento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/project/!svn/ver/245/trunk/db/migrate/20090610141159_tipo_custeamento_evento.rb
+END
+20090131185016_inscricao_refeicao5.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/project/!svn/ver/29/trunk/db/migrate/20090131185016_inscricao_refeicao5.rb
+END
+20090610164212_taxa_inscricao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/245/trunk/db/migrate/20090610164212_taxa_inscricao.rb
+END
+20090907222107_desconto_antecipacao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/439/trunk/db/migrate/20090907222107_desconto_antecipacao.rb
+END
+20091205001111_recibo_nif.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/539/trunk/db/migrate/20091205001111_recibo_nif.rb
+END
+20090713134347_taxa_inscricao_minima.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/project/!svn/ver/286/trunk/db/migrate/20090713134347_taxa_inscricao_minima.rb
+END
+20091202171658_desconto_evento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/522/trunk/db/migrate/20091202171658_desconto_evento.rb
+END
+20100529133119_evento_custo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/699/trunk/db/migrate/20100529133119_evento_custo.rb
+END
+20090610182446_listavalores_condition_runtime_vars.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/project/!svn/ver/245/trunk/db/migrate/20090610182446_listavalores_condition_runtime_vars.rb
+END
+20090427165331_pagamento_inscricao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/142/trunk/db/migrate/20090427165331_pagamento_inscricao.rb
+END
+20110111225822_create_i18n_locales.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/840/trunk/db/migrate/20110111225822_create_i18n_locales.rb
+END
+20090610173746_create_grupo_inscricoes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/project/!svn/ver/245/trunk/db/migrate/20090610173746_create_grupo_inscricoes.rb
+END
+20090701192718_produtos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/274/trunk/db/migrate/20090701192718_produtos.rb
+END
+20090922181521_create_estado_reservas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/468/trunk/db/migrate/20090922181521_create_estado_reservas.rb
+END
+20100502192844_campo_default_value.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/603/trunk/db/migrate/20100502192844_campo_default_value.rb
+END
+20090630174027_create_descontos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/274/trunk/db/migrate/20090630174027_create_descontos.rb
+END
+20090630180448_create_desconto_facturas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/project/!svn/ver/274/trunk/db/migrate/20090630180448_create_desconto_facturas.rb
+END
+20091001183158_reservas_consumo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/493/trunk/db/migrate/20091001183158_reservas_consumo.rb
+END
+20090205185650_refeicoes_dormidas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/35/trunk/db/migrate/20090205185650_refeicoes_dormidas.rb
+END
+20090512183906_campo_text_value.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/189/trunk/db/migrate/20090512183906_campo_text_value.rb
+END
+20090701175806_prioridade_pacote.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/274/trunk/db/migrate/20090701175806_prioridade_pacote.rb
+END
+20090618212956_create_comunicacaos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/255/trunk/db/migrate/20090618212956_create_comunicacaos.rb
+END
+20110110200303_create_codigo_descontos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/project/!svn/ver/836/trunk/db/migrate/20110110200303_create_codigo_descontos.rb
+END
+20090611191424_grupos_campos_order.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/245/trunk/db/migrate/20090611191424_grupos_campos_order.rb
+END
+20090630180559_create_desconto_inscricaos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/project/!svn/ver/274/trunk/db/migrate/20090630180559_create_desconto_inscricaos.rb
+END
+20110116111157_create_ip_ranges.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/840/trunk/db/migrate/20110116111157_create_ip_ranges.rb
+END
+20090720200426_preco_manual.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/308/trunk/db/migrate/20090720200426_preco_manual.rb
+END
+20090414163220_recibo_evento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/142/trunk/db/migrate/20090414163220_recibo_evento.rb
+END
+20090427174611_create_recomendacaos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/142/trunk/db/migrate/20090427174611_create_recomendacaos.rb
+END
+20090610135511_create_pacote_produtos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/245/trunk/db/migrate/20090610135511_create_pacote_produtos.rb
+END
+20090922180950_reserva_cost.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/468/trunk/db/migrate/20090922180950_reserva_cost.rb
+END
+20091005154311_reservas_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/502/trunk/db/migrate/20091005154311_reservas_campos.rb
+END
+20100812224632_mailchimp.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/754/trunk/db/migrate/20100812224632_mailchimp.rb
+END
+20090124193234_create_recibos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/13/trunk/db/migrate/20090124193234_create_recibos.rb
+END
+20090509111428_campo_especial_recomendacao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/project/!svn/ver/180/trunk/db/migrate/20090509111428_campo_especial_recomendacao.rb
+END
+20100813090133_entidade_mailchimp_api_key.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/project/!svn/ver/754/trunk/db/migrate/20100813090133_entidade_mailchimp_api_key.rb
+END
+20090708191506_evento_refmb.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/274/trunk/db/migrate/20090708191506_evento_refmb.rb
+END
+20090903175800_campos_validacao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/426/trunk/db/migrate/20090903175800_campos_validacao.rb
+END
+20090506161600_listavalores_editavel.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/project/!svn/ver/150/trunk/db/migrate/20090506161600_listavalores_editavel.rb
+END
+20090414190713_create_valors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/142/trunk/db/migrate/20090414190713_create_valors.rb
+END
+20090413202229_users_eventos_entidades.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/project/!svn/ver/142/trunk/db/migrate/20090413202229_users_eventos_entidades.rb
+END
+20090124190608_create_inscricaos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/13/trunk/db/migrate/20090124190608_create_inscricaos.rb
+END
+20090810163551_url_prefix.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/333/trunk/db/migrate/20090810163551_url_prefix.rb
+END
+20090414190109_create_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/142/trunk/db/migrate/20090414190109_create_campos.rb
+END
+20090131184808_inscricao_idade.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/29/trunk/db/migrate/20090131184808_inscricao_idade.rb
+END
+20090212200054_user_igreja.rb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/56/trunk/db/migrate/20090212200054_user_igreja.rb
+END
+20090610140324_create_campo_produtos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/project/!svn/ver/245/trunk/db/migrate/20090610140324_create_campo_produtos.rb
+END
+20090210190826_tipo_refeicao.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/56/trunk/db/migrate/20090210190826_tipo_refeicao.rb
+END
+20090708192015_evento_prefixo_mb.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/274/trunk/db/migrate/20090708192015_evento_prefixo_mb.rb
+END
+20100512210656_recibo_data_aviso.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/667/trunk/db/migrate/20100512210656_recibo_data_aviso.rb
+END
+20090923193427_produto_event.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/472/trunk/db/migrate/20090923193427_produto_event.rb
+END
+20091005155656_reserva_ementa.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/502/trunk/db/migrate/20091005155656_reserva_ementa.rb
+END
+20090918144228_valor_activo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/465/trunk/db/migrate/20090918144228_valor_activo.rb
+END
+20090611093652_pacote_preco.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/245/trunk/db/migrate/20090611093652_pacote_preco.rb
+END
+20090413200624_create_eventos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/142/trunk/db/migrate/20090413200624_create_eventos.rb
+END
+20090206222920_moradas_igrejas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/39/trunk/db/migrate/20090206222920_moradas_igrejas.rb
+END
+20090806184541_documento_alojamento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/326/trunk/db/migrate/20090806184541_documento_alojamento.rb
+END
+20090413201213_create_entidades.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/142/trunk/db/migrate/20090413201213_create_entidades.rb
+END
+20090630181029_desconto_pagamento_antecipado.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/project/!svn/ver/274/trunk/db/migrate/20090630181029_desconto_pagamento_antecipado.rb
+END
+20100425183130_create_pacote_ignore_produtos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/project/!svn/ver/575/trunk/db/migrate/20100425183130_create_pacote_ignore_produtos.rb
+END
+20090818213929_entidade_emails.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/372/trunk/db/migrate/20090818213929_entidade_emails.rb
+END
+20090205184748_create_estatutos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/35/trunk/db/migrate/20090205184748_create_estatutos.rb
+END
+20090414190613_create_lista_valores.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/142/trunk/db/migrate/20090414190613_create_lista_valores.rb
+END
+20100512210044_alerta_evento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/667/trunk/db/migrate/20100512210044_alerta_evento.rb
+END
+20101018202655_create_empresa_facides.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/790/trunk/db/migrate/20101018202655_create_empresa_facides.rb
+END
+20090714065816_recibo_fechado.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/293/trunk/db/migrate/20090714065816_recibo_fechado.rb
+END
+20090203192405_recibos_inscricao_id.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/35/trunk/db/migrate/20090203192405_recibos_inscricao_id.rb
+END
+20090601165253_inscricao_numero.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/227/trunk/db/migrate/20090601165253_inscricao_numero.rb
+END
+20090701174609_pacote_produto.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/274/trunk/db/migrate/20090701174609_pacote_produto.rb
+END
+20100426224920_evento_entidade_mb.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/project/!svn/ver/597/trunk/db/migrate/20100426224920_evento_entidade_mb.rb
+END
+20090611095136_produto_rel_pacote.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/project/!svn/ver/245/trunk/db/migrate/20090611095136_produto_rel_pacote.rb
+END
+20110110201005_codigo_desconto_evento.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/836/trunk/db/migrate/20110110201005_codigo_desconto_evento.rb
+END
+20090427165940_alter_inscricaos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/142/trunk/db/migrate/20090427165940_alter_inscricaos.rb
+END
+20090211174114_inscricoes_info_complementar.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/project/!svn/ver/56/trunk/db/migrate/20090211174114_inscricoes_info_complementar.rb
+END
+20090708191909_recibo_refmb.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/274/trunk/db/migrate/20090708191909_recibo_refmb.rb
+END
+20100425215609_events_html.rb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/582/trunk/db/migrate/20100425215609_events_html.rb
+END
+20090206225111_create_pagamentos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/39/trunk/db/migrate/20090206225111_create_pagamentos.rb
+END
+20090314224225_create_pagamento_mbs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/101/trunk/db/migrate/20090314224225_create_pagamento_mbs.rb
+END
+20100612113737_recibo_dias_prazo.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/719/trunk/db/migrate/20100612113737_recibo_dias_prazo.rb
+END
+20090610174757_semantica_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/245/trunk/db/migrate/20090610174757_semantica_campos.rb
+END
+20101019181628_create_empresafacide.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/792/trunk/db/migrate/20101019181628_create_empresafacide.rb
+END
+20090707190214_inscricao_moradas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/274/trunk/db/migrate/20090707190214_inscricao_moradas.rb
+END
+20090921201756_create_tipo_reservas.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/468/trunk/db/migrate/20090921201756_create_tipo_reservas.rb
+END
+20090922182242_create_reserva_estados.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/project/!svn/ver/468/trunk/db/migrate/20090922182242_create_reserva_estados.rb
+END
+20090510205304_validacao_campos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/186/trunk/db/migrate/20090510205304_validacao_campos.rb
+END
+20090602165427_create_roles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/234/trunk/db/migrate/20090602165427_create_roles.rb
+END
+20090630180730_create_desconto_estatutos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/project/!svn/ver/274/trunk/db/migrate/20090630180730_create_desconto_estatutos.rb
+END

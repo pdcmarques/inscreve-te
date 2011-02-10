@@ -1,0 +1,82 @@
+﻿<!--table width="100%">
+  <tr>
+    <td align="left" valign="top">
+      <h1>Detalhe <span>Inscrição</span></h1>
+      <span id="slogan2"><%= @event.nome %></span>
+    </td>
+    <td align="right" valign="top">
+      <div class="noprint"><a href="/<%= @event.codigo %>/inscricoes/detalhe/<%=@inscricao.id%>.pdf"><img src="/images/page_white_acrobat.png">&nbsp;&nbsp;Exportar para PDF</a></div>
+    </td>
+  </tr>
+</table>
+
+<br/><br/-->
+
+<br>
+
+<table width="100%">
+  <tr>
+    <td width="80%" align="left" valign="top">
+      <h1><%= @inscricao.nome %></h1>      
+    </td>
+    <td align="right" valign="top">
+      <div class="noprint"><a href="/<%= @event.codigo %>/inscricoes/grupo/<%=@inscricao.id%>.pdf"><img src="/images/page_white_acrobat.png">&nbsp;&nbsp;Exportar para PDF</a></div>
+    </td>
+  </tr>
+  <tr>
+    <td width="80%"><h2>Idade: <%= @inscricao.idade %> Anos</h2></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><h2>Igreja: <%= @inscricao.igreja.nome %></h2></td>
+    <td></td>
+  </tr>
+</table>
+
+<br/><br/>
+    
+<h3>Grupo:</h3>
+<table width="100%" class="user_detail_table">
+  <tr class="header">
+    <th style="font-size:125%;" align="left">Nome</th>
+    <th style="font-size:125%;" align="center">Idade</th>
+    <th style="font-size:125%;" align="center">Igreja</th>
+    <th style="font-size:125%;" align="center">Preço</th>
+    <th style="font-size:125%;" align="center">Pago</th>
+    <th style="font-size:125%;" align="center">Divida</th>
+  </tr>
+  <% preco_total = 0 %>
+  <% total_pago = 0 %>
+  <% total_divida = 0 %>
+  <% @inscricoes_grupo.each do |inscricao| %>
+  <tr>
+    <td><%= inscricao.nome %></td>
+    <td align="center"><%= inscricao.idade %></td>
+    <td align="center"><%= inscricao.igreja.nome %></td>
+    <td align="right"><%= number_to_currency(inscricao.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td align="right"><%= number_to_currency(inscricao.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td align="right"><%= number_to_currency(inscricao.preco-inscricao.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+  </tr>
+  <% preco_total = preco_total + inscricao.preco %>
+  <% total_pago = total_pago + inscricao.total_pago %>
+  <% total_divida = total_divida + (inscricao.preco-inscricao.total_pago) %>
+  <% end %>
+  <tr>
+    <td colspan="2"></td>
+    <td align="right">TOTAL: </td>
+    <td align="right"><%= number_to_currency(preco_total, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td align="right"><%= number_to_currency(total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td align="right"><%= number_to_currency(total_divida, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+  </tr>
+</table>
+<br/>
+<br/>
+<div style="width:97%; height:75px; border: 1px solid black; padding: 10px 10px 10px 10px">
+  <h2>Alojamento</h2>
+</div>
+<br/>
+<br/>
+<div style="width:97%; height:150px; border: 1px solid black; padding: 10px 10px 10px 10px">
+  <h2>Observações</h2>
+</div>
+

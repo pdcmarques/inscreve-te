@@ -1,0 +1,14 @@
+<% if(params[:callback] != nil && params[:callback] != '') %>
+<%= params[:callback] %>('<message success="<%= @objecto.errors.length == 0 %>"><errors><% @objecto.errors.each do |error|%><field><id><%= error[0] %></id><msg><![CDATA[<%= error[1] %>]]></msg></field><% end %></errors></message>');
+<% else %>
+<message success="<%= @objecto.errors.length == 0 %>">
+    <errors>
+        <% @objecto.errors.each do |error|%>
+            <field>
+                <id><%= error[0] %></id>
+                <msg><![CDATA[<%= error[1] %>]]></msg>
+            </field>
+        <% end %>
+    </errors>
+</message>
+<% end %>

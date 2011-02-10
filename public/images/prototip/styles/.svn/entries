@@ -1,0 +1,43 @@
+10
+
+dir
+744
+http://pedromarques.svn.beanstalkapp.com/project/trunk/public/images/prototip/styles
+http://pedromarques.svn.beanstalkapp.com/project
+
+
+
+2009-05-06T18:54:16.739206Z
+151
+pedromarques
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+d91fc93e-853d-4985-93ed-3d75665aff2a
+
+creamy
+dir
+
+darkgrey
+dir
+
+default
+dir
+
+protoblue
+dir
+
+protogrey
+dir
+

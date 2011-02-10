@@ -1,0 +1,14 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+  <!--td align="left">
+    <%= consumo_listitem.produto.descricao %>
+  </td-->
+  <td align="left">
+    <%= consumo_listitem.observacoes %>
+  </td>
+  <td align="center">
+    <%= link_to consumo_listitem.recibo.nome, :controller=>"recibos", :action=>"detalhe", :id=>consumo_listitem.recibo.id %>
+  </td>
+  <td align="right">
+    <%= number_to_currency(consumo_listitem.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %> 
+  </td>
+</tr>

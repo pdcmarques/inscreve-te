@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/3/trunk/vendor/plugins/acts_as_state_machine
+END
+CHANGELOG
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/3/trunk/vendor/plugins/acts_as_state_machine/CHANGELOG
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/3/trunk/vendor/plugins/acts_as_state_machine/Rakefile
+END
+TODO
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/3/trunk/vendor/plugins/acts_as_state_machine/TODO
+END
+MIT-LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/3/trunk/vendor/plugins/acts_as_state_machine/MIT-LICENSE
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/3/trunk/vendor/plugins/acts_as_state_machine/init.rb
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/3/trunk/vendor/plugins/acts_as_state_machine/README
+END

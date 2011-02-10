@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/LICENSE
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/install.rb
+END
+CHANGELOG
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/CHANGELOG
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/Rakefile
+END
+README.md
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/README.md
+END
+newrelic.yml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/newrelic.yml
+END
+init.rb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/init.rb
+END

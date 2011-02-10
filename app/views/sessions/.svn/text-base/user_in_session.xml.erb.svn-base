@@ -1,0 +1,46 @@
+<% if(params[:callback] != nil && params[:callback] != '') %><%= params[:callback] %>('<users><user><% if(@user != nil) %><login><%= @user.login %></login><email><%= @user.email %></email><profile><%= @user.profile %></profile><inscricoes><% activas = 0 %><% if(@user.inscricaos.count < 25) %><% @user.inscricaos.each do |inscricao| %><inscricao><nome><%= inscricao.nome %></nome><idade><%= inscricao.idade %></idade><evento><%= inscricao.evento.nome_curto %></evento><data_evento><%= inscricao.evento.data_inicio %></data_evento><%if inscricao.evento.data_inicio > DateTime.now %><% activas = activas + 1 %><% end %><preco><%= inscricao.preco %></preco></inscricao><% end %><% end %></inscricoes><recibos><% divida_total = 0 %><% @recibos.each do |recibo| %><recibo><nome><%= recibo.nome %></nome><data><%= recibo.created_at %></data><valor><%= recibo.total_recibo %></valor><pago><%= recibo.total_pago %></pago><divida><%= divida = (recibo.total_recibo - recibo.total_pago) %></divida><evento><%= recibo.evento.nome_curto %></evento></recibo><% divida_total = divida_total+divida %><% end %></recibos><inscricoes_count><%= @user.inscricaos.count %></inscricoes_count><inscricoes_activas><%= activas %></inscricoes_activas><recibos_count><%= @recibos.length %></recibos_count><divida_total><%= divida_total %></divida_total><% end %></user></users>');<% else %><?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <% if(@user != nil) %>
+            <login><%= @user.login %></login>
+            <email><%= @user.email %></email>
+            <profile><%= @user.profile %></profile>
+            <inscricoes>
+            <% activas = 0 %>
+            <% if(@user.inscricaos.count < 25) %>
+                <% @user.inscricaos.each do |inscricao| %>
+                    <inscricao>
+                        <nome><%= inscricao.nome %></nome>
+                        <idade><%= inscricao.idade %></idade>
+                        <evento><%= inscricao.evento.nome_curto %></evento>
+                        <data_evento><%= inscricao.evento.data_inicio %></data_evento>
+                        <%if inscricao.evento.data_inicio > DateTime.now %>
+                            <% activas = activas + 1 %>
+                        <% end %>
+                        <preco><%= inscricao.preco %></preco>
+                    </inscricao>
+                <% end %>
+            <% end %>
+            </inscricoes>
+            <recibos>
+            <% divida_total = 0 %>
+            <% @recibos.each do |recibo| %>
+                <recibo>
+                    <nome><%= recibo.nome %></nome>
+                    <data><%= recibo.created_at %></data>
+                    <valor><%= recibo.total_recibo %></valor>
+                    <pago><%= recibo.total_pago %></pago>
+                    <divida><%= divida = (recibo.total_recibo - recibo.total_pago) %></divida>
+                    <evento><%= recibo.evento.nome_curto %></evento>
+                </recibo>
+                <% divida_total = divida_total+divida %>
+            <% end %>
+            </recibos>
+            <inscricoes_count><%= @user.inscricaos.count %></inscricoes_count>
+            <inscricoes_activas><%= activas %></inscricoes_activas>
+            <recibos_count><%= @recibos.length %></recibos_count>
+            <divida_total><%= divida_total %></divida_total>
+        <% end %>
+    </user>
+</users>
+<% end %>

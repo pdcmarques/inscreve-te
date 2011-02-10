@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/8/trunk/vendor/plugins/restful_authentication
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/3/trunk/vendor/plugins/restful_authentication/install.rb
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/3/trunk/vendor/plugins/restful_authentication/Rakefile
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/3/trunk/vendor/plugins/restful_authentication/README
+END

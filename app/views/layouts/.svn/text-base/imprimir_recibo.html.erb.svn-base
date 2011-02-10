@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title><%= @entidade.nome_curto %> - Recibo</title>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+	var pageTracker = _gat._getTracker("UA-81402-4");
+	pageTracker._trackPageview();
+      } catch(err) {}</script>
+    
+
+<%= stylesheet_link_tag "recibo", :media=>"all" %>
+<%= stylesheet_link_tag "print", :media=>"print" %>
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="logo"><img src="/images/recibo-logo.jpg" alt="logo"  /></div>
+
+<div id="afzender">&nbsp;</div>
+
+<%= yield %>
+
+<div class="clear">&nbsp;</div>
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<div class="text">
+Acampamento Baptista - Rua Gonçalves Crespo Nº33 3º Fr - 1100 Lisboa - NIF: 592004392<br />
+Telefone/Fax: 213532381 - Email: geral@acampamentobaptista.com.pt<br />Convenção Baptista Portuguesa</div>
+
+</div>
+
+</body>
+</html>

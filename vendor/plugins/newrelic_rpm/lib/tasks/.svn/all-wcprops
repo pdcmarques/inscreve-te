@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/tasks
+END
+tests.rake
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/tasks/tests.rake
+END
+install.rake
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/tasks/install.rake
+END
+all.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/tasks/all.rb
+END

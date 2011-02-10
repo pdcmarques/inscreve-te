@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier
+END
+install.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier/install.rb
+END
+Rakefile
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier/Rakefile
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier/.gitignore
+END
+hoptoad_notifier.gemspec
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier/hoptoad_notifier.gemspec
+END
+INSTALL
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier/INSTALL
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/21/trunk/vendor/plugins/hoptoad_notifier/README
+END

@@ -1,0 +1,38 @@
+<tr class="<%= cycle('odd', 'even') -%>">
+  <% @event.grupo_camposs.each do |grupo| %>
+      <% grupo.campos.each do |campo| %>
+        <% if(campo.mostra_tabela) %>
+          <% if(campo.tipo.upcase == "LOV") %>
+            <td align="center"><%= inscricao_listitem.resolve_lov(campo.id) %></td>
+          <% end %>
+          <% if(campo.tipo.upcase == "INT") %>
+            <td width="50px" align="right"><%= inscricao_listitem.valor_campo(campo.id) %></td>
+          <% end %>
+          <% if(campo.tipo.upcase == "DECIMAL") %>
+            <td width="50px" align="right"><%= inscricao_listitem.valor_campo(campo.id) %></td>
+          <% end %>
+          <% if(campo.tipo.upcase == "STRING") %>
+            <td align="left"><%= inscricao_listitem.valor_campo(campo.id) %></td>
+          <% end %>
+          <% if(campo.tipo.upcase == "DATE") %>
+            <td width="80px" align="center"><%= inscricao_listitem.valor_campo_string(campo.id) %></td>
+          <% end %>
+        <% end %> 
+      <% end %>
+    <% end %>
+    
+    <td width="50px" align="right"><%= number_to_currency(inscricao_listitem.preco, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td width="50px" align="right"><%= number_to_currency(inscricao_listitem.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %></td>
+    <td width="25px" align="center">
+      <% if(inscricao_listitem.efectiva)%>
+        <img src="/images/lightbulb.png" />
+      <% else %>
+        <img src="/images/lightbulb_off.png" />
+      <% end %>
+    </td>
+    <td>
+      <a href="/<%= inscricao_listitem.evento.codigo %>/inscricoes/detalhe/<%= inscricao_listitem.id %>"><img src="/images/information.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="/<%= inscricao_listitem.evento.codigo %>/inscricoes/editar/<%= inscricao_listitem.id %>"><img src="/images/pencil.png" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="/<%= inscricao_listitem.evento.codigo %>/admin/elimina_inscricao/<%= inscricao_listitem.id %>"><img src="/images/delete.png" /></a>
+    </td>
+</tr>

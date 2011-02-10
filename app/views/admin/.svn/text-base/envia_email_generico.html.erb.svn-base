@@ -1,0 +1,44 @@
+<%= javascript_include_tag "niceforms" %>
+<%= stylesheet_link_tag "niceforms-default" %>
+
+<br/><br/>
+<h2>Enviar e-mail</h2>
+
+<% if flash[:error] != nil %>
+    <p style="color:red">
+      <%=flash[:error]%>
+    <p>
+  <% end %>
+  <% if flash[:notice] != nil %>
+    <div class="box">
+      <div class="box_inner">
+        <%=flash[:notice]%>
+      </div>
+    </div>
+    <br /><br />
+  <% end %>
+
+<% form_tag "/"+@event.codigo+"/admin/envia_email_generico", :class=>"niceform" do -%>
+  <fieldset>
+        <legend>Detalhes do email</legend>
+        <dl>
+          <dt><label for="email">Para:</label></dt>
+          <dd><%= text_field_tag :email, '',:maxlength=>"255", :size=>"45"%></dd>
+        </dl>
+        <dl>
+          <dt><label for="assunto">Assunto</label></dt>
+          <dd><%= text_field_tag :assunto, '',:maxlength=>"255", :size=>"45" %></dd>
+        </dl>
+        <dl>
+          <dt><label for="texto">Texto</label></dt>
+          <dd><%= text_area_tag :texto, '', :cols=>58, :rows => 25%></dd>
+        </dl>
+        <dl>
+            <dt><label for="soEvento">Enviar só para inscrições do evento '<%= @event.nome %>'</label></dt>
+            <dd><%= check_box_tag :soEvento %>
+        </dl>
+  </fieldset>
+  <fieldset class="action">
+    <%= submit_tag 'Enviar Email' %>
+  </fieldset>
+<% end -%>

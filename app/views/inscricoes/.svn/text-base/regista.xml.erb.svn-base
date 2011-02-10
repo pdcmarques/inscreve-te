@@ -1,0 +1,12 @@
+<% if(params[:callback] != nil && params[:callback] != '') %><%= params[:callback] %>('<message success="<%= @inscricao.errors.length == 0%>"><errors><% @inscricao.errors.each do |error|%><field><id><%= error[0] %></id><msg><%= error[1] %></msg></field><% end %></errors></message>');<% else %><?xml version="1.0" encoding="UTF-8"?>
+<message success="<%= @inscricao.errors.length == 0%>">
+    <errors>
+        <% @inscricao.errors.each do |error|%>
+            <field>
+                <id><%= error[0] %></id>
+                <msg><%= error[1] %></msg>
+            </field>
+        <% end %>
+    </errors>
+</message>
+<% end %>

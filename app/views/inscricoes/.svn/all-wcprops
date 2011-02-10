@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/project/!svn/ver/744/trunk/app/views/inscricoes
+END
+recomendar.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/664/trunk/app/views/inscricoes/recomendar.html.erb
+END
+detalhe.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/664/trunk/app/views/inscricoes/detalhe.html.erb
+END
+editar.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/193/trunk/app/views/inscricoes/editar.html.erb
+END
+add_desconto_to_inscricao.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/project/!svn/ver/521/trunk/app/views/inscricoes/add_desconto_to_inscricao.xml.erb
+END
+add_consumo_to_inscricao.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/project/!svn/ver/471/trunk/app/views/inscricoes/add_consumo_to_inscricao.xml.erb
+END
+elimina_consumo.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/475/trunk/app/views/inscricoes/elimina_consumo.xml.erb
+END
+elimina_desconto.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/521/trunk/app/views/inscricoes/elimina_desconto.xml.erb
+END
+nova_old.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/195/trunk/app/views/inscricoes/nova_old.html.erb
+END
+distribuir_consumos.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/33/trunk/app/views/inscricoes/distribuir_consumos.html.erb
+END
+get_consumos_temp.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/527/trunk/app/views/inscricoes/get_consumos_temp.xml.erb
+END
+_campo.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/191/trunk/app/views/inscricoes/_campo.html.erb
+END
+my_group_seeders.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/project/!svn/ver/340/trunk/app/views/inscricoes/my_group_seeders.xml.erb
+END
+nova.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/838/trunk/app/views/inscricoes/nova.js.erb
+END
+consumos.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/33/trunk/app/views/inscricoes/consumos.html.erb
+END
+nova.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/791/trunk/app/views/inscricoes/nova.html.erb
+END
+_campo_editar.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/project/!svn/ver/193/trunk/app/views/inscricoes/_campo_editar.html.erb
+END
+regista.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/63/trunk/app/views/inscricoes/regista.html.erb
+END
+_inscricao_listitem.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/431/trunk/app/views/inscricoes/_inscricao_listitem.html.erb
+END
+_consumo_listitem.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/55/trunk/app/views/inscricoes/_consumo_listitem.html.erb
+END
+grupo.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/316/trunk/app/views/inscricoes/grupo.html.erb
+END
+regista.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/436/trunk/app/views/inscricoes/regista.xml.erb
+END
+editar_old.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/140/trunk/app/views/inscricoes/editar_old.html.erb
+END
+lista.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/431/trunk/app/views/inscricoes/lista.html.erb
+END
+detalhe_old.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/140/trunk/app/views/inscricoes/detalhe_old.html.erb
+END
+_distribuirconsumo_listitem.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/project/!svn/ver/98/trunk/app/views/inscricoes/_distribuirconsumo_listitem.html.erb
+END
+.DS_Store
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/360/trunk/app/views/inscricoes/.DS_Store
+END

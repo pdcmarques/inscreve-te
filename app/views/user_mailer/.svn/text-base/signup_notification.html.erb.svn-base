@@ -1,0 +1,55 @@
+<body topmargin="0" leftmargin="0" rightmargin="0">
+<div  bgcolor="#FFFFFF" id="rootDiv" align="center" style="background-color:#FFFFFF;margin-top:0px;margin-bottom:0px;margin-right:0px;margin-left:0px;padding-top:3px;padding-bottom:3px;padding-right:3px;padding-left:3px;overflow:auto;" >
+<table  border="0" width="600" cellspacing="0" cellpadding="1" style="width:600px;" >
+<tr>
+  <td  bgcolor="#FFFFFF" rowspan="1" colspan="1" align="left" style="background-color:#FFFFFF;padding-top:1px;padding-bottom:1px;padding-right:1px;padding-left:1px;" >
+  <table  bgcolor="#FFFFFF" border="0" width="100%" cellspacing="0" cellpadding="0" style="background-color:#FFFFFF;padding-top:3px;padding-bottom:3px;padding-right:3px;padding-left:3px;" >
+    <tr>
+      <td width="100%" rowspan="1" colspan="2" align="left">
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content_LETTER.BLOCK1">
+          <tr>
+            <td valign="bottom" rowspan="1" align="center" colspan="1"><a href="http://www.inscreve-te.com.pt/<%=@user.entidade.sigla%>" target="_blank"><img border="0" src="http://www.inscreve-te.com.pt/images/<%=@user.entidade.sigla%>/email_logo.jpg" align="left" /></a></td>
+          </tr>
+        </table>
+        <table  id="content_LETTER.BLOCK2" width="100%" border="0" hidefocus="true" tabindex="0" cellspacing="0" cols="0" cellpadding="5" contenteditable="inherit" datapagesize="0" style="margin-bottom:5px;" >
+      </td>
+    </tr>
+    <tr>
+      <td  styleclass="style_MainText" align="left" style="color:#555555;font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;font-size:10pt;" ><font color="#555555" size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="color:#555555;font-family:Verdana,Geneva,Arial,Helvetica,sans-serif;font-size:10pt;" ><font  size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="FONT-SIZE:10pt;FONT-FAMILY:Verdana,Geneva,Arial,Helvetica,sans-serif;" >
+        <p>
+          <font  size="3" style="FONT-WEIGHT:bold;COLOR:rgb(0,120,204);">
+            Bem-vindo!
+          </font><br />
+        </p>
+        <br/><br/>            
+        <% if @user.state == "pending" %>
+          <p>
+            <b>MUITO IMPORTANTE</b><br />
+            Para finalizar o processo de inscrição no site, necessitamos de uma confirmação sua de que recebeu este e-mail. Para isso só tem que seguir o endereço:<br/>
+            <a href="<%= @url %>"><%= @url %></a><br/>
+            Enquanto não o fizer, não poderá iniciar sessão no nosso site.
+          </p>
+        <% end %>
+        <br/><br/>
+        <p>
+          <font size="+0"><font  size="2" face="Verdana,Geneva,Arial,Helvetica,sans-serif" style="FONT-SIZE:10pt;FONT-FAMILY:Verdana,Geneva,Arial,Helvetica,sans-serif;">
+            A sua conta no nosso sistema de inscrições foi criada com os seguintes dados: <br/>
+            <br/>
+            <ul>
+              <li>Nome de Utilizador: <b><%= @user.email %></b></li>
+              <li>Password: <% if @user.password != nil %><b><%= @user.password %></b><% else %><i>Não temos acesso à password por razões de segurança. Se não se lembrar, terá que repor a password acedendo a <a href="http://www.inscreve-te.com.pt/<%=@user.entidade.sigla%>/resetpassword/<%= @user.login %>">http://www.inscreve-te.com.pt/<%=@user.entidade.sigla%>/resetpassword/<%= @user.login %></a></i><% end %></li>
+            </ul>
+          </font>
+        </p>
+        <br/><br/>
+        Obrigado
+        <br/><br/>
+      </div>
+      </div>
+      <br/><br/>
+      <font style="font-size:10px;color:#666666;" >Esta mensagem foi enviada para [<%= @user.email %>] como resultado de uma inscrição em <a href="http://www.inscreve-te.com.pt/<%=@user.entidade.sigla%>" style="color:#666666;" >www.inscreve-te.com.pt/<%=@user.entidade.sigla%></a>. <a href="http://www.inscreve-te.com.pt/<%=@user.entidade.sigla%>" style="color:#666666;" >Cancele a conta aqui</a></font>
+      </font></font></td></tr></table>
+      </td>
+    </tr>
+  </table>
+</div>

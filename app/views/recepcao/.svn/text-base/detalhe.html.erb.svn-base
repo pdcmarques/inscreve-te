@@ -1,0 +1,176 @@
+<style>
+<%
+    if(@inscricao != nil)
+      codigo = "I-AGCBP-"+@inscricao.id.to_s.rjust(3, '0')
+      igreja = @inscricao.igreja.full_name
+      estatuto = ""
+      if @inscricao.estatuto.id == 2
+        estatuto = "A"
+      else
+        estatuto = "D"
+      end
+      if @inscricao.tipo_alojamento != nil
+        casa = "CASA "+@inscricao.tipo_alojamento.upcase
+      else
+        casa = "FORA DO AB"
+        quarto = "-"
+      end
+      if @inscricao.local_alojamento != nil
+        quarto = "QUARTO "+@inscricao.local_alojamento
+      end
+    end
+%>
+</style>
+<table width="100%">
+  <tr>
+      <td width="80%">
+        <% if @inscricao != nil %>
+          <div style="font-family:impact; font-size:40px; color:#333333" align="left"><%=@inscricao.nome_cracha.upcase%></div><br/>
+          <a href="/inscricoes/detalhe/<%=@inscricao.id%>" target="_blank"><img src="/images/vcard.png" alt="Detalhe" /></a>&nbsp;&nbsp;
+          <a href="/inscricoes/editar/<%=@inscricao.id%>" target="_blank"><img src="/images/vcard_edit.png" alt="Editar" /></a>&nbsp;&nbsp;
+          <a href="/inscricoes/distribuir_consumos/<%=@inscricao.id%>" target="_blank"><img src="/images/arrow_switch.png" alt="Editar" /></a>&nbsp;&nbsp;
+          <a href="/recepcao/marcarpresente/<%=@inscricao.id%>"><img src="/images/flag_green.png" alt="Marcar Presente" /></a>&nbsp;&nbsp;
+          <a href="/recepcao/marcarausente/<%=@inscricao.id%>"><img src="/images/flag_blue.png" alt="Marcar Ausente" /></a>&nbsp;&nbsp;
+          <a href="/recepcao/marcarcancelado/<%=@inscricao.id%>"><img src="/images/flag_red.png" alt="Marcar Cancelado" /></a>&nbsp;&nbsp;
+          
+          <a href="badgeprint://?badge=nome&nome=<%=@inscricao.nome_cracha.upcase %>&igreja=<%=igreja%>&estatuto=<%= @inscricao.estatuto.nome.upcase %>&ref1=<%= @inscricao.refeicao1.tipo_refeicao.to_s %>&ref2=<%= @inscricao.refeicao2.tipo_refeicao.to_s %>&ref3=<%= @inscricao.refeicao3.tipo_refeicao.to_s %>&ref4=<%= @inscricao.refeicao4.tipo_refeicao.to_s %>&ref5=<%= @inscricao.refeicao5.tipo_refeicao.to_s %>&codigobarras=<%=codigo%>&casa=<%=casa%>&quarto=<%=quarto%>"><img src="/images/tag_blue.png" alt="Imprimir Crachá" /></a>&nbsp;&nbsp;
+          <a href="badgeprint://?badge=refeicoes&nome=<%=@inscricao.nome_cracha.upcase %>&igreja=<%=igreja%>&estatuto=<%= @inscricao.estatuto.nome.upcase %>&ref1=<%= @inscricao.refeicao1.tipo_refeicao.to_s %>&ref2=<%= @inscricao.refeicao2.tipo_refeicao.to_s %>&ref3=<%= @inscricao.refeicao3.tipo_refeicao.to_s %>&ref4=<%= @inscricao.refeicao4.tipo_refeicao.to_s %>&ref5=<%= @inscricao.refeicao5.tipo_refeicao.to_s %>&codigobarras=<%=codigo%>&casa=<%=casa%>&quarto=<%=quarto%>"><img src="/images/drink.png" alt="Imprimir Refeições" /></a>&nbsp;&nbsp;
+        <% end %>
+      </td>
+      <td align="right" valign="top">
+        <% form_tag "/recepcao/detalhe" do %>
+          <%= text_field_tag :codigo, '',:maxlength=>"11", :size=>"11"%>  <%= submit_tag 'OK' %>
+        <% end %>
+      </td>
+    </tr>
+</table>
+<br /><br />
+<% if @inscricao != nil %>
+  <div style="font-family:impact; font-size:25px; color:#333333" align="left">Refeições</div>
+  <form action="/recepcao/alterar_refeicoes/<%= @inscricao.id %>" class="niceform">
+    <table width="100%" cellpadding="10px" >
+      <tr bgcolor="#efefef" style="color:#000000">
+        <td align="center">Almoço 5ª-Feira</td>
+        <td align="center">Jantar 5ª-Feira</td>
+        <td align="center">Almoço 6ª-Feira</td>
+        <td align="center">Jantar 6ª-Feira</td>
+        <td align="center">Sábado</td>
+      </tr>
+      <tr><td heigth="20px">&nbsp;</td></tr>
+      <tr>
+        <td class="<%= if(@refeicao_num == 1) then "active" end %>">
+          <div style="font-family:impact; font-size:35px;" align="center"><%=@inscricao.refeicao1.tipo_refeicao%></div>
+          <div style="font-family:impact; font-size:15px" align="center"><%=@inscricao.refeicao1.nome%></div>
+        </td>
+        <td class="<%= if(@refeicao_num == 3) then "active" end %>">
+          <div style="font-family:impact; font-size:35px" align="center"><%=@inscricao.refeicao2.tipo_refeicao%></div>
+          <div style="font-family:impact; font-size:15px" align="center"><%=@inscricao.refeicao2.nome%></div>
+        </td>
+        <td class="<%= if(@refeicao_num == 5) then "active" end %>">
+          <div style="font-family:impact; font-size:35px" align="center"><%=@inscricao.refeicao3.tipo_refeicao%></div>
+          <div style="font-family:impact; font-size:15px" align="center"><%=@inscricao.refeicao3.nome%></div>
+        </td>
+        <td class="<%= if(@refeicao_num == 2) then "active" end %>">
+          <div style="font-family:impact; font-size:35px" align="center"><%=@inscricao.refeicao4.tipo_refeicao%></div>
+          <div style="font-family:impact; font-size:15px" align="center"><%=@inscricao.refeicao4.nome%></div>
+        </td>
+        <td class="<%= if(@refeicao_num == 4) then "active" end %>">
+          <div style="font-family:impact; font-size:35px" align="center"><%=@inscricao.refeicao5.tipo_refeicao%></div>
+          <div style="font-family:impact; font-size:15px" align="center"><%=@inscricao.refeicao5.nome%></div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <select size="1" id="inscricao_refeicao1" name="inscricao[refeicao1_id]">
+            <%= options_for_select(Inscricao::REFEICAO1_OPCOES, @inscricao.refeicao1_id) %>
+          </select>
+        </td>
+        <td align="center">
+          <select size="1" id="inscricao_refeicao2" name="inscricao[refeicao2_id]">
+            <%= options_for_select(Inscricao::REFEICAO2_OPCOES, @inscricao.refeicao2_id) %>
+          </select>
+        </td>
+        <td align="center" align="center">
+          <select size="1" id="inscricao_refeicao3" name="inscricao[refeicao3_id]">
+            <%= options_for_select(Inscricao::REFEICAO3_OPCOES, @inscricao.refeicao3_id) %>
+          </select>
+        </td>
+        <td align="center">
+          <select size="1" id="inscricao_refeicao4" name="inscricao[refeicao4_id]">
+            <%= options_for_select(Inscricao::REFEICAO4_OPCOES, @inscricao.refeicao4_id) %>
+          </select>
+        </td>
+        <td align="center">
+          <select size="1" id="inscricao_refeicao5" name="inscricao[refeicao5_id]">
+            <%= options_for_select(Inscricao::REFEICAO5_OPCOES, @inscricao.refeicao5_id) %>
+          </select>
+        </td>
+        <td>
+          <%= submit_tag 'OK' %>
+        </td>
+      </tr>
+    </table>
+    </form>
+  <br />
+  <br />
+  <div style="font-family:impact; font-size:25px; color:#333333" align="left">Alojamento</div>
+  <table width="100%">
+    <tr>
+      <td style="font-family:impact; font-size:25px" align="center">Noite 1: </td><td style="font-family:impact; font-size:25px" align="left"><%= @inscricao.noite1.nome %></td>
+      <td rowspan="2"><%=@inscricao.tipo_alojamento %> <%=@inscricao.local_alojamento%></td>
+    </tr>
+    <tr>
+      <td style="font-family:impact; font-size:25px" align="center">Noite 2: </td><td style="font-family:impact; font-size:25px" align="left"><%= @inscricao.noite2.nome %></td>
+    </tr>
+  </table>
+  <br />
+  <br />
+  <div style="font-family:impact; font-size:25px; color:#333333" align="left">Recibos</div>
+  <table width="100%" style="color:#333333">
+      <tr bgcolor="#efefef" style="color:#000000">
+        <td align="center">Nome</td>
+        <td align="center">Total</td>
+        <td align="center">Pago</td>
+        <td align="center">Dívida</td>
+        <td></td>
+      </tr>
+      <% if @inscricao.recibo != nil %>
+      <tr>
+        <td><%= @inscricao.recibo.nome %></td>
+        <td align="right">
+          <%= number_to_currency(@inscricao.recibo.total_recibo, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+        </td>
+        <td align="right">
+          <%= number_to_currency(@inscricao.recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+        </td>
+        <td align="right">
+          <%= number_to_currency(@inscricao.recibo.total_recibo-@inscricao.recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+        </td>
+        <td align="right">
+          <a href="/recibos/detalhe/<%=@inscricao.recibo.id%>" target="_blank"><img src="/images/page_green.png" alt="Detalhe" /></a>&nbsp;&nbsp;
+          <a href="/imprimir_recibo/recibo/<%=@inscricao.recibo.id%>" target="_blank"><img src="/images/printer.png" alt="Imprimir" /></a>&nbsp;&nbsp;
+          <a href="/recepcao/liquidar_recibo/<%=@inscricao.id%>?recibo_id=<%=@inscricao.recibo.id%>"><img src="/images/money_add.png" alt="Liquidar" /></a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <% end %>
+      <% if @inscricao.igreja.recibo != nil %>
+      <tr>
+        <td><%= @inscricao.igreja.recibo.nome %></td>
+        <td align="right">
+          <%= number_to_currency(@inscricao.igreja.recibo.total_recibo, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+        </td>
+        <td align="right">
+          <%= number_to_currency(@inscricao.igreja.recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+        </td>
+        <td align="right">
+          <%= number_to_currency(@inscricao.igreja.recibo.total_recibo-@inscricao.igreja.recibo.total_pago, :unit => "&euro;",  :separator => ",", :delimiter => ".", :format => "%n %u") %>
+        </td>
+        <td align="right">
+          <a href="/recibos/detalhe/<%=@inscricao.igreja.recibo.id%>" target="_blank"><img src="/images/page_green.png" alt="Detalhe" /></a>&nbsp;&nbsp;
+          <a href="/imprimir_recibo/recibo/<%=@inscricao.igreja.recibo.id%>" target="_blank"><img src="/images/printer.png" alt="Imprimir" /></a>&nbsp;&nbsp;
+          <a href="/recepcao/liquidar_recibo/<%=@inscricao.id%>?recibo_id=<%=@inscricao.igreja.recibo.id%>"><img src="/images/money_add.png" alt="Liquidar" /></a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <% end %>
+  </table>
+<% end %>

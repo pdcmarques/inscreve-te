@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/project/!svn/ver/340/trunk/app/views/listavalores
+END
+regista_valor.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/project/!svn/ver/340/trunk/app/views/listavalores/regista_valor.xml.erb
+END
+valores.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/project/!svn/ver/340/trunk/app/views/listavalores/valores.xml.erb
+END
+_valor.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/project/!svn/ver/211/trunk/app/views/listavalores/_valor.xml.erb
+END
+_errors.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/project/!svn/ver/185/trunk/app/views/listavalores/_errors.html.erb
+END
+regista_valor_error.rjs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/project/!svn/ver/185/trunk/app/views/listavalores/regista_valor_error.rjs
+END
+add_valor.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/project/!svn/ver/185/trunk/app/views/listavalores/add_valor.html.erb
+END
+regista_valor.rjs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/project/!svn/ver/191/trunk/app/views/listavalores/regista_valor.rjs
+END

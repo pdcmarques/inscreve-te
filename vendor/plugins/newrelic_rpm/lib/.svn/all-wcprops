@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib
+END
+newrelic_rpm.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/newrelic_rpm.rb
+END
+new_relic_api.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/new_relic_api.rb
+END

@@ -1,0 +1,82 @@
+<% if(campo.mostra_inserir) %>
+  <%  campo_size = 59
+      if(campo.tipo.upcase == "INT")
+        campo_size = 15
+      end
+      if(campo.tipo.upcase == "DATE")
+        campo_size = 15
+      end
+      if(campo.tipo.upcase == "DECIMAL")
+        campo_size = 15
+      end
+  %>
+  <dl>
+    <dt><label for="<%= campo.nome  %>"><%= campo.label %>:</label></dt>
+    <dd>
+    <% if(campo.tipo.upcase == 'TEXT')%>
+      <%= text_area_tag "campo["+campo.id.to_s+"]", @values[campo.id], :cols=>58, :rows => 5 %>
+    <% end %>
+    <% if ((campo.lista_valores_id == nil || campo.lista_valores_id == 0)  && campo.tipo.upcase != 'TEXT')%>
+      <%= text_field_tag "campo["+campo.id.to_s+"]", @values[campo.id], :maxlength=>campo.tamanho , :size=>campo_size%>
+    <% end %>
+    <% if (campo.lista_valores_id != nil && campo.lista_valores_id != 0) %>
+      <% if campo.lista_valores.class_name != nil && campo.lista_valores.class_name != '' %>
+          <select size="1" id="campo[<%= campo.id %>]" name="campo[<%= campo.id %>]" style="width:300px">
+            <%= options_from_collection_for_select(eval(campo.lista_valores.class_name+".find(:all, :order=>\""+campo.lista_valores.text_field+"\", :conditions=>\""+campo.lista_valores.condition+"\")"), campo.lista_valores.value_field, campo.lista_valores.text_field, @values[campo.id].to_i) %>
+          </select>
+          <% if campo.lista_valores.editavel %>
+            <div style="font-size:80%; display:inline;">&nbsp;&nbsp;Não encontra?</div>&nbsp;&nbsp;<img style="vertical-align:middle" id="add_value_<%= campo.id.to_s %>" src="/images/add.png" />
+            <script>
+              new Tip('add_value_<%= campo.id.to_s %>',
+                      {
+                        title: 'ADICIONAR <%= campo.label.upcase %>',
+                        style: 'protogrey',
+                        closeButton: true,
+                        ajax: {
+                          url: '/listavalores/add_valor/<%= campo.id.to_s %>'
+                        },
+                        hideOn: { element: 'closeButton', event: 'click'},
+                        stem: 'rightMiddle',
+                        hook: { tip: 'rightMiddle', target: 'leftMiddle'},
+                        offset: { x: 10, y: 10 },
+                        width:'370px'
+                      });
+            </script>
+          <% end %>
+        <% else %>
+          <select size="1" id="campo[<%= campo.id %>]" name="campo[<%= campo.id %>]" style="width:300px">
+            <%= options_from_collection_for_select(campo.lista_valores.valors, :valor, :descricao, @values[campo.id].to_i) %>
+          </select>
+        <% end %>
+    <% end %>
+    <% if(campo.tipo.upcase == "DATE") %>
+      &nbsp;&nbsp;<img id="calendar_<%=campo.id%>" src="/images/calendar.png" />
+      <script type="text/javascript">
+          Calendar.setup({
+            dateField     : 'campo_<%= campo.id %>',
+            triggerElement : 'calendar_<%= campo.id %>'
+          })
+      </script>
+    <% end %>
+    <% if(campo.long_description != nil && campo.long_description != "") %>
+      <div style="font-size:80%; display:inline;">&nbsp;&nbsp;Mais Informação</div>&nbsp;&nbsp;<img style="vertical-align:middle" id="long_description_<%= campo.id.to_s %>" src="/images/information.png" /><br/>
+            <script>
+              new Tip('long_description_<%= campo.id.to_s %>', '<html><body><%= campo.long_description %></body></html>',
+                      {
+                        title: '<%= campo.label.upcase %>',
+                        style: 'protogrey',
+                        closeButton: true,
+                        hideOn: { element: 'closeButton', event: 'click'},
+                        stem: 'rightMiddle',
+                        hook: { tip: 'rightMiddle', target: 'leftMiddle'},
+                        offset: { x: 10, y: 10 },
+                        width:'370px'
+                      });
+            </script>
+    <% end %>
+    <% if(campo.nota != "" && campo.nota != nil) %>
+      <div style="font-size:80%; display:block; line-height:12px; font-weight:bold; width:290px; padding-left:5px; margin-left:3px; border-left: 2px solid #999999"><%= campo.nota %></div>
+    <% end %>
+    </dd>
+  </dl>
+<% end %> 

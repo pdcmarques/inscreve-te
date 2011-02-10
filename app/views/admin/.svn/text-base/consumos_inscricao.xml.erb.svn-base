@@ -1,0 +1,14 @@
+﻿<consumos totalCount="<%= @consumos.size %>">
+  <totalCount><%= @consumos.size %></totalCount>
+  <% @consumos.each do |consumo| %>
+    <consumo>
+      <id><%= consumo.id %></id>
+      <produto_id><%= consumo.produto_id %></produto_id>
+      <produto_descricao><%= consumo.produto.descricao %></produto_descricao>
+      <preco><%= consumo.preco %></preco>
+      <recibo_id><%= consumo.recibo_id %></recibo_id>
+      <recibo_nome><%= consumo.recibo.nome %></recibo_nome>
+    </consumo>
+  <% end %>
+</consumos>
+

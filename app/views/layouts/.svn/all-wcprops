@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/project/!svn/ver/696/trunk/app/views/layouts
+END
+admin.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/533/trunk/app/views/layouts/admin.html.erb
+END
+home.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/513/trunk/app/views/layouts/home.html.erb
+END
+recibos.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/project/!svn/ver/696/trunk/app/views/layouts/recibos.html.erb
+END
+print.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/390/trunk/app/views/layouts/print.html.erb
+END
+print.erb
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/project/!svn/ver/390/trunk/app/views/layouts/print.erb
+END
+sessions.erb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/project/!svn/ver/513/trunk/app/views/layouts/sessions.erb
+END
+error.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/390/trunk/app/views/layouts/error.html.erb
+END
+igreja.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/390/trunk/app/views/layouts/igreja.html.erb
+END
+users.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/390/trunk/app/views/layouts/users.html.erb
+END
+recepcao.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/project/!svn/ver/390/trunk/app/views/layouts/recepcao.html.erb
+END
+inscricoes.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/project/!svn/ver/513/trunk/app/views/layouts/inscricoes.erb
+END
+imprimir_recibo.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/357/trunk/app/views/layouts/imprimir_recibo.html.erb
+END
+refeicoes.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/project/!svn/ver/504/trunk/app/views/layouts/refeicoes.html.erb
+END

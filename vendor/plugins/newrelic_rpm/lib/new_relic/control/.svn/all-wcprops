@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/new_relic/control
+END
+ruby.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/new_relic/control/ruby.rb
+END
+merb.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/new_relic/control/merb.rb
+END
+rails.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/project/!svn/ver/481/trunk/vendor/plugins/newrelic_rpm/lib/new_relic/control/rails.rb
+END

@@ -1,0 +1,19 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<ficheiropagamentosMB>
+  <pagamentoMB>
+    <DATA_HORA>24-09-2009 08:53</DATA_HORA>
+    <TERMINAL>0076002506-Queluz</TERMINAL>
+    <REFERENCIA>853105089</REFERENCIA>
+    <VALOR>44.65</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>43.8</VALORLIQUIDO>
+  </pagamentoMB>
+  <pagamentoMB>
+    <DATA_HORA>24-09-2009 10:18</DATA_HORA>
+    <TERMINAL>0010032801-Azambuja</TERMINAL>
+    <REFERENCIA>853104378</REFERENCIA>
+    <VALOR>8</VALOR>
+    <TARIFA>0.85</TARIFA>
+    <VALORLIQUIDO>7.15</VALORLIQUIDO>
+  </pagamentoMB>
+</ficheiropagamentosMB>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/project/!svn/ver/745/trunk/app/views/sessions
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/project/!svn/ver/620/trunk/app/views/sessions/new.html.erb
+END
+user_in_session.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/project/!svn/ver/745/trunk/app/views/sessions/user_in_session.xml.erb
+END
+create.xml.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/project/!svn/ver/339/trunk/app/views/sessions/create.xml.erb
+END
