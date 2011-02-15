@@ -1,8 +1,0 @@
-<% @environments.each do |name, conf| %>
-<%= name %>:
-  adapter: mysql
-  username: <%= conf[:username] %>
-  password: <%= conf[:password] %>
-  host: <%= conf[:host] %>
-  port: <%= conf[:port] %>
-<% end %>
