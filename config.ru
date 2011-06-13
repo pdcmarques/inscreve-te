@@ -2,5 +2,5 @@
 require "config/environment"
  
 #use Rails::Rack::LogTailer
-#se ActionDispatch::Static
-#run ActionController::Dispatcher.new
+#use ActionDispatch::Static
+run ActionController::Dispatcher.new
