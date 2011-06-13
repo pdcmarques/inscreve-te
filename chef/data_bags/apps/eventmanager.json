@@ -1,0 +1,99 @@
+{
+  "id": "eventmanager",
+  "server_roles": [
+    "eventmanager"
+  ],
+  "type": {
+    "eventmanager": [
+      "rails",
+      "unicorn"
+    ]
+  },
+  "memcached_role": [
+    "eventmanager_memcached"
+  ],
+  "database_slave_role": [
+    "eventmanager_database_slave"
+  ],
+  "database_master_role": [
+    "eventmanager_database_master"
+  ],
+  "repository": "git@github.com:pdcmarques/inscreve-te.git",
+  "deploy_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIEoQIBAAKCAQEAsueoWwb9KxHkoSZTj8BP5OE1vLSa5Cp8MSdGAeNbaNptB8jl\nDgPMdXlLmoJ7AV+71DFA25j59Z0ul3v+zyHWQS5LZNibfNYyJKYadoqL8gDTycE7\nDvbyBl9UC2O6KcIFLxu2FctMEK/rMkGjiL/e8In5Xh5gISUA6BooLNQEtB3/JGSO\nQCqgUbVaIJxbOPU9NeKGDdNL6VnaMKQOvt5djJCbvBWKIWUFcyzltOVvkAvTsQuk\n7BwmBHSP9zZPGAY7z2xOWRdG6TzwxJ728/HoKBxWytZJsxKYPoFoot51qMnjSo8j\nkH2nBMW/GYlfakCU+/eqU3c/XQHejXJZOMFcWQIBIwKCAQEAigMqGlXZPnuEfFDE\nHm/Imp8a02bAoWKaUc3W64OBB75xXcbclchqhoIkYUAVvzs5IAi9ASzeFT69is1e\nKsJU0zJXaw1/QwujBlRATNFHYuqyAgoXndRxj+Mjk8H2AvTCK6epuQqLItDaAjKi\nufMZsj6NK1lC1711ul1SMTXXviR6kjcmEb76m3vgj8Luy3i0zOcZ/80TP2FLrfOj\nwRDeQuYfsWCcMG0OJCqQsUX09PxDheJVqnBoZNUB3ixNJl8SOPTJ9zL2UgndsW45\nQoqScf93UXfgtN+Eu/kMlxGBN6w4ib/81mLzm4TgS7iXgWyTFw3LaxLfOAeSWxrB\nB+lcDwKBgQDaZvQkh+SP4lay5cYxCoIA3oAP+V6NShdDXsIZ79kA0QOrlHX8IBiW\nqX78PdUxPIv/0J8n/7y80gpJSA4Zz9pdrn7EKYd/cb3LkxMvUGWGrsBt5ExhxIg1\nfpJ96G0ke9fdc3Iv7G8hDX1eBigYkoumEhwkCHWmSKW6EndyxrGSgwKBgQDRtAx6\nvbbLktqEIaoRE7pR+G/GJ61G21Kv+d8EFx7nSGKhJT7DiaKe06+frbWPAvZy3Yl2\nK+Co+48LX79ffrob1xiEYOVrt9ErvVI7Cuu2mbtqrFbOIIUVgGm0e1qgMKD+66jR\n0ITFcA3o/RMtHPjH8eYWTm3gBJ4t3vSp2ZVu8wKBgHaPqRslMu8F10ssRwSt7s1F\nlfoLB3FFelfFudOQ1OMvougdZJ7PmFHJufalOTf8S//mR8VBr5mz2bLAtzKVZ+m2\nf1SLkrLl+VFBNkzigEHMlFjppc6shHTPrpwfFq1nzPSPILruEHEHUq9ibYmuo5Sq\nvtG7cxEgH3Ojn+3Zk5itAoGAZdscARpReNJM4ReqYBDleEV4HmsLBSizIkYqflRf\nd6bQ0e2E4qHv5r6XIawk/FHlav3jrm0VWWQ+KhiQJxGq2lKIQExSLQGC2rsKrvat\nAOuVi5WJP4wjYjcOxWB8ebE4QU3kSKcb6t6nq64fQcw+UnzO16Jv4dZbdV2qCVsO\nEVECgYA96m12RxfCqRQH/uoTMBNZLGkb9H3eTpvcy6ZQfk8gbXjhcnpYTJx+SZom\nNJkDY6qiTVxmZD0paVu8M+cbhqRZX8p6H5NLbqcEnorvO5F1XlHBAN1vzdyLblc1\n3ikzMnVDGGDia05fragAKpYK9e/1d3mRD3lPWkeOmmdg9f/3lw==\n-----END RSA PRIVATE KEY-----",
+  "deploy_to": "/srv/eventmanager",
+  
+  "revision": {
+    "production": "master"
+  },
+  "force": {
+    "production": true
+  },
+  "migrate": {
+    "production": "true"
+  },
+  "databases": {
+    "production": {
+      "reconnect": "true",
+      "encoding": "utf8",
+      "username": "eventman_user",
+      "adapter": "mysql",
+      "password": "euro2004",
+      "database": "eventmanager_production"
+    }
+  },
+  "mysql_root_password": {
+    "production": "euro2004"
+  },
+  "mysql_debian_password": {
+    "production": "euro2004"
+  },
+  "mysql_repl_password": {
+    "production": "euro2004"
+  },
+  "snapshots_to_keep": {
+    "production": "1"
+  },
+  "owner": "ubuntu",
+  "group": "ubuntu",
+  "packages": {
+    "libxml2-dev": "",
+    "libxslt1-dev": "",
+    "libmagickwand-dev": "",
+    "imagemagick": ""
+  },
+  "gems": {
+    "activesupport": "",
+    "rails": "2.2.2",
+    "actionpack": "1.12.5",
+    "fastercsv": "1.4.0",
+    "fastthread": "1.0.1",
+    "gbarcode": "0.98.16",
+    "hoe": "2.6.1",
+    "hominid": "2.1.5",
+    "httpclient": "2.1.5.2",
+    "jasperserver-client": "1.0.0",
+    "json_pure": "1.4.3",
+    "passenger": "2.2.11",
+    "rack": "1.1.0",
+    "rake": "0.8.7",
+    "rmagick": "2.9.1",
+    "ruby-ole": "1.2.8.2",
+    "rubyforge": "2.0.4",
+    "rubygems-update": "1.3.4",
+    "rubyzip": "0.9.4",
+    "seer": "0.7.0",
+    "soap4r": "1.5.8",
+    "spreadsheet": "0.6.3.1",
+    "unicode": "0.3.1",
+    "will_paginate": "2.2.2",
+    "xml-simple": "1.0.12"
+  },
+  
+  "memcached": {
+    "production": {
+      "namespace": "eventmanager_production"
+    }
+  }
+}
+
+
