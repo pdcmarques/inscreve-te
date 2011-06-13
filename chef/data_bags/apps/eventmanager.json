@@ -62,7 +62,8 @@
     "imagemagick": ""
   },
   "gems": {
-    "activesupport": "",
+    "activesupport": "3.0.8",
+    "activesms": "",
     "rails": "2.2.2",
     "actionpack": "1.12.5",
     "fastercsv": "1.4.0",
